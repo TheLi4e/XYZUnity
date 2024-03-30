@@ -6,14 +6,33 @@ using UnityEngine.InputSystem;
 public class HeroInputReader : MonoBehaviour
 {
     [SerializeField] private Hero _hero;
+    
+    private HeroInputActions _inputActions;
 
-    public void OnHorizontalMovement(InputValue context)
+    private void Awake()
     {
-        var direction = context.Get<float>();
+        _inputActions = new HeroInputActions();
+        _inputActions.Hero.HorizontalMovement.performed += OnHorizontalMovement;
+        _inputActions.Hero.HorizontalMovement.canceled += OnHorizontalMovement;
+
+        _inputActions.Hero.SaySomething.performed += OnSaySomething;
+
+
+    }
+
+    private void OnEnable()
+    {
+        _inputActions.Enable();
+    }
+
+    public void OnHorizontalMovement(InputAction.CallbackContext context)
+    {
+        var direction = context.ReadValue<float>();
         _hero.SetDirection(direction);
     }
 
-    public void SaySomething(InputValue context)
+
+    public void OnSaySomething(InputAction.CallbackContext context)
     {
         _hero.SaySomething();
     }
