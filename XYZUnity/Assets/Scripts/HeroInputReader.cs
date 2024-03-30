@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class HeroInputReader : MonoBehaviour
 {
     [SerializeField] private Hero _hero;
 
-    private void Update()
+    public void OnHorizontalMovement(InputAction.CallbackContext context)
     {
-        var horizontal = Input.GetAxis("Horizontal");
-        _hero.SetDirection(horizontal);
+        var direction = context.ReadValue<float>();
+        _hero.SetDirection(direction);
+    }
 
-        if (Input.GetButtonUp("Fire1"))
-            _hero.SaySomething();
+    public void SaySomething(InputAction.CallbackContext context)
+    {
+        _hero.SaySomething();
     }
 }
