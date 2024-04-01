@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SilverCoin
+  - GoldCoin
   layers:
   - Default
   - TransparentFX
@@ -46,6 +48,9 @@ TagManager:
     locked: 0
   - name: back
     uniqueID: 1113027743
+    locked: 0
+  - name: Level
+    uniqueID: 1363283443
     locked: 0
   - name: obj
     uniqueID: 2071478143
