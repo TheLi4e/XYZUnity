@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 namespace Scripts.Components
@@ -12,5 +13,8 @@ namespace Scripts.Components
         {
             Destroy(_objectToDestroy);
         }
+
+
+       
     }
 }
