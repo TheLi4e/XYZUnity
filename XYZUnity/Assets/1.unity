@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 35206899}
   m_Layer: 0
   m_Name: Coins_0 (5)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 44876142}
   m_Layer: 0
   m_Name: Coins_0 (11)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 80924638}
   m_Layer: 0
   m_Name: Coins_0 (7)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 177873899}
   m_Layer: 0
   m_Name: Coins_0 (3)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1505,7 +1505,7 @@ GameObject:
   - component: {fileID: 246799848}
   m_Layer: 0
   m_Name: Coins_0 (8)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1672,7 +1672,7 @@ GameObject:
   - component: {fileID: 291266434}
   m_Layer: 0
   m_Name: Coins_0 (10)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1839,7 +1839,7 @@ GameObject:
   - component: {fileID: 342911225}
   m_Layer: 0
   m_Name: Coins_0 (2)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2160,7 +2160,7 @@ GameObject:
   - component: {fileID: 436144068}
   m_Layer: 0
   m_Name: Coins_0 (5)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2327,7 +2327,7 @@ GameObject:
   - component: {fileID: 469694335}
   m_Layer: 0
   m_Name: Coins_0 (9)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2694,7 +2694,7 @@ GameObject:
   - component: {fileID: 618783756}
   m_Layer: 0
   m_Name: Coins_0 (6)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3122,7 +3122,7 @@ GameObject:
   - component: {fileID: 776132887}
   m_Layer: 0
   m_Name: Coins_0 (12)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3289,7 +3289,7 @@ GameObject:
   - component: {fileID: 881920535}
   m_Layer: 0
   m_Name: Coins_0 (8)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3623,7 +3623,7 @@ GameObject:
   - component: {fileID: 1049473764}
   m_Layer: 0
   m_Name: Coins_0 (6)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4091,7 +4091,7 @@ GameObject:
   - component: {fileID: 1214761967}
   m_Layer: 0
   m_Name: Coins_0 (7)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6337,7 +6337,7 @@ GameObject:
   - component: {fileID: 1429606687}
   m_Layer: 0
   m_Name: Coins_0 (4)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6504,7 +6504,7 @@ GameObject:
   - component: {fileID: 1473535326}
   m_Layer: 0
   m_Name: Coins_0 (3)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6936,7 +6936,7 @@ GameObject:
   - component: {fileID: 1813402392}
   m_Layer: 0
   m_Name: Coins_0 (4)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7220,7 +7220,7 @@ GameObject:
   - component: {fileID: 1940572505}
   m_Layer: 0
   m_Name: Coins_0 (1)
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
