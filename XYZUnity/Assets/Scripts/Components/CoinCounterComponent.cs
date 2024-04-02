@@ -20,9 +20,9 @@ namespace Scripts.Components
 
         public void IncreaseCounter()
         {
-            if (_tag == "SilverCoin")
+            if (gameObject.CompareTag("SilverCoin"))
                 coins++;
-            if (_tag == "GoldCoin")
+            if (gameObject.CompareTag("GoldCoin"))
                 coins+=10;
         }
 
