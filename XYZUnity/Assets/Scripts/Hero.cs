@@ -14,6 +14,8 @@ namespace Scripts
         private Vector2 _direction;
         private Animator _animator;
         private SpriteRenderer _sprite;
+        private bool _isGrounded;
+        private bool _allowDoubleJump;
 
         private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
         private static readonly int IsRunningKey = Animator.StringToHash("is-running");
@@ -31,32 +33,45 @@ namespace Scripts
             _direction = direction;
         }
 
+        private void Update()
+        {
+            _isGrounded = IsGrounded();
+        }
+
         private void FixedUpdate()
         {
-            Move();
+            var xVelocity = _direction.x * _speed;
+            var yVelocity = CalculateYVelocity();
+            _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
+
+
+
+
+            _animator.SetBool(IsGroundKey, _isGrounded);
+            _animator.SetFloat(VerticalVelocity, _rigidbody.velocity.y);
+            _animator.SetBool(IsRunningKey, _direction.x != 0);
 
             UpdateSpriteDirection();
         }
 
-        private void Move()
+      
+        private float CalculateYVelocity()
         {
-            _rigidbody.velocity = new Vector2(_direction.x * _speed, _rigidbody.velocity.y);
-
-            bool isJumping = _direction.y > 0;
+            var yVelocity = _rigidbody.velocity.y;
+            bool isJumpPressing = _direction.y > 0;
             var isGrounded = IsGrounded();
 
-            if (isJumping)
+            if (isGrounded) _allowDoubleJump = true;
+            if (isJumpPressing)
             {
-                if (isGrounded)
-                    _rigidbody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
-
+                yVelocity = CalculateJumpVelocity(yVelocity);
+                
             }
+                
             else if (_rigidbody.velocity.y > 0)
-                _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y * 0.5f);
+                yVelocity *= 0.5f;
 
-            _animator.SetBool(IsGroundKey, isGrounded);
-            _animator.SetFloat(VerticalVelocity, _rigidbody.velocity.y);
-            _animator.SetBool(IsRunningKey, _direction.x != 0);
+            return yVelocity;
         }
 
         private void UpdateSpriteDirection()
@@ -80,6 +95,22 @@ namespace Scripts
         public void SaySomething()
         {
             Debug.Log("Something!");
+        }
+
+        private float CalculateJumpVelocity(float yVelocity)
+        {
+            var isFalling = _rigidbody.velocity.y <= 0.001f;
+            if (!isFalling) return yVelocity;
+
+            if (_isGrounded) yVelocity += _jumpSpeed;
+
+            else if (_allowDoubleJump)
+            {
+                yVelocity = _jumpSpeed;
+                _allowDoubleJump = false;
+            }
+
+            return yVelocity;
         }
 
     }
