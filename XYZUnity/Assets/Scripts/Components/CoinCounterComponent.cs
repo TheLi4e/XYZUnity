@@ -26,7 +26,7 @@ namespace Scripts.Components
                 coins+=10;
         }
 
-        public void DecreaseCounter()
+        public static void DecreaseCounter()
         {
             coins = 0;
         }

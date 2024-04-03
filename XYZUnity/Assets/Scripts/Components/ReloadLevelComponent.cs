@@ -9,8 +9,10 @@ namespace Scripts.Components
     {
         public void Reload()
         {
+            CoinCounterComponent.DecreaseCounter();
             var scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
+            
         }
     }
 }

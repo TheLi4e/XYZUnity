@@ -5,59 +5,62 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class CheatController : MonoBehaviour
+namespace Scripts
 {
-    [SerializeField] private float _inputTimeToLive;
-    [SerializeField] private CheatItem[] _cheats;
-
-    private string _currentInput;
-    private float _inputTime;
-
-    private void Awake()
+    public class CheatController : MonoBehaviour
     {
-        Keyboard.current.onTextInput += OnTextInput;
-    }
+        [SerializeField] private float _inputTimeToLive;
+        [SerializeField] private CheatItem[] _cheats;
 
-    private void OnDestroy()
-    {
-        Keyboard.current.onTextInput -= OnTextInput;
-    }
+        private string _currentInput;
+        private float _inputTime;
 
-    private void OnTextInput(char inputChar)
-    {
-        _currentInput += inputChar;
-        _inputTime = _inputTimeToLive;
-        FindAnyCheats();
-    }
-
-    private void FindAnyCheats()
-    {
-        foreach (var cheatItem in _cheats)
+        private void Awake()
         {
-            if (_currentInput.Contains(cheatItem.Name))
+            Keyboard.current.onTextInput += OnTextInput;
+        }
+
+        private void OnDestroy()
+        {
+            Keyboard.current.onTextInput -= OnTextInput;
+        }
+
+        private void OnTextInput(char inputChar)
+        {
+            _currentInput += inputChar;
+            _inputTime = _inputTimeToLive;
+            FindAnyCheats();
+        }
+
+        private void FindAnyCheats()
+        {
+            foreach (var cheatItem in _cheats)
             {
-                cheatItem.Action.Invoke();
+                if (_currentInput.Contains(cheatItem.Name))
+                {
+                    cheatItem.Action.Invoke();
+                    _currentInput = string.Empty;
+                }
+            }
+        }
+        private void Update()
+        {
+            if (_inputTime < 0)
+            {
                 _currentInput = string.Empty;
+            }
+            else
+            {
+                _inputTime = Time.deltaTime;
             }
         }
     }
-    private void Update()
+
+
+    [Serializable]
+    public class CheatItem
     {
-        if (_inputTime < 0)
-        {
-            _currentInput = string.Empty;
-        }
-        else
-        {
-            _inputTime = Time.deltaTime;
-        }
+        public string Name;
+        public UnityEvent Action;
     }
-}
-
-
-[Serializable]
-public class CheatItem
-{
-    public string Name;
-    public UnityEvent Action;
 }
