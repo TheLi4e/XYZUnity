@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Components;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace Scripts
 {
@@ -9,6 +11,8 @@ namespace Scripts
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _damageJumpSpeed;
         [SerializeField] private LayerCheck _groundCheck;
+        [SerializeField] private float _interActionRadius;
+        [SerializeField] private LayerMask _interActionLayer;
 
 
         private Rigidbody2D _rigidbody;
@@ -17,6 +21,7 @@ namespace Scripts
         private SpriteRenderer _sprite;
         private bool _isGrounded;
         private bool _allowDoubleJump;
+        private Collider2D[] _interActionResult = new Collider2D[1];
 
         private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
         private static readonly int IsRunningKey = Animator.StringToHash("is-running");
@@ -56,7 +61,7 @@ namespace Scripts
             UpdateSpriteDirection();
         }
 
-      
+
         private float CalculateYVelocity()
         {
             var yVelocity = _rigidbody.velocity.y;
@@ -67,9 +72,9 @@ namespace Scripts
             if (isJumpPressing)
             {
                 yVelocity = CalculateJumpVelocity(yVelocity);
-                
+
             }
-                
+
             else if (_rigidbody.velocity.y > 0)
                 yVelocity *= 0.5f;
 
@@ -119,6 +124,22 @@ namespace Scripts
         {
             _animator.SetTrigger(Hit);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageJumpSpeed);
+        }
+
+       public void Inreact()
+        {
+            var size = Physics2D.OverlapCircleNonAlloc(
+                transform.position, 
+                _interActionRadius, 
+                _interActionResult, 
+                _interActionLayer);
+
+            for (int i = 0; i < size; i++)
+            {
+                var interactable = _interActionResult[i].GetComponent<InteractableComponent>();
+                if (interactable != null)
+                    interactable.Interact(); 
+            }
         }
 
     }
