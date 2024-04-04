@@ -21,6 +21,12 @@ namespace Scripts
         {
             _hero.SaySomething();
         }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.canceled)
+                _hero.Inreact();
+        }
     }
 }
 

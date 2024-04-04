@@ -7,28 +7,26 @@ namespace Scripts.Components
 {
     public class CoinCounterComponent : MonoBehaviour
     {
-        [SerializeField] private string _tag;
+        public Text CoinCounter;
+        public static int Coins = 0;
 
-        public Text coinCounter;
-        public static int coins = 0;
-       
 
         void Update()
         {
-            coinCounter.text = "Coins " + coins;
+            CoinCounter.text = "Coins " + Coins;
         }
 
         public void IncreaseCounter()
         {
             if (gameObject.CompareTag("SilverCoin"))
-                coins++;
+                Coins++;
             if (gameObject.CompareTag("GoldCoin"))
-                coins+=10;
+                Coins += 10;
         }
 
-        public void DecreaseCounter()
+        public static void DecreaseCounter()
         {
-            coins = 0;
+            Coins = 0;
         }
     }
 }

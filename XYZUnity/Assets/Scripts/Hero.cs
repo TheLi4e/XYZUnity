@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Components;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace Scripts
 {
@@ -7,17 +9,24 @@ namespace Scripts
     {
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
+        [SerializeField] private float _damageJumpSpeed;
         [SerializeField] private LayerCheck _groundCheck;
+        [SerializeField] private float _interActionRadius;
+        [SerializeField] private LayerMask _interActionLayer;
 
 
         private Rigidbody2D _rigidbody;
         private Vector2 _direction;
         private Animator _animator;
         private SpriteRenderer _sprite;
+        private bool _isGrounded;
+        private bool _allowDoubleJump;
+        private Collider2D[] _interActionResult = new Collider2D[1];
 
         private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
         private static readonly int IsRunningKey = Animator.StringToHash("is-running");
         private static readonly int VerticalVelocity = Animator.StringToHash("vertical-velocity");
+        private static readonly int Hit = Animator.StringToHash("hit");
 
         private void Awake()
         {
@@ -31,32 +40,45 @@ namespace Scripts
             _direction = direction;
         }
 
+        private void Update()
+        {
+            _isGrounded = IsGrounded();
+        }
+
         private void FixedUpdate()
         {
-            Move();
+            var xVelocity = _direction.x * _speed;
+            var yVelocity = CalculateYVelocity();
+            _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
+
+
+
+
+            _animator.SetBool(IsGroundKey, _isGrounded);
+            _animator.SetFloat(VerticalVelocity, _rigidbody.velocity.y);
+            _animator.SetBool(IsRunningKey, _direction.x != 0);
 
             UpdateSpriteDirection();
         }
 
-        private void Move()
-        {
-            _rigidbody.velocity = new Vector2(_direction.x * _speed, _rigidbody.velocity.y);
 
-            bool isJumping = _direction.y > 0;
+        private float CalculateYVelocity()
+        {
+            var yVelocity = _rigidbody.velocity.y;
+            bool isJumpPressing = _direction.y > 0;
             var isGrounded = IsGrounded();
 
-            if (isJumping)
+            if (isGrounded) _allowDoubleJump = true;
+            if (isJumpPressing)
             {
-                if (isGrounded)
-                    _rigidbody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
+                yVelocity = CalculateJumpVelocity(yVelocity);
 
             }
-            else if (_rigidbody.velocity.y > 0)
-                _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y * 0.5f);
 
-            _animator.SetBool(IsGroundKey, isGrounded);
-            _animator.SetFloat(VerticalVelocity, _rigidbody.velocity.y);
-            _animator.SetBool(IsRunningKey, _direction.x != 0);
+            else if (_rigidbody.velocity.y > 0)
+                yVelocity *= 0.5f;
+
+            return yVelocity;
         }
 
         private void UpdateSpriteDirection()
@@ -80,6 +102,44 @@ namespace Scripts
         public void SaySomething()
         {
             Debug.Log("Something!");
+        }
+
+        private float CalculateJumpVelocity(float yVelocity)
+        {
+            var isFalling = _rigidbody.velocity.y <= 0.001f;
+            if (!isFalling) return yVelocity;
+
+            if (_isGrounded) yVelocity += _jumpSpeed;
+
+            else if (_allowDoubleJump)
+            {
+                yVelocity = _jumpSpeed;
+                _allowDoubleJump = false;
+            }
+
+            return yVelocity;
+        }
+
+        public void TakeDamage()
+        {
+            _animator.SetTrigger(Hit);
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageJumpSpeed);
+        }
+
+       public void Inreact()
+        {
+            var size = Physics2D.OverlapCircleNonAlloc(
+                transform.position, 
+                _interActionRadius, 
+                _interActionResult, 
+                _interActionLayer);
+
+            for (int i = 0; i < size; i++)
+            {
+                var interactable = _interActionResult[i].GetComponent<InteractableComponent>();
+                if (interactable != null)
+                    interactable.Interact(); 
+            }
         }
 
     }
