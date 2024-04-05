@@ -16,7 +16,8 @@ namespace Assets.Scripts.Components
 
         public void Spawn()
         {
-            Instantiate(_prefab, _target.position, Quaternion.identity);
+            var instaniate = Instantiate(_prefab, _target.position, Quaternion.identity);
+            instaniate.transform.localScale = _target.lossyScale;
         }
     }
 }

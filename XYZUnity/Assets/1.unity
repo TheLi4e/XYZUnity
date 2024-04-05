@@ -8068,6 +8068,7 @@ MonoBehaviour:
   _interActionLayer:
     serializedVersion: 2
     m_Bits: 512
+  _foorStepsParticles: {fileID: 1269630283}
 --- !u!114 &2086277945
 MonoBehaviour:
   m_ObjectHideFlags: 0
