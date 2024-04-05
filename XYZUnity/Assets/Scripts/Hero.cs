@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Components;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -13,7 +14,9 @@ namespace Scripts
         [SerializeField] private LayerCheck _groundCheck;
         [SerializeField] private float _interActionRadius;
         [SerializeField] private LayerMask _interActionLayer;
-        [SerializeField] private SpawnComponent _foorStepsParticles;
+        [SerializeField] private SpawnComponent _footStepsParticles;
+        [SerializeField] private ParticleSystem _hitParticles;
+
 
 
         private Rigidbody2D _rigidbody;
@@ -22,11 +25,15 @@ namespace Scripts
         private bool _isGrounded;
         private bool _allowDoubleJump;
         private Collider2D[] _interActionResult = new Collider2D[1];
+        private int _coins = 0;
+
 
         private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
         private static readonly int IsRunningKey = Animator.StringToHash("is-running");
         private static readonly int VerticalVelocity = Animator.StringToHash("vertical-velocity");
         private static readonly int Hit = Animator.StringToHash("hit");
+
+        public int Coins { get { return _coins; } }
 
         private void Awake()
         {
@@ -103,6 +110,16 @@ namespace Scripts
             Debug.Log("Something!");
         }
 
+        public void AddCoins(int coins)
+        {
+            _coins += coins;
+        }
+
+        public void RemoveCoins()
+        {
+            _coins = 0;
+        }
+
         private float CalculateJumpVelocity(float yVelocity)
         {
             var isFalling = _rigidbody.velocity.y <= 0.001f;
@@ -123,27 +140,45 @@ namespace Scripts
         {
             _animator.SetTrigger(Hit);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageJumpSpeed);
+            if (_coins > 0)
+            {
+                SpawnCoins();
+            }
+
         }
 
-       public void Inreact()
+        private void SpawnCoins()
+        {
+            var numCoinsToDispose = Mathf.Min(_coins, 5);
+            _coins -= numCoinsToDispose;
+
+            var burst = _hitParticles.emission.GetBurst(0);
+            burst.count = numCoinsToDispose;
+            _hitParticles.emission.SetBurst(0, burst);
+
+            _hitParticles.gameObject.SetActive(true);
+            _hitParticles.Play();
+        }
+
+        public void Inreact()
         {
             var size = Physics2D.OverlapCircleNonAlloc(
-                transform.position, 
-                _interActionRadius, 
-                _interActionResult, 
+                transform.position,
+                _interActionRadius,
+                _interActionResult,
                 _interActionLayer);
 
             for (int i = 0; i < size; i++)
             {
                 var interactable = _interActionResult[i].GetComponent<InteractableComponent>();
                 if (interactable != null)
-                    interactable.Interact(); 
+                    interactable.Interact();
             }
         }
 
         public void SpawnFootDust()
         {
-            _foorStepsParticles.Spawn();
+            _footStepsParticles.Spawn();
         }
 
     }

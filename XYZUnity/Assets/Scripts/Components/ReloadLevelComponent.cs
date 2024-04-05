@@ -7,12 +7,11 @@ namespace Scripts.Components
 {
     public class ReloadLevelComponent : MonoBehaviour
     {
+        private CoinCounterComponent _coinCounterComponent;
         public void Reload()
         {
-            CoinCounterComponent.DecreaseCounter();
             var scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
-            
         }
     }
 }
