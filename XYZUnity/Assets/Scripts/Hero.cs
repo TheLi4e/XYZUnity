@@ -15,8 +15,8 @@ namespace Scripts
         [SerializeField] private float _interActionRadius;
         [SerializeField] private LayerMask _interActionLayer;
         [SerializeField] private SpawnComponent _footStepsParticles;
+        [SerializeField] private SpawnComponent _jumpStepsParticles;
         [SerializeField] private ParticleSystem _hitParticles;
-
 
 
         private Rigidbody2D _rigidbody;
@@ -56,9 +56,6 @@ namespace Scripts
             var xVelocity = _direction.x * _speed;
             var yVelocity = CalculateYVelocity();
             _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
-
-
-
 
             _animator.SetBool(IsGroundKey, _isGrounded);
             _animator.SetFloat(VerticalVelocity, _rigidbody.velocity.y);
@@ -144,7 +141,6 @@ namespace Scripts
             {
                 SpawnCoins();
             }
-
         }
 
         private void SpawnCoins()
@@ -181,6 +177,10 @@ namespace Scripts
             _footStepsParticles.Spawn();
         }
 
+        public void SpawnJumpDust()
+        {
+            _jumpStepsParticles.Spawn();
+        }
     }
 }
 
