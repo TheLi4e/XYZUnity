@@ -19,7 +19,7 @@ namespace Assets.Scripts.Components
         {
             var healthComponent = _gameObject.GetComponent<HealthComponent>();
             
-            HealthBar.text = "Health " + healthComponent._health;
+            HealthBar.text = "HP " + healthComponent._health;
         }
 
     }
