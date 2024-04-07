@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Components;
+using Assets.Scripts.Utils;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,12 +12,16 @@ namespace Scripts
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _damageJumpSpeed;
+        [SerializeField] private float _FallVelocity;
         [SerializeField] private LayerCheck _groundCheck;
+        [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private float _interActionRadius;
         [SerializeField] private LayerMask _interActionLayer;
+
         [SerializeField] private SpawnComponent _footStepsParticles;
         [SerializeField] private SpawnComponent _jumpStepsParticles;
         [SerializeField] private ParticleSystem _hitParticles;
+        [SerializeField] private SpawnComponent _FallParticles;
 
 
         private Rigidbody2D _rigidbody;
@@ -64,7 +69,6 @@ namespace Scripts
             UpdateSpriteDirection();
         }
 
-
         private float CalculateYVelocity()
         {
             var yVelocity = _rigidbody.velocity.y;
@@ -96,11 +100,11 @@ namespace Scripts
             }
         }
 
-
         private bool IsGrounded()
         {
             return _groundCheck.IsTouchingLayer;
         }
+
 
         public void SaySomething()
         {
@@ -122,11 +126,17 @@ namespace Scripts
             var isFalling = _rigidbody.velocity.y <= 0.001f;
             if (!isFalling) return yVelocity;
 
-            if (_isGrounded) yVelocity += _jumpSpeed;
+            if (_isGrounded) 
+            {
+                yVelocity += _jumpSpeed;
+                _jumpStepsParticles.Spawn();
+            }
+            
 
             else if (_allowDoubleJump)
             {
                 yVelocity = _jumpSpeed;
+                _jumpStepsParticles.Spawn();
                 _allowDoubleJump = false;
             }
 
@@ -181,7 +191,33 @@ namespace Scripts
         {
             _jumpStepsParticles.Spawn();
         }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.IsInLayer(_groundLayer))
+            {
+                var contact = collision.contacts[0];
+                if (contact.relativeVelocity.y >= _FallVelocity)
+                {
+                    _FallParticles.Spawn();
+                }
+            }
+
+           if (collision.gameObject.tag.Equals("Platform"))
+            {
+                this.transform.parent = collision.transform;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag.Equals("Platform"))
+            {
+                this.transform.parent = null;
+            }
+        }
     }
-}
+}   
+
 
 
