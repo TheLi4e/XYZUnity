@@ -64,7 +64,6 @@ namespace Scripts
             UpdateSpriteDirection();
         }
 
-
         private float CalculateYVelocity()
         {
             var yVelocity = _rigidbody.velocity.y;
@@ -96,11 +95,11 @@ namespace Scripts
             }
         }
 
-
         private bool IsGrounded()
         {
             return _groundCheck.IsTouchingLayer;
         }
+
 
         public void SaySomething()
         {
@@ -181,7 +180,24 @@ namespace Scripts
         {
             _jumpStepsParticles.Spawn();
         }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+           if (collision.gameObject.tag.Equals("Platform"))
+            {
+                this.transform.parent = collision.transform;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag.Equals("Platform"))
+            {
+                this.transform.parent = null;
+            }
+        }
     }
-}
+}   
+
 
 
