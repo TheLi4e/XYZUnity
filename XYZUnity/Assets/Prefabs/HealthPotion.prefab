@@ -164,18 +164,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _loop: 1
-  _sprites:
-  - {fileID: 21300000, guid: 83f4fdc7d23a01141b10a374bac9b95e, type: 3}
-  - {fileID: 21300000, guid: e78e94cc07ec98040a22eae54bb5076e, type: 3}
-  - {fileID: 21300000, guid: b3f86dd3153c9ea45adffdb0a2d017a6, type: 3}
-  - {fileID: 21300000, guid: 1b4a5d861e330ab4580c59c7cc054efc, type: 3}
-  - {fileID: 21300000, guid: fb837ff109e4aba419d827bb5b220a92, type: 3}
-  - {fileID: 21300000, guid: 061dcef2244379a42aa75f4e0a491b00, type: 3}
-  - {fileID: 21300000, guid: aea765135f79ae944be0da51ccbcfd68, type: 3}
-  _onComplete:
-    m_PersistentCalls:
-      m_Calls: []
+  _clips:
+  - _name: idle
+    _sprites:
+    - {fileID: 21300000, guid: 83f4fdc7d23a01141b10a374bac9b95e, type: 3}
+    - {fileID: 21300000, guid: e78e94cc07ec98040a22eae54bb5076e, type: 3}
+    - {fileID: 21300000, guid: b3f86dd3153c9ea45adffdb0a2d017a6, type: 3}
+    - {fileID: 21300000, guid: 1b4a5d861e330ab4580c59c7cc054efc, type: 3}
+    - {fileID: 21300000, guid: fb837ff109e4aba419d827bb5b220a92, type: 3}
+    - {fileID: 21300000, guid: 061dcef2244379a42aa75f4e0a491b00, type: 3}
+    - {fileID: 21300000, guid: aea765135f79ae944be0da51ccbcfd68, type: 3}
+    _loop: 1
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!61 &5404269072195667694
 BoxCollider2D:
   m_ObjectHideFlags: 0

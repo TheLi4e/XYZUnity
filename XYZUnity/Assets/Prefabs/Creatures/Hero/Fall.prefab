@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6490545551286874270}
   - component: {fileID: 4243021972874120722}
   m_Layer: 0
-  m_Name: Fall 01
+  m_Name: Fall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,27 +96,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _loop: 0
-  _sprites:
-  - {fileID: 21300000, guid: 0ea17f7574569e3499b2ffdf80606794, type: 3}
-  - {fileID: 21300000, guid: f9d180ef5353d4041bbcff1be16657a0, type: 3}
-  - {fileID: 21300000, guid: 3f38a6a1514d30647b3414053e780be9, type: 3}
-  - {fileID: 21300000, guid: d361b9bbc61fdd649a76867652ad3679, type: 3}
-  - {fileID: 21300000, guid: 52dad9fd525777e4dbaaa7d245d764fa, type: 3}
-  _onComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4243021972874120722}
-        m_MethodName: DestroyObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  _clips:
+  - _name: fall
+    _sprites:
+    - {fileID: 21300000, guid: 0ea17f7574569e3499b2ffdf80606794, type: 3}
+    - {fileID: 21300000, guid: f9d180ef5353d4041bbcff1be16657a0, type: 3}
+    - {fileID: 21300000, guid: 3f38a6a1514d30647b3414053e780be9, type: 3}
+    - {fileID: 21300000, guid: d361b9bbc61fdd649a76867652ad3679, type: 3}
+    - {fileID: 21300000, guid: 52dad9fd525777e4dbaaa7d245d764fa, type: 3}
+    _loop: 0
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &4243021972874120722
 MonoBehaviour:
   m_ObjectHideFlags: 0
