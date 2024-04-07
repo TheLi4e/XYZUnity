@@ -216,6 +216,11 @@ namespace Scripts
                 this.transform.parent = null;
             }
         }
+
+        internal void Attack()
+        {
+
+        }
     }
 }   
 
