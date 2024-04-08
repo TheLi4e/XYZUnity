@@ -131,12 +131,12 @@ namespace Scripts
             var isFalling = _rigidbody.velocity.y <= 0.001f;
             if (!isFalling) return yVelocity;
 
-            if (_isGrounded) 
+            if (_isGrounded)
             {
                 yVelocity += _jumpSpeed;
                 _jumpStepsParticles.Spawn();
             }
-            
+
 
             else if (_allowDoubleJump)
             {
@@ -208,7 +208,7 @@ namespace Scripts
                 }
             }
 
-           if (collision.gameObject.tag.Equals("Platform"))
+            if (collision.gameObject.tag.Equals("Platform"))
             {
                 this.transform.parent = collision.transform;
             }
@@ -225,10 +225,15 @@ namespace Scripts
         internal void Attack()
         {
             _animator.SetTrigger(AttackKey);
+          
+        }
+
+        private void OnAttack()
+        {
             var gos = _attackRange.GetObjectsInRange();
             foreach (var go in gos)
             {
-               var hp = go.GetComponent<HealthComponent>();
+                var hp = go.GetComponent<HealthComponent>();
                 if (hp != null && go.CompareTag("Enemy"))
                 {
                     hp.ApplyDamage(_damage);
