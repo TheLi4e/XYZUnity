@@ -14,8 +14,7 @@ namespace Scripts.Components
 
         void Update()
         {
-            _coins = _hero.Coins;
-            CoinCounter.text = "Coins " + _coins;
+            CoinCounter.text = "Coins " + _hero.Coins;
         }
 
         public void IncreaseCounter()
