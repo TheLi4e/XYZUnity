@@ -3,9 +3,8 @@ using Assets.Scripts.Components;
 using Assets.Scripts.Utils;
 using System;
 using System.IO.IsolatedStorage;
+using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 namespace Scripts
 {
@@ -20,6 +19,9 @@ namespace Scripts
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private float _interActionRadius;
         [SerializeField] private LayerMask _interActionLayer;
+
+        [SerializeField] private AnimatorController _armed;
+        [SerializeField] private AnimatorController _disarmed;
 
         [SerializeField] private CheckCircleOverlap _attackRange;
 
@@ -36,7 +38,7 @@ namespace Scripts
         private bool _allowDoubleJump;
         private Collider2D[] _interActionResult = new Collider2D[1];
         private int _coins = 0;
-
+        private bool _isArmed;
 
         private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
         private static readonly int IsRunningKey = Animator.StringToHash("is-running");
@@ -224,6 +226,7 @@ namespace Scripts
 
         internal void Attack()
         {
+            if (!_isArmed) return;
             _animator.SetTrigger(AttackKey);
           
         }
@@ -239,6 +242,12 @@ namespace Scripts
                     hp.ApplyDamage(_damage);
                 }
             }
+        }
+
+        internal void ArmHero()
+        {
+            _isArmed = true;
+            _animator.runtimeAnimatorController = _armed;
         }
     }
 }   
