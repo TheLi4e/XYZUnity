@@ -1,6 +1,8 @@
-﻿using Assets.Scripts.Components;
+﻿using Assets.Scripts;
+using Assets.Scripts.Components;
 using Assets.Scripts.Utils;
 using System;
+using System.IO.IsolatedStorage;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -12,11 +14,14 @@ namespace Scripts
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _damageJumpSpeed;
-        [SerializeField] private float _FallVelocity;
+        [SerializeField] private float _fallVelocity;
+        [SerializeField] private int _damage;
         [SerializeField] private LayerCheck _groundCheck;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private float _interActionRadius;
         [SerializeField] private LayerMask _interActionLayer;
+
+        [SerializeField] private CheckCircleOverlap _attackRange;
 
         [SerializeField] private SpawnComponent _footStepsParticles;
         [SerializeField] private SpawnComponent _jumpStepsParticles;
@@ -37,6 +42,7 @@ namespace Scripts
         private static readonly int IsRunningKey = Animator.StringToHash("is-running");
         private static readonly int VerticalVelocity = Animator.StringToHash("vertical-velocity");
         private static readonly int Hit = Animator.StringToHash("hit");
+        private static readonly int AttackKey = Animator.StringToHash("attack");
 
         public int Coins { get { return _coins; } }
 
@@ -104,7 +110,6 @@ namespace Scripts
         {
             return _groundCheck.IsTouchingLayer;
         }
-
 
         public void SaySomething()
         {
@@ -197,7 +202,7 @@ namespace Scripts
             if (collision.gameObject.IsInLayer(_groundLayer))
             {
                 var contact = collision.contacts[0];
-                if (contact.relativeVelocity.y >= _FallVelocity)
+                if (contact.relativeVelocity.y >= _fallVelocity)
                 {
                     _FallParticles.Spawn();
                 }
@@ -219,7 +224,16 @@ namespace Scripts
 
         internal void Attack()
         {
-
+            _animator.SetTrigger(AttackKey);
+            var gos = _attackRange.GetObjectsInRange();
+            foreach (var go in gos)
+            {
+               var hp = go.GetComponent<HealthComponent>();
+                if (hp != null && go.CompareTag("Enemy"))
+                {
+                    hp.ApplyDamage(_damage);
+                }
+            }
         }
     }
 }   
