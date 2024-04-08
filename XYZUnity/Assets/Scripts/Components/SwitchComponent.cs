@@ -16,7 +16,7 @@ namespace Assets.Scripts.Components
 
         }
 
-        [ContextMenu("Switch")] 
+        [ContextMenu("Switch")]
 
         public void SwitchIt()
         {

@@ -24,7 +24,7 @@ namespace Assets.Scripts.Components
     }
 
     [Serializable]
-    public class EnterEvent : UnityEvent<GameObject> 
+    public class EnterEvent : UnityEvent<GameObject>
     {
     }
 

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Components
 {
-    internal class HealthBarComponent :MonoBehaviour
+    internal class HealthBarComponent : MonoBehaviour
     {
         [SerializeField] GameObject _gameObject;
         public Text HealthBar;
@@ -18,8 +18,8 @@ namespace Assets.Scripts.Components
         void Update()
         {
             var healthComponent = _gameObject.GetComponent<HealthComponent>();
-            
-            HealthBar.text = "Health " + healthComponent._health;
+
+            HealthBar.text = "HP " + healthComponent._health;
         }
 
     }

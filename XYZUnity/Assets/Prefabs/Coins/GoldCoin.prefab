@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8695036020257856677}
   - component: {fileID: 8695036020257856731}
   m_Layer: 0
-  m_Name: Coins_4
+  m_Name: GoldCoin
   m_TagString: GoldCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,8 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f6671e61c9f2347af0b746a4ab9d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tag: GoldCoin
-  coinCounter: {fileID: 0}
+  _hero: {fileID: 0}
+  CoinCounter: {fileID: 0}
 --- !u!114 &8695036020257856731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,12 +181,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _loop: 1
-  _sprites:
-  - {fileID: 6582046967323461550, guid: b1ae59a37a1b33046ad0ff84413a6944, type: 3}
-  - {fileID: 1942777921290549423, guid: b1ae59a37a1b33046ad0ff84413a6944, type: 3}
-  - {fileID: 8793606821965667882, guid: b1ae59a37a1b33046ad0ff84413a6944, type: 3}
-  - {fileID: 3444832735345940322, guid: b1ae59a37a1b33046ad0ff84413a6944, type: 3}
-  _onComplete:
-    m_PersistentCalls:
-      m_Calls: []
+  _clips:
+  - _name: idle
+    _sprites:
+    - {fileID: 6582046967323461550, guid: b1ae59a37a1b33046ad0ff84413a6944, type: 3}
+    - {fileID: 1942777921290549423, guid: b1ae59a37a1b33046ad0ff84413a6944, type: 3}
+    - {fileID: 8793606821965667882, guid: b1ae59a37a1b33046ad0ff84413a6944, type: 3}
+    - {fileID: 3444832735345940322, guid: b1ae59a37a1b33046ad0ff84413a6944, type: 3}
+    _loop: 1
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls: []

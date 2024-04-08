@@ -8,14 +8,13 @@ namespace Scripts.Components
     public class CoinCounterComponent : MonoBehaviour
     {
         [SerializeField] private Hero _hero;
+        [SerializeField] public Text CoinCounter;
 
-        public Text CoinCounter;
         public static int _coins;
 
         void Update()
         {
-            _coins = _hero.Coins;
-            CoinCounter.text = "Coins " + _coins;
+            CoinCounter.text = "Coins " + _hero.Coins;
         }
 
         public void IncreaseCounter()

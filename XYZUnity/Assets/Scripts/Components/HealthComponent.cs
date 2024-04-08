@@ -18,10 +18,9 @@ namespace Assets.Scripts.Components
             _onDamage?.Invoke();
             if (_health <= 0)
                 _onDie?.Invoke();
-
         }
 
-        public void ApplyHeal (int heal)
+        public void ApplyHeal(int heal)
         {
             _health += heal;
             _onHeal?.Invoke();
