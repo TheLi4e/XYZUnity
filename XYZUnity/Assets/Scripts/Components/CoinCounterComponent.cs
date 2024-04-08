@@ -8,8 +8,8 @@ namespace Scripts.Components
     public class CoinCounterComponent : MonoBehaviour
     {
         [SerializeField] private Hero _hero;
+        [SerializeField] public Text CoinCounter;
 
-        public Text CoinCounter;
         public static int _coins;
 
         void Update()

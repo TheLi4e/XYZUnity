@@ -24,7 +24,7 @@ namespace Assets.Scripts
                 _interActionResult);
 
             var overlaps = new List<GameObject>();
-            for (var i=0; i < size; i++)
+            for (var i = 0; i < size; i++)
             {
                 overlaps.Add(_interActionResult[i].gameObject);
             }

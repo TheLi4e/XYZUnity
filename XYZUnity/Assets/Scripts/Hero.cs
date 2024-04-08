@@ -230,7 +230,7 @@ namespace Scripts
             if (!_isArmed) return;
             _animator.SetTrigger(AttackKey);
             _attackParticles.Spawn();
-          
+
         }
 
         private void OnAttack()
@@ -252,7 +252,7 @@ namespace Scripts
             _animator.runtimeAnimatorController = _armed;
         }
     }
-}   
+}
 
 
 

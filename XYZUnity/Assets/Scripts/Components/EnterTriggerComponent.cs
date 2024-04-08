@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Components;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +11,14 @@ namespace Scripts.Components
     public class EnterTriggerComponent : MonoBehaviour
     {
         [SerializeField] private string _tag;
-        [SerializeField] private UnityEvent _action;
+        [SerializeField] private EnterEvent _action;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag(_tag))
             {
-                _action?.Invoke();
+                _action?.Invoke(other.gameObject);
             }
         }
     }
-}   
+}
