@@ -28,7 +28,8 @@ namespace Scripts
         [SerializeField] private SpawnComponent _footStepsParticles;
         [SerializeField] private SpawnComponent _jumpStepsParticles;
         [SerializeField] private ParticleSystem _hitParticles;
-        [SerializeField] private SpawnComponent _FallParticles;
+        [SerializeField] private SpawnComponent _fallParticles;
+        [SerializeField] private SpawnComponent _attackParticles;
 
 
         private Rigidbody2D _rigidbody;
@@ -206,7 +207,7 @@ namespace Scripts
                 var contact = collision.contacts[0];
                 if (contact.relativeVelocity.y >= _fallVelocity)
                 {
-                    _FallParticles.Spawn();
+                    _fallParticles.Spawn();
                 }
             }
 
@@ -228,6 +229,7 @@ namespace Scripts
         {
             if (!_isArmed) return;
             _animator.SetTrigger(AttackKey);
+            _attackParticles.Spawn();
           
         }
 
