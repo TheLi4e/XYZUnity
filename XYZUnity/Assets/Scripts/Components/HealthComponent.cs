@@ -13,19 +13,7 @@ namespace Assets.Scripts.Components
         [SerializeField] private UnityEvent _onDie;
         [SerializeField] private HealthChangeEvent _onChange;
 
-        //public void ApplyDamage(int damageValue)
-        //{
-        //    _health -= damageValue;
-        //    _onDamage?.Invoke();
-        //    if (_health <= 0)
-        //        _onDie?.Invoke();
-        //}
-
-        //public void ApplyHeal(int heal)
-        //{
-        //    _health += heal;
-        //    _onHeal?.Invoke();
-        //}
+     
 
         public void ModifyHealth(int healthDelta)
         {

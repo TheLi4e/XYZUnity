@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 namespace Scripts
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class SpriteAnimation : MonoBehaviour
     {
         [SerializeField][Range(1, 30)] private int _frameRate = 10;

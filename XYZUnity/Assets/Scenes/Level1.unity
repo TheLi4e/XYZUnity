@@ -13241,7 +13241,7 @@ PrefabInstance:
     - target: {fileID: 6460016282690925530, guid: 12f74530cf8af5a428cd25dc4115b9ea,
         type: 3}
       propertyPath: _valueCoins
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7217583183435574319, guid: 12f74530cf8af5a428cd25dc4115b9ea,
         type: 3}
@@ -14321,6 +14321,11 @@ PrefabInstance:
       propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 229217842}
+    - target: {fileID: 6398623812242217917, guid: 6e28f6e5c4cd4d94581be555c05ae4de,
+        type: 3}
+      propertyPath: _damage
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e28f6e5c4cd4d94581be555c05ae4de, type: 3}
 --- !u!1001 &6919331125182934460

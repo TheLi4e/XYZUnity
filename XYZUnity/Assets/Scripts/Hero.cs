@@ -246,7 +246,7 @@ namespace Scripts
 
         }
 
-        private void OnAttack()
+        private void OnDoAttack()
         {
             var gos = _attackRange.GetObjectsInRange();
             foreach (var go in gos)
