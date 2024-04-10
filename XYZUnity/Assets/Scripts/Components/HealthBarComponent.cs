@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Model;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,15 +12,17 @@ namespace Assets.Scripts.Components
 {
     internal class HealthBarComponent : MonoBehaviour
     {
-        [SerializeField] GameObject _gameObject;
-        public Text HealthBar;
+        public Text _healthBar;
+        private GameSession _session;
 
+        private void Start()
+        {
+            _session = FindObjectOfType<GameSession>();
+        }
 
         void Update()
         {
-            var healthComponent = _gameObject.GetComponent<HealthComponent>();
-
-            HealthBar.text = "HP " + healthComponent._health;
+            _healthBar.text = "HP " + _session.Data.HP;
         }
 
     }
