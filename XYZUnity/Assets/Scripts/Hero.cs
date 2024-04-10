@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts;
 using Assets.Scripts.Components;
+using Assets.Scripts.Model;
 using Assets.Scripts.Utils;
 using System;
 using System.IO.IsolatedStorage;
@@ -38,8 +39,7 @@ namespace Scripts
         private bool _isGrounded;
         private bool _allowDoubleJump;
         private Collider2D[] _interActionResult = new Collider2D[1];
-        private int _coins = 0;
-        private bool _isArmed;
+        private GameSession _session;
 
         private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
         private static readonly int IsRunningKey = Animator.StringToHash("is-running");
@@ -47,12 +47,25 @@ namespace Scripts
         private static readonly int Hit = Animator.StringToHash("hit");
         private static readonly int AttackKey = Animator.StringToHash("attack");
 
-        public int Coins { get { return _coins; } }
+        //public int Coins { get { return _coins; } }
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
+        }
+
+        private void Start()
+        {
+            _session = FindObjectOfType<GameSession>();
+            var health = GetComponent<HealthComponent>();
+            health.SetHealth(_session.Data.HP);
+            UpdateHeroWeapon();
+        }
+
+        public void OnHealthChanged(int currentHealth)
+        {
+            _session.Data.HP = currentHealth;
         }
 
         public void SetDirection(Vector2 direction)
@@ -121,12 +134,12 @@ namespace Scripts
 
         public void AddCoins(int coins)
         {
-            _coins += coins;
+            _session.Data.Coins += coins;
         }
 
         public void RemoveCoins()
         {
-            _coins = 0;
+            _session.Data.Coins = 0;
         }
 
         private float CalculateJumpVelocity(float yVelocity)
@@ -155,7 +168,7 @@ namespace Scripts
         {
             _animator.SetTrigger(Hit);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageJumpSpeed);
-            if (_coins > 0)
+            if (_session.Data.Coins > 0)
             {
                 SpawnCoins();
             }
@@ -163,8 +176,8 @@ namespace Scripts
 
         private void SpawnCoins()
         {
-            var numCoinsToDispose = Mathf.Min(_coins, 5);
-            _coins -= numCoinsToDispose;
+            var numCoinsToDispose = Mathf.Min(_session.Data.Coins, 5);
+            _session.Data.Coins -= numCoinsToDispose;
 
             var burst = _hitParticles.emission.GetBurst(0);
             burst.count = numCoinsToDispose;
@@ -227,13 +240,13 @@ namespace Scripts
 
         internal void Attack()
         {
-            if (!_isArmed) return;
+            if (!_session.Data.IsArmed) return;
             _animator.SetTrigger(AttackKey);
             _attackParticles.Spawn();
 
         }
 
-        private void OnAttack()
+        private void OnDoAttack()
         {
             var gos = _attackRange.GetObjectsInRange();
             foreach (var go in gos)
@@ -241,15 +254,22 @@ namespace Scripts
                 var hp = go.GetComponent<HealthComponent>();
                 if (hp != null && go.CompareTag("Enemy"))
                 {
-                    hp.ApplyDamage(_damage);
+                    hp.ModifyHealth(_damage);
                 }
             }
         }
 
         internal void ArmHero()
         {
-            _isArmed = true;
+            _session.Data.IsArmed = true;
+            UpdateHeroWeapon();
             _animator.runtimeAnimatorController = _armed;
+        }
+
+        private void UpdateHeroWeapon()
+        {
+            _animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _disarmed;
+           
         }
     }
 }

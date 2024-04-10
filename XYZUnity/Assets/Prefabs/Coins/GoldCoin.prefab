@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 8695036020257856730}
   - component: {fileID: 8695036020257856729}
   - component: {fileID: 8695036020257856728}
-  - component: {fileID: 8695036020257856679}
-  - component: {fileID: 8695036020257856678}
   - component: {fileID: 8695036020257856677}
   - component: {fileID: 8695036020257856731}
+  - component: {fileID: 4532881909437043727}
   m_Layer: 0
   m_Name: GoldCoin
   m_TagString: GoldCoin
@@ -103,57 +102,6 @@ CircleCollider2D:
   m_Offset: {x: 0.016230583, y: 0.0054101944}
   serializedVersion: 2
   m_Radius: 0.16884804
---- !u!114 &8695036020257856679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8695036020257856676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43bd11809da64ad4691a13afa2e3089b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tag: Player
-  _action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8695036020257856678}
-        m_MethodName: DestroyObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8695036020257856677}
-        m_MethodName: IncreaseCounter
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &8695036020257856678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8695036020257856676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b04101139fa95044789dc20ceddd44b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToDestroy: {fileID: 8695036020257856676}
 --- !u!114 &8695036020257856677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,8 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f6671e61c9f2347af0b746a4ab9d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hero: {fileID: 0}
-  CoinCounter: {fileID: 0}
+  _coinCounter: {fileID: 0}
 --- !u!114 &8695036020257856731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,3 +140,15 @@ MonoBehaviour:
     _onComplete:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &4532881909437043727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695036020257856676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6171da684ac6b943b7cc1d8ffd71b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

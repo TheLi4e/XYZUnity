@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Model;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,27 +8,16 @@ namespace Scripts.Components
 {
     public class CoinCounterComponent : MonoBehaviour
     {
-        [SerializeField] private Hero _hero;
-        [SerializeField] public Text CoinCounter;
+        public Text _coinCounter;
+        private GameSession _session;
 
-        public static int _coins;
-
+        private void Start()
+        {
+            _session = FindObjectOfType<GameSession>();
+        }
         void Update()
         {
-            CoinCounter.text = "Coins " + _hero.Coins;
-        }
-
-        public void IncreaseCounter()
-        {
-            if (gameObject.CompareTag("SilverCoin"))
-                _hero.AddCoins(1);
-            if (gameObject.CompareTag("GoldCoin"))
-                _hero.AddCoins(10);
-        }
-
-        public void DecreaseCounter()
-        {
-            _hero.RemoveCoins();
+            _coinCounter.text = "Coins " + _session.Data.Coins;
         }
     }
 }
