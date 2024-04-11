@@ -1,14 +1,9 @@
-﻿using Assets.Scripts.Utils;
-using System;
+﻿using Scripts.Utils;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Schema;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Scripts
 {
     internal class CheckCircleOverlap : MonoBehaviour
     {

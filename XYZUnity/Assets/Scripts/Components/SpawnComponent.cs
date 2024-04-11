@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Components
+namespace Scripts.Components
 {
-    internal class SpawnComponent : MonoBehaviour
+    public class SpawnComponent : MonoBehaviour
     {
         [SerializeField] private Transform _target;
         [SerializeField] private GameObject _prefab;

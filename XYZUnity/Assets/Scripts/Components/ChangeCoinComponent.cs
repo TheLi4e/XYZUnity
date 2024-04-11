@@ -1,8 +1,6 @@
-﻿using Scripts;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Components
+namespace Scripts.Components
 {
     internal class ChangeCoinComponent : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Components
+namespace Scripts.Components
 {
     internal class SwitchComponent : MonoBehaviour
     {

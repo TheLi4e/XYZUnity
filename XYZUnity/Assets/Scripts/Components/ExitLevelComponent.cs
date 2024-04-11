@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.Components
+namespace Scripts.Components
 {
     internal class ExitLevelComponent :MonoBehaviour
     {

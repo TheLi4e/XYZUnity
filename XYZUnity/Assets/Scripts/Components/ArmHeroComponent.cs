@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Components
+namespace Scripts.Components
 {
     internal class ArmHeroComponent : MonoBehaviour
     {
