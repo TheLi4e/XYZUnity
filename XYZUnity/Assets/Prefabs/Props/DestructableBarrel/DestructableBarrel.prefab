@@ -105,7 +105,7 @@ MonoBehaviour:
   - _name: idle
     _sprites:
     - {fileID: 21300000, guid: 3b4a842776205194b8f2e77e762a2ade, type: 3}
-    _loop: 0
+    _loop: 1
     _allowNextClip: 0
     _onComplete:
       m_PersistentCalls:
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b0a6dfcc0d12f45ac3d306f12d3462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1
+  _health: 3
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -233,6 +233,9 @@ MonoBehaviour:
           m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
+  _onChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &7217583183435574318
 Rigidbody2D:
   serializedVersion: 4

@@ -10,6 +10,7 @@ namespace Scripts
     {
         [SerializeField] private LayerMask _interActionLayer;
         [SerializeField] private LayerCheck _wallCheck;
+        [SerializeField] private CheckCircleOverlap _interactionCheck;
 
         [SerializeField] private float _fallVelocity;
         [SerializeField] private float _interActionRadius;
@@ -17,13 +18,14 @@ namespace Scripts
         [SerializeField] private AnimatorController _armed;
         [SerializeField] private AnimatorController _disarmed;
 
+        
+
         [Space]
         [Header("Particles")]
         [SerializeField] private ParticleSystem _hitParticles;
 
 
         private bool _allowDoubleJump;
-        private Collider2D[] _interActionResult = new Collider2D[1];
         private bool _isOnWall;
 
         private GameSession _session;
@@ -33,7 +35,7 @@ namespace Scripts
         {
             base.Awake();
 
-            _defaultGravityScale = _rigidbody.gravityScale;
+            _defaultGravityScale = Rigidbody.gravityScale;
         }
 
         private void Start()
@@ -54,31 +56,31 @@ namespace Scripts
         {
             base.Update();
 
-            if (_wallCheck.IsTouchingLayer && _direction.x == transform.localScale.x)
+            if (_wallCheck.IsTouchingLayer && Direction.x == transform.localScale.x)
             {
                 _isOnWall = true;
-                _rigidbody.gravityScale = 0;
+                Rigidbody.gravityScale = 0;
             }
             else
             {
                 _isOnWall = false;
-                _rigidbody.gravityScale = _defaultGravityScale;
+                Rigidbody.gravityScale = _defaultGravityScale;
             }
         }
 
         protected override float CalculateYVelocity()
         {
 
-            var yVelocity = _rigidbody.velocity.y;
-            bool isJumpPressing = _direction.y > 0;
+            var yVelocity = Rigidbody.velocity.y;
+            bool isJumpPressing = Direction.y > 0;
 
 
-            if (_isGrounded || _isOnWall)
+            if (IsGrounded || _isOnWall)
             {
                 _allowDoubleJump = true;
             }
 
-            if (!isJumpPressing || _isOnWall)
+            if (!isJumpPressing && _isOnWall)
             {
                 return 0f;
             }
@@ -88,7 +90,7 @@ namespace Scripts
 
         protected override float CalculateJumpVelocity(float yVelocity)
         {
-            if (!_isGrounded && _allowDoubleJump)
+            if (!IsGrounded && _allowDoubleJump)
             {
                 _particles.Spawn("Jump");
                 _allowDoubleJump = false;
@@ -132,17 +134,7 @@ namespace Scripts
 
         public void Inreact()
         {
-            var size = Physics2D.OverlapCircleNonAlloc(
-                transform.position,
-                _interActionRadius,
-                _interActionResult,
-                _interActionLayer);
-
-            for (int i = 0; i < size; i++)
-            {
-                var interactable = _interActionResult[i].GetComponent<InteractableComponent>();
-                if (interactable != null) interactable.Interact();
-            }
+            _interactionCheck.Check();
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -173,7 +165,6 @@ namespace Scripts
         {
             if (!_session.Data.IsArmed) return;
             base.Attack();
-
         }
 
         public void ArmHero()
@@ -184,7 +175,7 @@ namespace Scripts
 
         private void UpdateHeroWeapon()
         {
-            _animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _disarmed;
+            Animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _disarmed;
 
         }
     }

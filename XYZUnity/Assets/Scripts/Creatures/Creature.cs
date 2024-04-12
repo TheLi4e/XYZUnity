@@ -18,10 +18,10 @@ namespace Scripts
         [SerializeField] protected SpawnListComponent _particles;
 
 
-        protected Rigidbody2D _rigidbody;
-        protected Vector2 _direction;
-        protected Animator _animator;
-        protected bool _isGrounded;
+        protected Rigidbody2D Rigidbody;
+        protected Vector2 Direction;
+        protected Animator Animator;
+        protected bool IsGrounded;
         private bool _isJumping;
 
         private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
@@ -32,39 +32,39 @@ namespace Scripts
 
         protected virtual void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _animator = GetComponent<Animator>();
+            Rigidbody = GetComponent<Rigidbody2D>();
+            Animator = GetComponent<Animator>();
         }
 
         public void SetDirection(Vector2 direction)
         {
-            _direction = direction;
+            Direction = direction;
         }
 
         protected virtual void Update()
         {
-            _isGrounded = _groundCheck.IsTouchingLayer;
+            IsGrounded = _groundCheck.IsTouchingLayer;
         }
 
         private void FixedUpdate()
         {
-            var xVelocity = _direction.x * _speed;
+            var xVelocity = Direction.x * _speed;
             var yVelocity = CalculateYVelocity();
-            _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
+            Rigidbody.velocity = new Vector2(xVelocity, yVelocity);
 
-            _animator.SetBool(IsGroundKey, _isGrounded);
-            _animator.SetFloat(VerticalVelocity, _rigidbody.velocity.y);
-            _animator.SetBool(IsRunningKey, _direction.x != 0);
+            Animator.SetBool(IsGroundKey, IsGrounded);
+            Animator.SetFloat(VerticalVelocity, Rigidbody.velocity.y);
+            Animator.SetBool(IsRunningKey, Direction.x != 0);
 
             UpdateSpriteDirection();
         }
 
         protected virtual float CalculateYVelocity()
         {
-            var yVelocity = _rigidbody.velocity.y;
-            bool isJumpPressing = _direction.y > 0;
+            var yVelocity = Rigidbody.velocity.y;
+            bool isJumpPressing = Direction.y > 0;
 
-            if (_isGrounded)
+            if (IsGrounded)
             {
                 _isJumping = false;
             }
@@ -72,13 +72,14 @@ namespace Scripts
             if (isJumpPressing)
             {
                 _isJumping = true;
-                var isFalling = _rigidbody.velocity.y <= 0.001f;
+
+                var isFalling = Rigidbody.velocity.y <= 0.001f;
                 if (!isFalling) return yVelocity;
                 yVelocity = isFalling ? CalculateJumpVelocity(yVelocity) : yVelocity;
 
             }
 
-            else if (_rigidbody.velocity.y > 0 && _isJumping)
+            else if (Rigidbody.velocity.y > 0 && _isJumping)
             {
                 yVelocity *= 0.5f;
             }
@@ -91,9 +92,9 @@ namespace Scripts
         {
 
 
-            if (_isGrounded)
+            if (IsGrounded)
             {
-                yVelocity += _jumpSpeed;
+                yVelocity = _jumpSpeed;
                 _particles.Spawn("Jump");
             }
 
@@ -102,11 +103,11 @@ namespace Scripts
 
         private void UpdateSpriteDirection()
         {
-            if (_direction.x > 0)
+            if (Direction.x > 0)
             {
                 transform.localScale = Vector3.one;
             }
-            else if (_direction.x < 0)
+            else if (Direction.x < 0)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
             }
@@ -115,29 +116,21 @@ namespace Scripts
         public virtual void TakeDamage()
         {
             _isJumping = false;
-            _animator.SetTrigger(Hit);
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageVelocity);
+            Animator.SetTrigger(Hit);
+            Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, _damageVelocity);
 
         }
 
         public virtual void Attack()
         {
-            _animator.SetTrigger(AttackKey);
+            Animator.SetTrigger(AttackKey);
             _particles.Spawn("Attack");
 
         }
 
         private void OnDoAttack()
         {
-            var gos = _attackRange.GetObjectsInRange();
-            foreach (var go in gos)
-            {
-                var hp = go.GetComponent<HealthComponent>();
-                if (hp != null && go.CompareTag("Enemy"))
-                {
-                    hp.ModifyHealth(_damage);
-                }
-            }
+            _attackRange.Check();
         }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - GoldCoin
   - Platform
   - Enemy
+  - Interactables
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Interactables
   - Trash
   - Wall
-  - 
+  - Hero
   - 
   - 
   - 

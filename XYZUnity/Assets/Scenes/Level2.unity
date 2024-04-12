@@ -328,6 +328,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -5.75
       objectReference: {fileID: 0}
+    - target: {fileID: 4670522610243124012, guid: d45944de34ff5014e80b2917aa4ab908,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d45944de34ff5014e80b2917aa4ab908, type: 3}
 --- !u!1001 &238502206
@@ -503,6 +508,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 0.2
+  _mask:
+    serializedVersion: 2
+    m_Bits: 0
+  _tags: []
+  _onOverlap:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &318188339
 GameObject:
   m_ObjectHideFlags: 0
@@ -9232,6 +9244,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _wallCheck: {fileID: 57308075}
+  _interactionCheck: {fileID: 0}
   _fallVelocity: 20
   _interActionRadius: 0
   _armed: {fileID: 0}
@@ -9507,6 +9520,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -5.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670522610243124012, guid: d45944de34ff5014e80b2917aa4ab908,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d45944de34ff5014e80b2917aa4ab908, type: 3}
