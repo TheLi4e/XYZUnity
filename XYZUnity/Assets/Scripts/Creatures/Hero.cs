@@ -13,7 +13,6 @@ namespace Scripts
         [SerializeField] private CheckCircleOverlap _interactionCheck;
 
         [SerializeField] private float _fallVelocity;
-        [SerializeField] private float _interActionRadius;
 
         [SerializeField] private AnimatorController _armed;
         [SerializeField] private AnimatorController _disarmed;

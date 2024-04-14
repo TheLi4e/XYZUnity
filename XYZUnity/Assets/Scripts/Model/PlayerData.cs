@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Scripts.Model
 {
@@ -9,5 +10,12 @@ namespace Scripts.Model
         public int HP;
         public bool IsArmed;
 
+        public PlayerData Clone()
+        {
+
+            var json = JsonUtility.ToJson(this);
+            return JsonUtility.FromJson<PlayerData>(json);
+
+        }
     }
 }

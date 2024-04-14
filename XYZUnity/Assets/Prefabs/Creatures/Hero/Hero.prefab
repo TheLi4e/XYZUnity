@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195984057}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.41263, y: -1.7292142, z: -50.840744}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6398623812242217907}
@@ -512,7 +512,7 @@ MonoBehaviour:
   _onDie:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5758948190245683221}
+      - m_Target: {fileID: 0}
         m_MethodName: Reload
         m_Mode: 1
         m_Arguments:
@@ -585,7 +585,7 @@ MonoBehaviour:
   _speed: 4
   _jumpSpeed: 12
   _damageVelocity: 10
-  _damage: 1
+  _invertScale: 0
   _groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -598,7 +598,6 @@ MonoBehaviour:
   _wallCheck: {fileID: 195984059}
   _interactionCheck: {fileID: 6069460861706551733}
   _fallVelocity: 12
-  _interActionRadius: 1
   _armed: {fileID: 9100000, guid: e798945fde4e25345a5dfb9274ba421a, type: 2}
   _disarmed: {fileID: 9100000, guid: 6db3813774f65ed40be0d065a1075db5, type: 2}
   _hitParticles: {fileID: 6398623813438352934}

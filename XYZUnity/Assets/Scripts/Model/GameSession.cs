@@ -1,11 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Scripts.Model
 {
     internal class GameSession : MonoBehaviour
     {
         [SerializeField] private PlayerData _data;
+        
         public PlayerData Data => _data;
+        private PlayerData _save;
+
+      
 
         private void Awake()
         {
@@ -15,6 +20,7 @@ namespace Scripts.Model
             }
             else
             {
+                Save();
                 DontDestroyOnLoad(gameObject);
             }
         }
@@ -29,6 +35,16 @@ namespace Scripts.Model
             }
 
             return false;
+        }
+
+        public void Save()
+        {
+            _save = _data.Clone();
+        }
+
+        public void LoadLastSave()
+        {
+            _data = _save.Clone();
         }
     }
 }
