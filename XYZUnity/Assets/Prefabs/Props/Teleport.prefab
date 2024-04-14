@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6919331126366349171}
   - component: {fileID: 1051290266851231281}
   - component: {fileID: 5815575485116895598}
-  - component: {fileID: 5508248015865041133}
+  - component: {fileID: 124111620}
+  - component: {fileID: 124111619}
   m_Layer: 0
   m_Name: Teleport
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6919331126366349170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 39.42, y: -12.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3916113, y: 1.1504928, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 1363283443
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 57cbcbc7c70b200458d6bab8506b79d9, type: 3}
+  m_Sprite: {fileID: 8832167503239892954, guid: 326241b0c09bbac46a2a8c4dc9c7b2ec,
+    type: 3}
   m_Color: {r: 0.501513, g: 0.9245283, b: 0.85987437, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,8 +126,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destTransform: {fileID: 0}
---- !u!60 &5508248015865041133
-PolygonCollider2D:
+  _alphaTime: 1
+  _moveTime: 1
+--- !u!70 &124111620
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -137,19 +141,31 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.5}
-      - {x: -0.5, y: -0.000000021855694}
-      - {x: 0.00000004371139, y: -0.5}
-      - {x: 0.5, y: 0.0000000059624403}
+  m_Offset: {x: 0.012358097, y: 0.095302805}
+  m_Size: {x: 0.38153386, y: 0.80939454}
+  m_Direction: 0
+--- !u!114 &124111619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919331126366349170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2da38a31a228c42ae28960cab60905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frameRate: 10
+  _clips:
+  - _name: 
+    _sprites:
+    - {fileID: 8832167503239892954, guid: 326241b0c09bbac46a2a8c4dc9c7b2ec, type: 3}
+    - {fileID: -4853055123583119345, guid: 326241b0c09bbac46a2a8c4dc9c7b2ec, type: 3}
+    - {fileID: -8761483511772326392, guid: 326241b0c09bbac46a2a8c4dc9c7b2ec, type: 3}
+    - {fileID: -2217898423111697461, guid: 326241b0c09bbac46a2a8c4dc9c7b2ec, type: 3}
+    _loop: 1
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls: []

@@ -4041,25 +4041,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6398623811435662796, guid: 622533b9f600a33429d64bba8fff63ac,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398623812108146827, guid: 622533b9f600a33429d64bba8fff63ac,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6398623812242217905, guid: 622533b9f600a33429d64bba8fff63ac,
         type: 3}
       propertyPath: m_Name
       value: Sharky
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398623812242217905, guid: 622533b9f600a33429d64bba8fff63ac,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6398623812242217907, guid: 622533b9f600a33429d64bba8fff63ac,
         type: 3}
@@ -4116,15 +4101,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6398623812894179127, guid: 622533b9f600a33429d64bba8fff63ac,
+    - target: {fileID: 6398623812894179121, guid: 622533b9f600a33429d64bba8fff63ac,
         type: 3}
-      propertyPath: m_Layer
-      value: 0
+      propertyPath: _mask.m_Bits
+      value: 4096
       objectReference: {fileID: 0}
-    - target: {fileID: 6398623813443305018, guid: 622533b9f600a33429d64bba8fff63ac,
+    - target: {fileID: 6398623812894179121, guid: 622533b9f600a33429d64bba8fff63ac,
         type: 3}
-      propertyPath: m_Layer
-      value: 0
+      propertyPath: _tags.Array.data[0]
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 622533b9f600a33429d64bba8fff63ac, type: 3}
