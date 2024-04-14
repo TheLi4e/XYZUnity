@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.Components
+namespace Scripts.Components
 {
     internal class HealthComponent : MonoBehaviour
     {

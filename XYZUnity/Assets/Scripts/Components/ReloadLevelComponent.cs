@@ -1,7 +1,4 @@
-﻿using Assets.Scripts.Components;
-using Assets.Scripts.Model;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Scripts.Model;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +9,9 @@ namespace Scripts.Components
         private GameSession _session;
         public void Reload()
         {
+            var session = FindObjectOfType<GameSession>();
+            session.LoadLastSave();
+
             var scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }

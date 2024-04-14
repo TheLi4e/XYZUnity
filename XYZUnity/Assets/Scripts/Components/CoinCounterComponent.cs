@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Model;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Scripts.Model;
 using UnityEngine;
 using UnityEngine.UI;
 

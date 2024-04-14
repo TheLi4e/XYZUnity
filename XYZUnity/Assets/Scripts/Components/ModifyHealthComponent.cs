@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Scripts.Components;
 using UnityEngine;
 
-namespace Assets.Scripts.Components
+namespace Scripts.Components
 {
     internal class ModifyHealthComponent:MonoBehaviour
     {

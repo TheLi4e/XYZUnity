@@ -8,6 +8,7 @@ TagManager:
   - GoldCoin
   - Platform
   - Enemy
+  - Interactables
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - Ground
   - Interactables
   - Trash
-  - 
-  - 
-  - 
+  - Wall
+  - Hero
+  - Enemy
   - 
   - 
   - 
@@ -62,4 +63,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2640163333
+    locked: 0
+  - name: creatures
+    uniqueID: 1791062449
     locked: 0

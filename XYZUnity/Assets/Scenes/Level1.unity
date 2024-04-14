@@ -145,6 +145,41 @@ PrefabInstance:
       propertyPath: _health
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7217583183435574319, guid: 12f74530cf8af5a428cd25dc4115b9ea,
+        type: 3}
+      propertyPath: _onChange.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217583183435574319, guid: 12f74530cf8af5a428cd25dc4115b9ea,
+        type: 3}
+      propertyPath: _onDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217583183435574319, guid: 12f74530cf8af5a428cd25dc4115b9ea,
+        type: 3}
+      propertyPath: _onDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217583183435574319, guid: 12f74530cf8af5a428cd25dc4115b9ea,
+        type: 3}
+      propertyPath: _onDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 344680877}
+    - target: {fileID: 7217583183435574319, guid: 12f74530cf8af5a428cd25dc4115b9ea,
+        type: 3}
+      propertyPath: _onDamage.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217583183435574319, guid: 12f74530cf8af5a428cd25dc4115b9ea,
+        type: 3}
+      propertyPath: _onDamage.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ModifyHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217583183435574319, guid: 12f74530cf8af5a428cd25dc4115b9ea,
+        type: 3}
+      propertyPath: _onDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7217583183435574321, guid: 12f74530cf8af5a428cd25dc4115b9ea,
         type: 3}
       propertyPath: m_RootOrder
@@ -459,7 +494,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -469,7 +504,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -5395,6 +5430,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &344680877 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7217583183435574319, guid: 12f74530cf8af5a428cd25dc4115b9ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 61513679}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b0a6dfcc0d12f45ac3d306f12d3462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &373419996
 GameObject:
   m_ObjectHideFlags: 0
@@ -8359,7 +8406,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -8369,7 +8416,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -9530,7 +9577,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -9540,7 +9587,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -9639,7 +9686,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -9649,7 +9696,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -9733,7 +9780,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -9743,7 +9790,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -9900,7 +9947,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 8695036020257856676, guid: b4226be65a352614bb903c519392a01c,
         type: 3}
       propertyPath: m_Name
@@ -9910,7 +9957,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 8695036020257856677, guid: b4226be65a352614bb903c519392a01c,
         type: 3}
       propertyPath: CoinCounter
@@ -10141,10 +10188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88c097989a7eb8458a98efd61df1554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundLayer:
+  _layer:
     serializedVersion: 2
-    m_Bits: 256
-  IsTouchingLayer: 0
+    m_Bits: 0
+  _isTouchingLayer: 0
 --- !u!1001 &738451669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10156,7 +10203,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 8695036020257856676, guid: b4226be65a352614bb903c519392a01c,
         type: 3}
       propertyPath: m_Name
@@ -10166,7 +10213,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 8695036020257856677, guid: b4226be65a352614bb903c519392a01c,
         type: 3}
       propertyPath: CoinCounter
@@ -10250,7 +10297,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -10260,7 +10307,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -10465,7 +10512,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 8695036020257856676, guid: b4226be65a352614bb903c519392a01c,
         type: 3}
       propertyPath: m_Name
@@ -10475,7 +10522,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 8695036020257856677, guid: b4226be65a352614bb903c519392a01c,
         type: 3}
       propertyPath: CoinCounter
@@ -10658,7 +10705,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -10668,7 +10715,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -10821,7 +10868,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -10831,7 +10878,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -10915,7 +10962,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -10925,7 +10972,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -11846,7 +11893,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -12323,7 +12370,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -12333,7 +12380,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -12673,7 +12720,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -12683,7 +12730,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -12846,7 +12893,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -12856,7 +12903,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -13055,7 +13102,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -13065,7 +13112,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -13219,18 +13266,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6398623812582606981}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2086277944 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6398623812242217917, guid: 6e28f6e5c4cd4d94581be555c05ae4de,
-    type: 3}
-  m_PrefabInstance: {fileID: 6398623812582606981}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086277940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9599749be6ace8b409da02f7b6f0536e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2103517873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13326,7 +13361,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -13336,7 +13371,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -13489,6 +13524,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 719240283021622931, guid: a1c1960cab3409847a6b548e06b4be73,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 719240283021622941, guid: a1c1960cab3409847a6b548e06b4be73,
         type: 3}
@@ -14079,6 +14119,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodenDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 4670522610243124012, guid: d45944de34ff5014e80b2917aa4ab908,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactables
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d45944de34ff5014e80b2917aa4ab908, type: 3}
 --- !u!1001 &5916978623303597457
@@ -14092,7 +14137,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918672, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: m_Name
@@ -14102,7 +14147,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 5916978622275918678, guid: f13c8880ba4fdaa4d98d3728564bac39,
         type: 3}
       propertyPath: CoinCounter
@@ -14259,7 +14304,7 @@ PrefabInstance:
     - target: {fileID: 6398623812242217905, guid: 6e28f6e5c4cd4d94581be555c05ae4de,
         type: 3}
       propertyPath: m_Name
-      value: Hero_0
+      value: Hero
       objectReference: {fileID: 0}
     - target: {fileID: 6398623812242217907, guid: 6e28f6e5c4cd4d94581be555c05ae4de,
         type: 3}
@@ -14321,11 +14366,6 @@ PrefabInstance:
       propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 229217842}
-    - target: {fileID: 6398623812242217917, guid: 6e28f6e5c4cd4d94581be555c05ae4de,
-        type: 3}
-      propertyPath: _damage
-      value: -1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e28f6e5c4cd4d94581be555c05ae4de, type: 3}
 --- !u!1001 &6919331125182934460
@@ -14348,12 +14388,12 @@ PrefabInstance:
     - target: {fileID: 6919331126366349164, guid: ed10d29335de47942a6c3ef282c32473,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 39.46
+      value: 39.5351
       objectReference: {fileID: 0}
     - target: {fileID: 6919331126366349164, guid: ed10d29335de47942a6c3ef282c32473,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.36
+      value: -12.4956
       objectReference: {fileID: 0}
     - target: {fileID: 6919331126366349164, guid: ed10d29335de47942a6c3ef282c32473,
         type: 3}
@@ -14700,7 +14740,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 8695036020257856676, guid: b4226be65a352614bb903c519392a01c,
         type: 3}
       propertyPath: m_Name
@@ -14710,7 +14750,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 2086277944}
+      objectReference: {fileID: 0}
     - target: {fileID: 8695036020257856677, guid: b4226be65a352614bb903c519392a01c,
         type: 3}
       propertyPath: CoinCounter

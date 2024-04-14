@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
 
-namespace Assets.Scripts.Model
+namespace Scripts.Model
 {
     [Serializable]
     internal class PlayerData
@@ -13,5 +10,12 @@ namespace Assets.Scripts.Model
         public int HP;
         public bool IsArmed;
 
+        public PlayerData Clone()
+        {
+
+            var json = JsonUtility.ToJson(this);
+            return JsonUtility.FromJson<PlayerData>(json);
+
+        }
     }
 }

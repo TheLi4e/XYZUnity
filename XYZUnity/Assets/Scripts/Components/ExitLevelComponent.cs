@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Scripts.Model;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.Components
+namespace Scripts.Components
 {
     internal class ExitLevelComponent :MonoBehaviour
     {
@@ -9,6 +10,8 @@ namespace Assets.Scripts.Components
 
         public void Exit()
         {
+            var session = FindObjectOfType<GameSession>();
+            session.Save();
             SceneManager.LoadScene(_sceneName);
         }
     }

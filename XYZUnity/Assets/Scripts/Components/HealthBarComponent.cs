@@ -1,14 +1,8 @@
-﻿using Assets.Scripts.Model;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Scripts.Model;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Components
+namespace Scripts.Components
 {
     internal class HealthBarComponent : MonoBehaviour
     {

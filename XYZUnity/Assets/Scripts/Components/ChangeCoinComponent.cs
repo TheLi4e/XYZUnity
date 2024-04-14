@@ -1,21 +1,20 @@
-﻿using Scripts;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Components
+namespace Scripts.Components
 {
     internal class ChangeCoinComponent : MonoBehaviour
     {
+        [SerializeField] private int _numCoins;
         private Hero _hero;
 
-
-        private void OnTriggerEnter2D(Collider2D other)
+        private void Start()
         {
-            if (other.CompareTag("SilverCoin"))
-                _hero.AddCoins(1);
-            if (other.CompareTag("GoldCoin"))
-                _hero.AddCoins(10);
-            Destroy(gameObject);
+            _hero = FindObjectOfType<Hero>();
+        }
+
+        public void Add()
+        {
+            _hero.AddCoins(_numCoins);
         }
 
 
