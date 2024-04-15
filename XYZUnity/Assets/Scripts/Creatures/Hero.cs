@@ -1,6 +1,8 @@
 ﻿using Scripts.Components;
 using Scripts.Model;
 using Scripts.Utils;
+using System;
+using TMPro;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -22,6 +24,8 @@ namespace Scripts
         [Space]
         [Header("Particles")]
         [SerializeField] private ParticleSystem _hitParticles;
+
+        private static readonly int ThrowKey = Animator.StringToHash("throw");
 
 
         private bool _allowDoubleJump;
@@ -176,6 +180,16 @@ namespace Scripts
         {
             Animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _disarmed;
 
+        }
+
+        public void OnDoThrow()
+        {
+            _particles.Spawn("Throw");
+        }
+
+        internal void Throw()
+        {
+            Animator.SetTrigger(ThrowKey);
         }
     }
 }
