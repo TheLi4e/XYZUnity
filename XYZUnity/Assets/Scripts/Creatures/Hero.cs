@@ -16,16 +16,12 @@ namespace Scripts
         [SerializeField] private Cooldown _throwCooldown;
         [SerializeField] private AnimatorController _armed;
         [SerializeField] private AnimatorController _disarmed;
-       
-        
-        
 
         [Space]
         [Header("Particles")]
         [SerializeField] private ParticleSystem _hitParticles;
 
         private static readonly int ThrowKey = Animator.StringToHash("throw");
-
 
         private bool _allowDoubleJump;
         private bool _isOnWall;
@@ -192,7 +188,7 @@ namespace Scripts
 
         public void Throw()
         {
-            if (_throwCooldown.IsReady && _session.Data.Swords>1)
+            if (_throwCooldown.IsReady && _session.Data.Swords > 1)
             {
                 Animator.SetTrigger(ThrowKey);
                 _throwCooldown.Reset();

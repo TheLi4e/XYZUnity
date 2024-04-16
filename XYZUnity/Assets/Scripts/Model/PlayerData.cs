@@ -13,10 +13,8 @@ namespace Scripts.Model
 
         public PlayerData Clone()
         {
-
             var json = JsonUtility.ToJson(this);
             return JsonUtility.FromJson<PlayerData>(json);
-
         }
     }
 }

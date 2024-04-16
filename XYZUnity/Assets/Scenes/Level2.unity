@@ -6926,6 +6926,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce624c10a023ec4a87ea6f50f997a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1522629383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5795087874966803549, guid: 622533b9f600a33429d64bba8fff63ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 585342185825459363}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540da7f441591b4f8c243d81fd9ad47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1686036412
 GameObject:
   m_ObjectHideFlags: 0
@@ -7429,7 +7441,22 @@ PrefabInstance:
     - target: {fileID: 6398623812242217912, guid: 622533b9f600a33429d64bba8fff63ac,
         type: 3}
       propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398623812242217912, guid: 622533b9f600a33429d64bba8fff63ac,
+        type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1522629383}
+    - target: {fileID: 6398623812242217912, guid: 622533b9f600a33429d64bba8fff63ac,
+        type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: StopAllCoroutines
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398623812242217912, guid: 622533b9f600a33429d64bba8fff63ac,
+        type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 622533b9f600a33429d64bba8fff63ac, type: 3}
@@ -7450,6 +7477,11 @@ PrefabInstance:
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1460551536}
+    - target: {fileID: 3648249550182796153, guid: 81f80a3ab47f2b64585014958c0a994e,
+        type: 3}
+      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AddSword
+      objectReference: {fileID: 0}
     - target: {fileID: 3648249550182796153, guid: 81f80a3ab47f2b64585014958c0a994e,
         type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
