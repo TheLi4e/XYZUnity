@@ -265,6 +265,7 @@ Transform:
   - {fileID: 6398623811980155526}
   - {fileID: 195984058}
   - {fileID: 69588216404453442}
+  - {fileID: 5500247960702370667}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -305,10 +306,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 794390475
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6146700129834819302, guid: 4312118c126a8f54f9ebfb52bd843552,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d79d347cd7842e41a5d1d27d43251e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -359,18 +359,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6398623812242217906}
-        m_MethodName: OnSaySomething
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 1874f0bb-bd16-4982-ad26-863f1f75166e
     m_ActionName: Hero/SaySomething[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -418,6 +407,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9c9564c8-d1f4-48cb-a4d9-b1efa65e5b6d
     m_ActionName: Hero/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6398623812242217906}
+        m_MethodName: OnThrow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ac1876ea-121d-48f8-a0b7-0ccb82c3f729
+    m_ActionName: Hero/Throw[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -470,7 +474,7 @@ Animator:
   m_GameObject: {fileID: 6398623812242217905}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6db3813774f65ed40be0d065a1075db5, type: 2}
+  m_Controller: {fileID: 9100000, guid: e798945fde4e25345a5dfb9274ba421a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -512,7 +516,7 @@ MonoBehaviour:
   _onDie:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5758948190245683221}
         m_MethodName: Reload
         m_Mode: 1
         m_Arguments:
@@ -598,6 +602,8 @@ MonoBehaviour:
   _wallCheck: {fileID: 195984059}
   _interactionCheck: {fileID: 6069460861706551733}
   _fallVelocity: 12
+  _throwCooldown:
+    _value: 1
   _armed: {fileID: 9100000, guid: e798945fde4e25345a5dfb9274ba421a, type: 2}
   _disarmed: {fileID: 9100000, guid: 6db3813774f65ed40be0d065a1075db5, type: 2}
   _hitParticles: {fileID: 6398623813438352934}
@@ -622,6 +628,8 @@ MonoBehaviour:
     Component: {fileID: 6398623813391201923}
   - Id: Attack
     Component: {fileID: 6398623811980155521}
+  - Id: Throw
+    Component: {fileID: 2509843143663122456}
 --- !u!1 &6398623812894179127
 GameObject:
   m_ObjectHideFlags: 0
@@ -5531,7 +5539,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1363283443
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_RenderMode: 0
   m_SortMode: 0
@@ -5677,3 +5685,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d950fef62b414374082bbdba5440bded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7559022618917934581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5500247960702370667}
+  - component: {fileID: 2509843143663122456}
+  m_Layer: 12
+  m_Name: ThrowSwordSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5500247960702370667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559022618917934581}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.362, y: -0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6398623812242217907}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2509843143663122456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559022618917934581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de124649098d5394893685144fc085cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 5500247960702370667}
+  _prefab: {fileID: 3653524100374276789, guid: 06e83886ccc1600449e927d921722846, type: 3}

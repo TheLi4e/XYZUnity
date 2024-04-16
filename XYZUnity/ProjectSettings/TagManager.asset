@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - Enemy
   - Interactables
+  - Sword
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: back
     uniqueID: 1113027743
+    locked: 0
+  - name: Tilemap
+    uniqueID: 3867865805
     locked: 0
   - name: Level
     uniqueID: 1363283443

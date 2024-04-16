@@ -56,7 +56,7 @@ namespace Scripts
             Animator.SetFloat(VerticalVelocity, Rigidbody.velocity.y);
             Animator.SetBool(IsRunningKey, Direction.x != 0);
 
-            UpdateSpriteDirection();
+            UpdateSpriteDirection(Direction);
         }
 
         protected virtual float CalculateYVelocity()
@@ -101,14 +101,14 @@ namespace Scripts
             return yVelocity;
         }
 
-        private void UpdateSpriteDirection()
+        public void UpdateSpriteDirection(Vector2 direction)
         {
             var multiplier = _invertScale ? -1 : 1;
-            if (Direction.x > 0)
+            if (direction.x > 0)
             {
                 transform.localScale = new Vector3(multiplier, 1, 1);
             }
-            else if (Direction.x < 0)
+            else if (direction.x < 0)
             {
                 transform.localScale = new Vector3(-1*multiplier, 1, 1);
             }
