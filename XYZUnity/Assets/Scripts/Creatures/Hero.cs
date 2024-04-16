@@ -16,6 +16,7 @@ namespace Scripts
 
         [SerializeField] private float _fallVelocity;
 
+        [SerializeField] private Cooldown _throwCooldown;
         [SerializeField] private AnimatorController _armed;
         [SerializeField] private AnimatorController _disarmed;
 
@@ -189,7 +190,12 @@ namespace Scripts
 
         internal void Throw()
         {
-            Animator.SetTrigger(ThrowKey);
+            if (_throwCooldown.IsReady)
+            {
+                Animator.SetTrigger(ThrowKey);
+                _throwCooldown.Reset();
+            }
+            
         }
     }
 }

@@ -126,6 +126,7 @@ namespace Scripts.Creatures
             _creature.SetDirection(Vector2.zero);
             _animator.SetBool(IsDeadKey, true);
 
+            _creature.SetDirection(Vector2.zero);
             if (_current != null)
                 StopCoroutine(_current);
         }

@@ -306,7 +306,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 794390475
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5d79d347cd7842e41a5d1d27d43251e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -602,6 +602,8 @@ MonoBehaviour:
   _wallCheck: {fileID: 195984059}
   _interactionCheck: {fileID: 6069460861706551733}
   _fallVelocity: 12
+  _throwCooldown:
+    _value: 1
   _armed: {fileID: 9100000, guid: e798945fde4e25345a5dfb9274ba421a, type: 2}
   _disarmed: {fileID: 9100000, guid: 6db3813774f65ed40be0d065a1075db5, type: 2}
   _hitParticles: {fileID: 6398623813438352934}
@@ -5537,7 +5539,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1363283443
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_RenderMode: 0
   m_SortMode: 0
@@ -5708,7 +5710,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7559022618917934581}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.37, y: -0.064, z: 0}
+  m_LocalPosition: {x: 0.362, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6398623812242217907}

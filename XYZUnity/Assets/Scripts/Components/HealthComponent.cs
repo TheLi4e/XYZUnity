@@ -13,10 +13,12 @@ namespace Scripts.Components
         [SerializeField] private UnityEvent _onDie;
         [SerializeField] private HealthChangeEvent _onChange;
 
-     
+
 
         public void ModifyHealth(int healthDelta)
         {
+            if (_health <= 0) return;
+
             _health += healthDelta;
             _onChange?.Invoke(_health);
             if (healthDelta < 0)
@@ -37,7 +39,7 @@ namespace Scripts.Components
 
         internal void SetHealth(int health)
         {
-           _health = health;
+            _health = health;
         }
 
         [Serializable]
