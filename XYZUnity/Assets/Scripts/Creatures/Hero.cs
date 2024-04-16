@@ -1,8 +1,6 @@
 ﻿using Scripts.Components;
 using Scripts.Model;
 using Scripts.Utils;
-using System;
-using TMPro;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -10,7 +8,6 @@ namespace Scripts
 {
     public class Hero : Creature
     {
-        [SerializeField] private LayerMask _interActionLayer;
         [SerializeField] private LayerCheck _wallCheck;
         [SerializeField] private CheckCircleOverlap _interactionCheck;
 
@@ -19,7 +16,8 @@ namespace Scripts
         [SerializeField] private Cooldown _throwCooldown;
         [SerializeField] private AnimatorController _armed;
         [SerializeField] private AnimatorController _disarmed;
-
+       
+        
         
 
         [Space]
@@ -31,6 +29,8 @@ namespace Scripts
 
         private bool _allowDoubleJump;
         private bool _isOnWall;
+
+        private int _swordsToThrow;
 
         private GameSession _session;
         private float _defaultGravityScale;
@@ -186,16 +186,21 @@ namespace Scripts
         public void OnDoThrow()
         {
             _particles.Spawn("Throw");
+            _session.Data.Swords -= 1;
         }
 
-        internal void Throw()
+        public void Throw()
         {
-            if (_throwCooldown.IsReady)
+            if (_throwCooldown.IsReady && _session.Data.Swords>1)
             {
                 Animator.SetTrigger(ThrowKey);
                 _throwCooldown.Reset();
             }
-            
+        }
+
+        public void AddSword()
+        {
+            _session.Data.Swords += 1;
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Scripts.Model
         public int Coins;
         public int HP;
         public bool IsArmed;
+        public int Swords;
 
         public PlayerData Clone()
         {
