@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8891133221511474912}
   - component: {fileID: 7145710483372692948}
   - component: {fileID: 6432912277311327204}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SilverCoin
   m_TagString: SilverCoin
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2071478143
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -2322180950842035098, guid: b1ae59a37a1b33046ad0ff84413a6944,
     type: 3}
@@ -177,6 +177,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tag: Player
+  _layer:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _action:
     m_PersistentCalls:
       m_Calls:
