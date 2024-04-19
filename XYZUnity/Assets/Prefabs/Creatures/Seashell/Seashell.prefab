@@ -413,17 +413,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4977819503951393691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0817021b82f7ac342a873c1a96fbf7ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 238a5bdefe1d32541a74ef33abd5694c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _vision: {fileID: 4977819503563963211}
   _meleeCooldown:
-    _value: 0
+    _value: 1
   _meleeAttack: {fileID: 4977819503783484744}
   _meleeCanAttack: {fileID: 4977819503783484741}
   _rangeAttack: {fileID: 4977819503760620097}
   _rangeCooldown:
-    _value: 2
+    _value: 1
 --- !u!114 &2634674859204142190
 MonoBehaviour:
   m_ObjectHideFlags: 0

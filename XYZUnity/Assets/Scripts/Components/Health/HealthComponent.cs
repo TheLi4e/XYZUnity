@@ -10,7 +10,7 @@ namespace Scripts.Components
 
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] private UnityEvent _onHeal;
-        [SerializeField] private UnityEvent _onDie;
+        [SerializeField] public UnityEvent _onDie;
         [SerializeField] private HealthChangeEvent _onChange;
 
 
@@ -40,6 +40,11 @@ namespace Scripts.Components
         internal void SetHealth(int health)
         {
             _health = health;
+        }
+
+        private void OnDestroy()
+        {
+            _onDie.RemoveAllListeners();
         }
 
         [Serializable]
