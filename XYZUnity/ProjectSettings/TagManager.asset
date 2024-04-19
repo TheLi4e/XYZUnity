@@ -25,9 +25,9 @@ TagManager:
   - Wall
   - Hero
   - Enemy
-  - 
-  - 
-  - 
+  - Collectables
+  - Chekers
+  - CollidableEnemies
   - 
   - 
   - 

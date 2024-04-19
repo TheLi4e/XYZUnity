@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 195984058}
   - component: {fileID: 195984059}
   - component: {fileID: 2333196410955955785}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 6398623812108146836}
   - component: {fileID: 6398623812108146837}
   - component: {fileID: 6398623812108146826}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,9 +596,6 @@ MonoBehaviour:
   _groundCheck: {fileID: 6398623812108146826}
   _attackRange: {fileID: 6398623812894179121}
   _particles: {fileID: 2086277951}
-  _interActionLayer:
-    serializedVersion: 2
-    m_Bits: 512
   _wallCheck: {fileID: 195984059}
   _interactionCheck: {fileID: 6069460861706551733}
   _fallVelocity: 12
@@ -641,7 +638,7 @@ GameObject:
   - component: {fileID: 6398623812894179126}
   - component: {fileID: 6398623812894179121}
   - component: {fileID: 824604335251001796}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: AttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -5620,7 +5617,7 @@ GameObject:
   - component: {fileID: 69588216404453442}
   - component: {fileID: 6069460861706551733}
   - component: {fileID: 1758183365324726006}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: InteractionCheck
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
