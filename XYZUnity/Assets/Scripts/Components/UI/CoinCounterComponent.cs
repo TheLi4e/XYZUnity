@@ -15,7 +15,7 @@ namespace Scripts.Components
         }
         void Update()
         {
-            _coinCounter.text = "Coins " + _session.Data.Coins;
+            _coinCounter.text = "Coins " + _session.Data.Inventory.Count("Coin");;
         }
     }
 }
