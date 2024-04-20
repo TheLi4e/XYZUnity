@@ -15,7 +15,7 @@ namespace Scripts.Components
         }
         void Update()
         {
-            _swordsCounter.text = "Swords " + _session.Data.Swords;
+            _swordsCounter.text = "Swords " + _session.Data.Inventory.Count("Sword");
         }
     }
 }

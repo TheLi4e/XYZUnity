@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3648249550182796155}
   - component: {fileID: 3648249550182796154}
   - component: {fileID: 3648249550182796153}
-  - component: {fileID: 3648249550182796152}
   - component: {fileID: 3648249550182796158}
+  - component: {fileID: 8496971241557864078}
   m_Layer: 0
   m_Name: 'Sword '
   m_TagString: Sword
@@ -156,24 +156,13 @@ MonoBehaviour:
   _tag: Player
   _layer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4096
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3648249550182796152}
-        m_MethodName: ArmHero
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: AddSword
-        m_Mode: 1
+      - m_Target: {fileID: 8496971241557864078}
+        m_MethodName: Add
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -193,18 +182,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3648249550182796152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3648249550182796151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c71b88adb127b7546bb2f1f3b268de2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3648249550182796158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,3 +195,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 3648249550182796151}
+--- !u!114 &8496971241557864078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3648249550182796151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 753a535f81677b34a84f5b7be49b7af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: Sword
+  _count: 1

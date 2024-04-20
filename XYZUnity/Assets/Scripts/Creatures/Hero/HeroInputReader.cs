@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Scripts
 {
@@ -32,6 +33,12 @@ namespace Scripts
         {
             if (context.performed)
                 _hero.Throw();
+        }
+
+        public void OnUsePotion(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                _hero.UsePotion();
         }
 
     }

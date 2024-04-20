@@ -1,6 +1,7 @@
 ﻿using Scripts.Components;
 using Scripts.Model;
 using Scripts.Utils;
+using System;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -26,9 +27,13 @@ namespace Scripts
 
         private bool _allowDoubleJump;
         private bool _isOnWall;
+        private HealthComponent _health;
 
         private GameSession _session;
         private float _defaultGravityScale;
+
+        private int SwordCount => _session.Data.Inventory.Count("Sword");
+        private int CoinsCount => _session.Data.Inventory.Count("Coin");
 
         protected override void Awake()
         {
@@ -40,10 +45,19 @@ namespace Scripts
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-            var health = GetComponent<HealthComponent>();
+            _health = GetComponent<HealthComponent>();
+            _session.Data.Inventory.OnChanged += OnInventoryChanged;
 
-            health.SetHealth(_session.Data.HP);
+            _health.SetHealth(_session.Data.HP);
             UpdateHeroWeapon();
+        }
+
+        private void OnInventoryChanged(string id, int value)
+        {
+            if (id == "Sword")
+            {
+                UpdateHeroWeapon();
+            }
         }
 
         public void OnHealthChanged(int currentHealth)
@@ -69,6 +83,11 @@ namespace Scripts
             }
 
             Animator.SetBool(IsOnWallKey, _isOnWall);
+        }
+
+        private void OnDestroy()
+        {
+            _session.Data.Inventory.OnChanged -= OnInventoryChanged;
         }
 
         protected override float CalculateYVelocity()
@@ -103,20 +122,21 @@ namespace Scripts
             return base.CalculateJumpVelocity(yVelocity);
         }
 
-        public void AddCoins(int coins)
+        public void AddInInventory(string id, int value)
         {
-            _session.Data.Coins += coins;
+            _session.Data.Inventory.Add(id, value);
         }
 
         public void RemoveCoins()
         {
-            _session.Data.Coins = 0;
+            _session.Data.Inventory.Remove("Coin", CoinsCount);
         }
 
         public override void TakeDamage()
         {
             base.TakeDamage();
-            if (_session.Data.Coins > 0)
+
+            if (CoinsCount > 0)
             {
                 SpawnCoins();
             }
@@ -124,8 +144,8 @@ namespace Scripts
 
         private void SpawnCoins()
         {
-            var numCoinsToDispose = Mathf.Min(_session.Data.Coins, 5);
-            _session.Data.Coins -= numCoinsToDispose;
+            var numCoinsToDispose = Mathf.Min(CoinsCount, 5);
+            _session.Data.Inventory.Remove("Coin", numCoinsToDispose);
 
             var burst = _hitParticles.emission.GetBurst(0);
             burst.count = numCoinsToDispose;
@@ -165,33 +185,30 @@ namespace Scripts
             }
         }
 
+
+
         public override void Attack()
         {
-            if (!_session.Data.IsArmed) return;
+            if (SwordCount <= 0) return;
             base.Attack();
         }
 
-        public void ArmHero()
-        {
-            _session.Data.IsArmed = true;
-            UpdateHeroWeapon();
-        }
 
         private void UpdateHeroWeapon()
         {
-            Animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _disarmed;
+            Animator.runtimeAnimatorController = SwordCount > 0 ? _armed : _disarmed;
 
         }
 
         public void OnDoThrow()
         {
             _particles.Spawn("Throw");
-            _session.Data.Swords -= 1;
+            _session.Data.Inventory.Remove("Sword", 1);
         }
 
         public void Throw()
         {
-            if (_throwCooldown.IsReady && _session.Data.Swords > 1)
+            if (_throwCooldown.IsReady && SwordCount > 1)
             {
                 Animator.SetTrigger(ThrowKey);
                 _throwCooldown.Reset();
@@ -200,7 +217,19 @@ namespace Scripts
 
         public void AddSword()
         {
-            _session.Data.Swords += 1;
+            _session.Data.Inventory.Add("Sword", 1);
+        }
+
+        internal void UsePotion()
+        {
+            var potions = _session.Data.Inventory.Count("HealthPotion");
+            if (potions > 0)
+            {
+                _health.ModifyHealth(5);
+                _session.Data.Inventory.Remove("HealthPotion", 1);
+                
+            }
+            
         }
     }
 }

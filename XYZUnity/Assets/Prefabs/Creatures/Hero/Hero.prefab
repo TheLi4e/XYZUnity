@@ -359,10 +359,6 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1874f0bb-bd16-4982-ad26-863f1f75166e
-    m_ActionName: Hero/SaySomething[/Mouse/leftButton]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6398623812242217906}
         m_MethodName: OnMovement
@@ -422,6 +418,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ac1876ea-121d-48f8-a0b7-0ccb82c3f729
     m_ActionName: Hero/Throw[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6398623812242217906}
+        m_MethodName: OnUsePotion
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 86ff140d-b243-4b4f-afc2-f6dd044a0362
+    m_ActionName: Hero/Heal[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
