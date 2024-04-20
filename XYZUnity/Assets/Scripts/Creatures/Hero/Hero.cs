@@ -1,6 +1,7 @@
 ﻿using Scripts.Components;
 using Scripts.Model;
 using Scripts.Utils;
+using System;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -26,6 +27,7 @@ namespace Scripts
 
         private bool _allowDoubleJump;
         private bool _isOnWall;
+        private HealthComponent _health;
 
         private GameSession _session;
         private float _defaultGravityScale;
@@ -43,10 +45,10 @@ namespace Scripts
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-            var health = GetComponent<HealthComponent>();
+            _health = GetComponent<HealthComponent>();
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
 
-            health.SetHealth(_session.Data.HP);
+            _health.SetHealth(_session.Data.HP);
             UpdateHeroWeapon();
         }
 
@@ -216,6 +218,18 @@ namespace Scripts
         public void AddSword()
         {
             _session.Data.Inventory.Add("Sword", 1);
+        }
+
+        internal void UsePotion()
+        {
+            var potions = _session.Data.Inventory.Count("HealthPotion");
+            if (potions > 0)
+            {
+                _health.ModifyHealth(5);
+                _session.Data.Inventory.Remove("HealthPotion", 1);
+                
+            }
+            
         }
     }
 }

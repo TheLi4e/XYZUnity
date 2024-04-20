@@ -19,15 +19,7 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
             ""id"": ""93380603-5731-42bc-9a1d-1bb40c09553b"",
             ""actions"": [
                 {
-                    ""name"": ""SaySomething"",
-                    ""type"": ""Button"",
-                    ""id"": ""1874f0bb-bd16-4982-ad26-863f1f75166e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""New action"",
+                    ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""d8bc7b1c-bbe5-4daf-bf71-12bf6e5c264e"",
                     ""expectedControlType"": ""Vector2"",
@@ -57,20 +49,17 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Heal"",
+                    ""type"": ""Button"",
+                    ""id"": ""86ff140d-b243-4b4f-afc2-f6dd044a0362"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""481aade3-3cbf-4645-9a41-effa9fabaf35"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SaySomething"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""WASD"",
                     ""id"": ""ec5d46a5-6d3d-4c94-a996-1898bddb5ab8"",
@@ -78,7 +67,7 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -89,7 +78,7 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -100,7 +89,7 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -111,7 +100,7 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -122,7 +111,7 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -158,6 +147,17 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Throw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""843b40b3-6efe-478f-935c-cf2ac6f09e4f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -166,11 +166,11 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
 }");
         // Hero
         m_Hero = asset.FindActionMap("Hero", throwIfNotFound: true);
-        m_Hero_SaySomething = m_Hero.FindAction("SaySomething", throwIfNotFound: true);
-        m_Hero_Newaction = m_Hero.FindAction("New action", throwIfNotFound: true);
+        m_Hero_Move = m_Hero.FindAction("Move", throwIfNotFound: true);
         m_Hero_Interact = m_Hero.FindAction("Interact", throwIfNotFound: true);
         m_Hero_Attack = m_Hero.FindAction("Attack", throwIfNotFound: true);
         m_Hero_Throw = m_Hero.FindAction("Throw", throwIfNotFound: true);
+        m_Hero_Heal = m_Hero.FindAction("Heal", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -220,20 +220,20 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
     // Hero
     private readonly InputActionMap m_Hero;
     private IHeroActions m_HeroActionsCallbackInterface;
-    private readonly InputAction m_Hero_SaySomething;
-    private readonly InputAction m_Hero_Newaction;
+    private readonly InputAction m_Hero_Move;
     private readonly InputAction m_Hero_Interact;
     private readonly InputAction m_Hero_Attack;
     private readonly InputAction m_Hero_Throw;
+    private readonly InputAction m_Hero_Heal;
     public struct HeroActions
     {
         private @HeroInputActions m_Wrapper;
         public HeroActions(@HeroInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @SaySomething => m_Wrapper.m_Hero_SaySomething;
-        public InputAction @Newaction => m_Wrapper.m_Hero_Newaction;
+        public InputAction @Move => m_Wrapper.m_Hero_Move;
         public InputAction @Interact => m_Wrapper.m_Hero_Interact;
         public InputAction @Attack => m_Wrapper.m_Hero_Attack;
         public InputAction @Throw => m_Wrapper.m_Hero_Throw;
+        public InputAction @Heal => m_Wrapper.m_Hero_Heal;
         public InputActionMap Get() { return m_Wrapper.m_Hero; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -243,12 +243,9 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_HeroActionsCallbackInterface != null)
             {
-                @SaySomething.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnSaySomething;
-                @SaySomething.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnSaySomething;
-                @SaySomething.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnSaySomething;
-                @Newaction.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnNewaction;
+                @Move.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnMove;
                 @Interact.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnInteract;
@@ -258,16 +255,16 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                 @Throw.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnThrow;
                 @Throw.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnThrow;
                 @Throw.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnThrow;
+                @Heal.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnHeal;
+                @Heal.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnHeal;
+                @Heal.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnHeal;
             }
             m_Wrapper.m_HeroActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @SaySomething.started += instance.OnSaySomething;
-                @SaySomething.performed += instance.OnSaySomething;
-                @SaySomething.canceled += instance.OnSaySomething;
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -277,16 +274,19 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                 @Throw.started += instance.OnThrow;
                 @Throw.performed += instance.OnThrow;
                 @Throw.canceled += instance.OnThrow;
+                @Heal.started += instance.OnHeal;
+                @Heal.performed += instance.OnHeal;
+                @Heal.canceled += instance.OnHeal;
             }
         }
     }
     public HeroActions @Hero => new HeroActions(this);
     public interface IHeroActions
     {
-        void OnSaySomething(InputAction.CallbackContext context);
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
     }
 }
