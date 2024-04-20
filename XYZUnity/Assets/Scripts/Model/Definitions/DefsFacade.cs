@@ -7,8 +7,11 @@ namespace Scripts.Model.Definitions
     public class DefsFacade :ScriptableObject
     {
         [SerializeField] private InventoryItemsDef _items;
+        [SerializeField] private PlayerDef _player;
+
 
         public InventoryItemsDef Items => _items;
+        public PlayerDef Player => _player;
 
         private static DefsFacade _instance;
         public static DefsFacade Instance => _instance == null ? LoadDefs() : _instance;
@@ -18,10 +21,6 @@ namespace Scripts.Model.Definitions
            return  _instance = Resources.Load<DefsFacade>("DefsFacade");
         }
 
-        private void Get(string id)
-        {
-
-            
-        }
+        
     }
 }
