@@ -1,4 +1,5 @@
 ﻿using Scripts.Components;
+using Scripts.Components.Audio;
 using UnityEngine;
 
 namespace Scripts
@@ -21,6 +22,7 @@ namespace Scripts
         protected Rigidbody2D Rigidbody;
         protected Vector2 Direction;
         protected Animator Animator;
+        protected PlaySoundsComponent Sounds;
         protected bool IsGrounded;
         private bool _isJumping;
 
@@ -34,6 +36,7 @@ namespace Scripts
         {
             Rigidbody = GetComponent<Rigidbody2D>();
             Animator = GetComponent<Animator>();
+            Sounds = GetComponent<PlaySoundsComponent>();
         }
 
         public void SetDirection(Vector2 direction)
@@ -95,12 +98,17 @@ namespace Scripts
             if (IsGrounded)
             {
                 yVelocity = _jumpSpeed;
-                _particles.Spawn("Jump");
+                DoJumpVfx();
             }
 
             return yVelocity;
         }
 
+        protected void DoJumpVfx()
+        {
+            _particles.Spawn("Jump");
+            Sounds.Play("Jump");
+        }
         public void UpdateSpriteDirection(Vector2 direction)
         {
             var multiplier = _invertScale ? -1 : 1;
@@ -124,14 +132,15 @@ namespace Scripts
 
         public virtual void Attack()
         {
-            Animator.SetTrigger(AttackKey);
-            _particles.Spawn("Attack");
+            Animator.SetTrigger(AttackKey); 
+            Sounds.Play("Melee");
 
         }
 
         private void OnDoAttack()
         {
             _attackRange.Check();
+            _particles.Spawn("Attack");
         }
     }
 }
