@@ -113,9 +113,9 @@ namespace Scripts
         protected override float CalculateJumpVelocity(float yVelocity)
         {
             if (!IsGrounded && _allowDoubleJump && !_isOnWall)
-            {
-                _particles.Spawn("Jump");
+            {               
                 _allowDoubleJump = false;
+                DoJumpVfx();
                 return _jumpSpeed;
             }
 
@@ -202,6 +202,7 @@ namespace Scripts
 
         public void OnDoThrow()
         {
+            Sounds.Play("Range");
             _particles.Spawn("Throw");
             _session.Data.Inventory.Remove("Sword", 1);
         }
