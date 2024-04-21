@@ -1,4 +1,5 @@
-﻿using Scripts.Components;
+﻿using Scripts.Model.Data;
+using Scripts.Components;
 using Scripts.Model;
 using Scripts.Utils;
 using System;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace Scripts
 {
-    public class Hero : Creature
+    public class Hero : Creature, ICanAddInInventory
     {
         [SerializeField] private LayerCheck _wallCheck;
         [SerializeField] private CheckCircleOverlap _interactionCheck;
