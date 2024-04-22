@@ -20,6 +20,8 @@ namespace Scripts.Components.Collectables
             {
                 session.Data.Inventory.Add(inventoryItemData.Id,inventoryItemData.Value);
             }
+
+            _items.Clear();
         }
     }
 }
