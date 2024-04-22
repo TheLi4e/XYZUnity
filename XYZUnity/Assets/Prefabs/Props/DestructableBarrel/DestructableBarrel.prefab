@@ -325,8 +325,9 @@ MonoBehaviour:
     type: 3}
   _goldCoin: {fileID: 8695036020257856676, guid: b4226be65a352614bb903c519392a01c,
     type: 3}
-  _probabilitySilver: 90
-  _probabilityGold: 10
+  _sword: {fileID: 3648249550182796151, guid: 81f80a3ab47f2b64585014958c0a994e, type: 3}
+  _probabilitySilver: 70
+  _probabilityGold: 30
   _valueCoins: 3
 --- !u!82 &216040174681508378
 AudioSource:

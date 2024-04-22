@@ -25,6 +25,7 @@ namespace Scripts.Creatures
         private Animator _animator;
         private bool IsDead;
         private Patrol _patrol;
+        private bool _doplerIsReady = true;
 
         private void Awake()
         {
@@ -36,7 +37,11 @@ namespace Scripts.Creatures
 
         private void Start()
         {
-            StartState(_patrol.DoPatrol());
+            if (_patrol != null)
+            {
+                StartState(_patrol.DoPatrol());
+            }
+
         }
 
         public void OnHeroInVission(GameObject go)
@@ -82,7 +87,10 @@ namespace Scripts.Creatures
             _particles.Spawn("Miss");
             yield return new WaitForSeconds(_missDelay);
 
-            StartState(_patrol.DoPatrol());
+            if (_patrol != null)
+            {
+                StartState(_patrol.DoPatrol());
+            }
         }
 
         private IEnumerator Attack()
@@ -129,6 +137,13 @@ namespace Scripts.Creatures
             _creature.SetDirection(Vector2.zero);
             if (_current != null)
                 StopCoroutine(_current);
+
+            if (_doplerIsReady)
+            {
+                _doplerIsReady = false;
+                _particles.Spawn("Dead");
+            }
+
         }
     }
 }
