@@ -9,6 +9,7 @@ namespace Scripts.Components
 
         [ContextMenu("Spawn")]
 
+  
         public void Spawn()
         {
             var instaniate = Instantiate(_prefab, _target.position, Quaternion.identity);

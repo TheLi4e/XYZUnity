@@ -7,6 +7,7 @@ namespace Scripts.Components
     {
         [SerializeField] GameObject _silverCoin;
         [SerializeField] GameObject _goldCoin;
+        [SerializeField] GameObject _sword;
         [SerializeField] float _probabilitySilver;
         [SerializeField] float _probabilityGold;
         [SerializeField] int _valueCoins;
@@ -30,6 +31,7 @@ namespace Scripts.Components
                     Instantiate(_silverCoin, pos, Quaternion.identity);
                 }
             }
+            Instantiate(_sword, pos, Quaternion.identity);
         }
     }
 }
