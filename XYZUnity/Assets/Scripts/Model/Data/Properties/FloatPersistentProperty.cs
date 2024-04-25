@@ -22,5 +22,7 @@ namespace Scripts.Model.Data.Properties
         {
             return PlayerPrefs.GetFloat(Key, defaultValue);   
         }
+
+      
     }
 }

@@ -23,6 +23,12 @@ namespace Scripts.Model.Data
             Music = new FloatPersistentProperty(1, SoundSetting.Music.ToString());
             Sfx = new FloatPersistentProperty(1, SoundSetting.Sfx.ToString());
         }
+
+        private void OnValidate()
+        {
+            Music.Validate();
+            Sfx.Validate();
+        }
     }
 
     public enum SoundSetting

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 namespace Scripts.Model.Data.Properties
@@ -21,15 +22,15 @@ namespace Scripts.Model.Data.Properties
 
         public TPropertyType Value
         {
-            get => _value;
+            get => _stored;
             set
             {
-                var isEquals = _value.Equals(value);
+                var isEquals = _stored.Equals(value);
                 if (isEquals) return;
 
                 var oldValue = _value;
                 Write(value);
-                _value = value;
+                _stored = value;
 
                 OnChanged?.Invoke(value, oldValue);
 
@@ -39,10 +40,16 @@ namespace Scripts.Model.Data.Properties
 
         protected void Init()
         {
-            _value = Read(_defaultValue);
+            _stored = Read(_defaultValue);
         }
 
         protected abstract void Write(TPropertyType value);
         protected abstract TPropertyType Read(TPropertyType defaultValue);
+
+        public void Validate()
+        {
+            if (!_stored.Equals(_value))
+                Value = _value;
+        }
     }
 }
