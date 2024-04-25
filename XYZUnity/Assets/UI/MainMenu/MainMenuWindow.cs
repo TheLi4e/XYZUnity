@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using Scripts.Utils;
+using System;
 using UnityEngine.SceneManagement;
 
 namespace UI.MainMenu
@@ -14,9 +10,7 @@ namespace UI.MainMenu
         private Action _closeAction;
         public void OnShowSettings()
         {
-            var window = Resources.Load<GameObject>("UI/SettingsWindow");
-            var canvas = FindObjectOfType<Canvas>();
-            Instantiate(window, canvas.transform);
+            WindowUtils.CreateWindow("UI/SettingsWindow");
         }
 
         public void OnStartGame()
