@@ -107,7 +107,8 @@ namespace Scripts
         protected void DoJumpVfx()
         {
             _particles.Spawn("Jump");
-            Sounds.Play("Jump");
+            if (Sounds != null)
+                Sounds.Play("Jump");
         }
         public void UpdateSpriteDirection(Vector2 direction)
         {
@@ -133,7 +134,8 @@ namespace Scripts
         public virtual void Attack()
         {
             Animator.SetTrigger(AttackKey); 
-            Sounds.Play("Melee");
+            if(Sounds!=null)
+                Sounds.Play("Melee");
 
         }
 
