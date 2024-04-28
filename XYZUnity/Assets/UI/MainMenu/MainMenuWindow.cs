@@ -1,4 +1,5 @@
-﻿using Scripts.Utils;
+﻿using Scripts.UI;
+using Scripts.Utils;
 using System;
 using UnityEngine.SceneManagement;
 

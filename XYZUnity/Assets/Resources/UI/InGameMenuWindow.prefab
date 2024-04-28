@@ -790,6 +790,7 @@ GameObject:
   - component: {fileID: 901235065283077241}
   - component: {fileID: 901235065283077240}
   - component: {fileID: 901235065283077243}
+  - component: {fileID: 3972647913193270586}
   m_Layer: 5
   m_Name: OptionsButton
   m_TagString: Untagged
@@ -911,6 +912,19 @@ MonoBehaviour:
         m_CallState: 2
   _normal: {fileID: 901235065085522702}
   _pressed: {fileID: 901235064311507594}
+--- !u!114 &3972647913193270586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901235065283077237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7947aa8903f8f4408a3c50b6b25b0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: d20c14613dfe08f4bb058963f4faf5b1, type: 3}
 --- !u!1 &901235065356568474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1020,7 @@ GameObject:
   - component: {fileID: 901235065736065964}
   - component: {fileID: 901235065736065967}
   - component: {fileID: 901235065736065966}
+  - component: {fileID: 819600785128902646}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1127,6 +1142,19 @@ MonoBehaviour:
         m_CallState: 2
   _normal: {fileID: 901235065007646147}
   _pressed: {fileID: 901235064167123412}
+--- !u!114 &819600785128902646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901235065736065960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7947aa8903f8f4408a3c50b6b25b0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: d20c14613dfe08f4bb058963f4faf5b1, type: 3}
 --- !u!1 &901235065894458746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1167,7 @@ GameObject:
   - component: {fileID: 901235065894458750}
   - component: {fileID: 901235065894458745}
   - component: {fileID: 901235065894458744}
+  - component: {fileID: 8242002686166699167}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -1260,6 +1289,19 @@ MonoBehaviour:
         m_CallState: 2
   _normal: {fileID: 901235064638596840}
   _pressed: {fileID: 901235064077099755}
+--- !u!114 &8242002686166699167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901235065894458746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7947aa8903f8f4408a3c50b6b25b0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: d20c14613dfe08f4bb058963f4faf5b1, type: 3}
 --- !u!1 &6183760580960731878
 GameObject:
   m_ObjectHideFlags: 0

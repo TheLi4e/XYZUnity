@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Scripts.Components.Audio
 {
     public class PlaySoundsComponent : MonoBehaviour
     {
-        [SerializeField] private AudioSource _source;
         [SerializeField] private AudioData[] _sounds;
+        private AudioSource _source;
 
         public void Play(string id)
         {
@@ -18,9 +14,11 @@ namespace Scripts.Components.Audio
             {
                 if (audioData.Id != id) continue;
 
+                if (_source == null)
+                    _source = GameObject.FindWithTag("SfxAudioSource").GetComponent<AudioSource>();
+
                 _source.PlayOneShot(audioData.Clip);
                 break;
-
             }
         }
 

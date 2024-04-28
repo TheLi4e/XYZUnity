@@ -1,7 +1,6 @@
 ﻿using Scripts.Utils;
 using UnityEngine;
 
-
 namespace Scripts.Components
 {
     public class EnterTriggerComponent : MonoBehaviour
@@ -13,12 +12,9 @@ namespace Scripts.Components
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.gameObject.IsInLayer(_layer)) return;
-
-
             if (!string.IsNullOrEmpty(_tag) && !other.gameObject.CompareTag(_tag)) return;
 
             _action?.Invoke(other.gameObject);
-
         }
     }
 }

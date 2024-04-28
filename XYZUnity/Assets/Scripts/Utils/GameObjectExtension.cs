@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Video;
-
 namespace Scripts.Utils
 {
     public static class GameObjectExtension

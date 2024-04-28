@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Scripts.Model.Data.Properties
@@ -20,9 +19,7 @@ namespace Scripts.Model.Data.Properties
 
         protected override float Read(float defaultValue)
         {
-            return PlayerPrefs.GetFloat(Key, defaultValue);   
+            return PlayerPrefs.GetFloat(Key, defaultValue);
         }
-
-      
     }
 }

@@ -1,13 +1,13 @@
-﻿
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Scripts.Model.Data.Properties
 {
-    public abstract class PersistantProperty<TPropertyType>
+    [Serializable]
+    public abstract class PersistentProperty<TPropertyType>
     {
-        [SerializeField] private TPropertyType _value;
-        private TPropertyType _stored;
+        [SerializeField] protected TPropertyType _value;
+        protected TPropertyType _stored;
 
         private TPropertyType _defaultValue;
 
@@ -15,7 +15,7 @@ namespace Scripts.Model.Data.Properties
 
         public event OnPropertyChanged OnChanged;
 
-        public PersistantProperty(TPropertyType defaultValue)
+        public PersistentProperty(TPropertyType defaultValue)
         {
             _defaultValue = defaultValue;
         }
@@ -28,19 +28,17 @@ namespace Scripts.Model.Data.Properties
                 var isEquals = _stored.Equals(value);
                 if (isEquals) return;
 
-                var oldValue = _value;
+                var oldValue = _stored;
                 Write(value);
-                _stored = value;
+                _stored = _value = value;
 
                 OnChanged?.Invoke(value, oldValue);
-
-
             }
         }
 
         protected void Init()
         {
-            _stored = Read(_defaultValue);
+            _stored = _value = Read(_defaultValue);
         }
 
         protected abstract void Write(TPropertyType value);
