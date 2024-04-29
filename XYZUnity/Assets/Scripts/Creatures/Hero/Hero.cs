@@ -2,7 +2,6 @@
 using Scripts.Components;
 using Scripts.Model;
 using Scripts.Utils;
-using System;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -49,7 +48,7 @@ namespace Scripts
             _health = GetComponent<HealthComponent>();
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
 
-            _health.SetHealth(_session.Data.HP);
+            _health.SetHealth(_session.Data.Hp.Value);
             UpdateHeroWeapon();
         }
 
@@ -63,7 +62,7 @@ namespace Scripts
 
         public void OnHealthChanged(int currentHealth)
         {
-            _session.Data.HP = currentHealth;
+            _session.Data.Hp.Value = currentHealth;
         }
 
         protected override void Update()
@@ -114,7 +113,7 @@ namespace Scripts
         protected override float CalculateJumpVelocity(float yVelocity)
         {
             if (!IsGrounded && _allowDoubleJump && !_isOnWall)
-            {               
+            {
                 _allowDoubleJump = false;
                 DoJumpVfx();
                 return _jumpSpeed;
@@ -185,15 +184,11 @@ namespace Scripts
                 this.transform.parent = null;
             }
         }
-
-
-
         public override void Attack()
         {
             if (SwordCount <= 0) return;
             base.Attack();
         }
-
 
         private void UpdateHeroWeapon()
         {
@@ -222,16 +217,15 @@ namespace Scripts
             _session.Data.Inventory.Add("Sword", 1);
         }
 
-        internal void UsePotion()
+        public void UsePotion()
         {
             var potions = _session.Data.Inventory.Count("HealthPotion");
             if (potions > 0)
             {
                 _health.ModifyHealth(5);
                 _session.Data.Inventory.Remove("HealthPotion", 1);
-                
+
             }
-            
         }
     }
 }

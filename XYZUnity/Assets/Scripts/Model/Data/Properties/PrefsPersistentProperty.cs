@@ -1,4 +1,6 @@
-﻿namespace Scripts.Model.Data.Properties
+﻿using Scripts.Model.Data.Properties;
+
+namespace Scripts.Model.Data.Properties
 {
     public abstract class PrefsPersistentProperty<TPropertyType> : PersistentProperty<TPropertyType>
     {
