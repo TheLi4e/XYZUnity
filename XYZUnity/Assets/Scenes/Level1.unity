@@ -10428,7 +10428,7 @@ MonoBehaviour:
   _data:
     _inventory:
       _inventory:
-      - Id: Coin
+      - Id: PearlProjectile
         Value: 10
       - Id: Sword
         Value: 10
@@ -15062,10 +15062,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1285501567}
     m_Modifications:
-    - target: {fileID: 1460551546, guid: 6e28f6e5c4cd4d94581be555c05ae4de, type: 3}
-      propertyPath: _source
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6398623812242217905, guid: 6e28f6e5c4cd4d94581be555c05ae4de,
         type: 3}
       propertyPath: m_Name

@@ -29,7 +29,7 @@ namespace UI.Hud.QuickInventory
 
             var def = DefsFacade.Instance.Items.Get(item.Id);
             _icon.sprite = def.Icon;
-            _value.text = def.IsStackable ? item.Value.ToString() : string.Empty;
+            _value.text = def.HasTag(ItemTag.Stackable) ? item.Value.ToString() : string.Empty;
 
         }
 

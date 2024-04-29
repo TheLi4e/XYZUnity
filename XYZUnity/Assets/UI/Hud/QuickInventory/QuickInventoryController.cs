@@ -12,7 +12,6 @@ namespace UI.Hud.QuickInventory
         [SerializeField] private InventoryItemWidget _prefab;
 
         private readonly CompositeDisposable _trash = new CompositeDisposable();
-        private InventoryItemData[] _inventory;
         private List<InventoryItemWidget> _createdItems = new List<InventoryItemWidget>();
 
         private GameSession _session;
@@ -20,30 +19,30 @@ namespace UI.Hud.QuickInventory
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-
+            _trash.Retain(_session.QuickInventory.Subscribe(Rebuild));
             Rebuild();
         }
 
         private void Rebuild()
         {
-            _inventory = _session.Data.Inventory.GetAll();
+            var inventory = _session.QuickInventory.Inventory;
 
             //create required items
-            for (var i = _createdItems.Count; i < _inventory.Length; i++)
+            for (var i = _createdItems.Count; i < inventory.Length; i++)
             {
                 var item = Instantiate(_prefab, _container);
                 _createdItems.Add(item);
             }
 
             // update data and activate
-            for (var i = 0; i < _inventory.Length; i++)
+            for (var i = 0; i < inventory.Length; i++)
             {
-                _createdItems[i].SetData(_inventory[i], i);
+                _createdItems[i].SetData(inventory[i], i);
                 _createdItems[i].gameObject.SetActive(true);
             }
 
             //hide unused items
-            for (var i = _inventory.Length; i < _createdItems.Count; i++)
+            for (var i = inventory.Length; i < _createdItems.Count; i++)
             {
                 _createdItems[i].gameObject.SetActive(false);
             }

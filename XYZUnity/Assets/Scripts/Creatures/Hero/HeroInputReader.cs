@@ -41,6 +41,11 @@ namespace Scripts
                 _hero.UsePotion();
         }
 
+        public void OnNextItem(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                _hero.NextItem();
+        }
     }
 }
 
