@@ -10431,7 +10431,7 @@ MonoBehaviour:
       - Id: PearlProjectile
         Value: 10
       - Id: Sword
-        Value: 10
+        Value: 0
       - Id: Key
         Value: 1
     Hp:
@@ -15127,6 +15127,11 @@ PrefabInstance:
       propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 229217842}
+    - target: {fileID: 6398623812242217913, guid: 6e28f6e5c4cd4d94581be555c05ae4de,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e798945fde4e25345a5dfb9274ba421a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e28f6e5c4cd4d94581be555c05ae4de, type: 3}
 --- !u!1001 &6919331125182934460
