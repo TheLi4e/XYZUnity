@@ -34,6 +34,11 @@ namespace Scripts.Model.Data
 
             OnChanged?.Invoke(id, Count(id));
         }
+
+        public InventoryItemData[] GetAll()
+        {
+            return _inventory.ToArray();
+        }
         private void AddNonStack(string id, int value)
         {
 
