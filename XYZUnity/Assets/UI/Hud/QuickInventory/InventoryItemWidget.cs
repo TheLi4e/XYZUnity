@@ -1,4 +1,5 @@
-﻿using Scripts.Model.Data;
+﻿using Scripts.Model;
+using Scripts.Model.Data;
 using Scripts.Model.Definitions;
 using Scripts.Utils.Disposables;
 using UnityEngine;
@@ -16,6 +17,12 @@ namespace UI.Hud.QuickInventory
 
         private int _index;
 
+        private void Start()
+        {
+            var session = FindObjectOfType<GameSession>();
+            session.QuickInventory.SelectedIndex.SubscribeAndInvoke(OnIndexChanged);
+        }
+
         public void SetData(InventoryItemData item, int index)
         {
             _index = index;
@@ -24,6 +31,11 @@ namespace UI.Hud.QuickInventory
             _icon.sprite = def.Icon;
             _value.text = def.IsStackable ? item.Value.ToString() : string.Empty;
 
+        }
+
+        private void OnIndexChanged(int newValue, int _)
+        {
+            _selection.SetActive(_index == newValue);
         }
     }
 }

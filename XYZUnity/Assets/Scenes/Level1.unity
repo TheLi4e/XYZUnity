@@ -10427,7 +10427,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _inventory:
-      _inventory: []
+      _inventory:
+      - Id: Coin
+        Value: 10
+      - Id: Sword
+        Value: 10
+      - Id: Key
+        Value: 1
     Hp:
       _value: 5
 --- !u!4 &920979642
@@ -13566,7 +13572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1982545944
 MonoBehaviour:
   m_ObjectHideFlags: 0
