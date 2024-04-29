@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Interactables
   - Sword
+  - SfxAudioSource
   layers:
   - Default
   - TransparentFX

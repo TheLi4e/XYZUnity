@@ -1,6 +1,5 @@
-﻿
-
-using Scripts.Model;
+﻿using Scripts.Model;
+using Scripts.UI;
 using Scripts.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;

@@ -1,16 +1,16 @@
-﻿using Scripts.Model.Data;
-using System;
+﻿using System;
+using Scripts.Model.Data.Properties;
 using UnityEngine;
 
-namespace Scripts.Model
+namespace Scripts.Model.Data
 {
     [Serializable]
-    internal class PlayerData
+    public class PlayerData
     {
         [SerializeField] private InventoryData _inventory;
-        
-        public int HP;
-       
+
+        public IntProperty Hp = new IntProperty();
+
         public InventoryData Inventory => _inventory;
 
         public PlayerData Clone()
