@@ -14,9 +14,20 @@ namespace Scripts.Model.Data
 
         public readonly IntProperty SelectedIndex = new IntProperty();
 
-        public event Action OnChanged;  
-        
-        public InventoryItemData SelectedItem => Inventory[SelectedIndex.Value]; 
+        public event Action OnChanged;
+
+        public InventoryItemData SelectedItem
+        {
+            get
+            {
+                if (Inventory.Length > 0 && Inventory.Length > SelectedIndex.Value)
+                    return Inventory[SelectedIndex.Value];
+
+                return null;
+            }
+        }
+
+        public ItemDef SelectedDef => DefsFacade.I.Items.Get(SelectedItem?.Id);
 
 
         public QuickInventoryModel(PlayerData data)
@@ -40,12 +51,12 @@ namespace Scripts.Model.Data
         public IDisposable Subscribe(Action call)
         {
             OnChanged += call;
-            return new ActionDisposable(() => OnChanged -= call); 
+            return new ActionDisposable(() => OnChanged -= call);
         }
 
         public void SetNextItem()
         {
-            SelectedIndex.Value = (int) Mathf.Repeat(SelectedIndex.Value+1, Inventory.Length);
+            SelectedIndex.Value = (int)Mathf.Repeat(SelectedIndex.Value + 1, Inventory.Length);
         }
     }
 }

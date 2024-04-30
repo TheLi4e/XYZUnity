@@ -7,23 +7,6 @@ namespace Scripts.Model.Definitions
     [CreateAssetMenu(menuName = "Defs/ThrowableItemsDef", fileName = " ThrowableItemsDef")]
     public class ThrowableItemsDef : DefRepository<ThrowableDef>
     {
-        [SerializeField] private ThrowableDef[] _items;
-
-        private void OnEnable()
-        {
-            _collection = _items;
-        }
-
-        public ThrowableDef Get(string id)
-        {
-            foreach (var itemDef in _items)
-            {
-                if (itemDef.Id == id)
-                    return itemDef;
-            }
-
-            return default;
-        }
     }
 
     [Serializable]

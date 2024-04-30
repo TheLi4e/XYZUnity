@@ -8,26 +8,8 @@ namespace Scripts.Model.Definitions
     [CreateAssetMenu(menuName = "Defs/InventoryItems", fileName = " InventoryItems")]
     public class InventoryItemsDef : DefRepository<ItemDef>
     {
-        [SerializeField] private ItemDef[] _items;
-       
-        private void OnEnable()
-        {
-            _collection = _items;
-        }
-
-        public ItemDef Get(string id)
-        {
-            foreach (var item in _items)
-            {
-                if (item.Id == id)
-                    return item;
-            }
-
-            return default;
-        }
-
 #if UNITY_EDITOR
-        public ItemDef[] itemsForEditor => _items;
+        public ItemDef[] itemsForEditor => _collection;
 #endif
     }
 
@@ -46,7 +28,7 @@ namespace Scripts.Model.Definitions
 
         public bool HasTag(ItemTag tag)
         {
-            return _tags.Contains(tag);
+            return _tags?.Contains(tag) ?? false;
         }
     }
 }

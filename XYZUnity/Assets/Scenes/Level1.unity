@@ -10430,9 +10430,9 @@ MonoBehaviour:
       _inventory:
       - Id: PearlProjectile
         Value: 10
-      - Id: Sword
-        Value: 0
-      - Id: Key
+      - Id: SmallHealthPotion
+        Value: 1
+      - Id: LargeHealthPotion
         Value: 1
     Hp:
       _value: 5

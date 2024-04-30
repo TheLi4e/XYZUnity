@@ -4,7 +4,6 @@ using Scripts.Model;
 using Scripts.Utils;
 using UnityEditor.Animations;
 using UnityEngine;
-using System;
 using Scripts.Model.Definitions;
 
 namespace Scripts
@@ -46,7 +45,7 @@ namespace Scripts
             {
                 if (SelectedItemId == SwordId)
                     return SwordCount > 1;
-                var def = DefsFacade.Instance.Items.Get(SelectedItemId);
+                var def = DefsFacade.I.Items.Get(SelectedItemId);
 
                 return def.HasTag(ItemTag.Throwable);
             }
@@ -218,14 +217,30 @@ namespace Scripts
             Sounds.Play("Range");
 
             var throwableId = SelectedItemId;
-            var throwableDef = DefsFacade.Instance.ThrowableItems.Get(throwableId);
+            var throwableDef = DefsFacade.I.ThrowableItems.Get(throwableId);
             _throwSpawner.SetPrefab(throwableDef.Projectile);
             _throwSpawner.Spawn();
 
             _session.Data.Inventory.Remove(throwableId, 1);
         }
 
-        public void Throw()
+        public void UseInventory()
+        {
+            if (IsSelectedItem(ItemTag.Throwable))
+                PerformThrowing();
+
+
+            else if (IsSelectedItem(ItemTag.Potion))
+                UsePotion();
+
+        }
+
+        private bool IsSelectedItem(ItemTag itemTag)
+        {
+            return _session.QuickInventory.SelectedDef.HasTag(itemTag);
+        }
+
+        private void PerformThrowing()
         {
             if (!_throwCooldown.IsReady || !CanThrow) return;
 
@@ -241,13 +256,16 @@ namespace Scripts
 
         public void UsePotion()
         {
-            var potions = _session.Data.Inventory.Count("HealthPotion");
-            if (potions > 0)
-            {
-                _health.ModifyHealth(5);
-                _session.Data.Inventory.Remove("HealthPotion", 1);
+            //var potions = _session.Data.Inventory.Count("HealthPotion");
+            //if (potions > 0)
+            //{
+            //    _health.ModifyHealth(5);
+            //    _session.Data.Inventory.Remove("HealthPotion", 1);
 
-            }
+            //}
+            var potion = DefsFacade.I.Potions.Get(SelectedItemId);
+            _session.Data.Hp.Value += (int)potion.Value;
+            _session.Data.Inventory.Remove(potion.Id, 1);
         }
 
         public void NextItem()
