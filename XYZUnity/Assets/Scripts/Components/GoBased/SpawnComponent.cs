@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Scripts.Components
 {
@@ -14,6 +15,11 @@ namespace Scripts.Components
         {
             var instaniate = Instantiate(_prefab, _target.position, Quaternion.identity);
             instaniate.transform.localScale = _target.lossyScale;
+        }
+
+        public void SetPrefab(GameObject prefab)
+        {
+            _prefab = prefab;
         }
     }
 }

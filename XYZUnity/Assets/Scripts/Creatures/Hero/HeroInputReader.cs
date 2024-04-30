@@ -32,7 +32,7 @@ namespace Scripts
         public void OnThrow(InputAction.CallbackContext context)
         {
             if (context.performed)
-                _hero.Throw();
+                _hero.UseInventory();
         }
 
         public void OnUsePotion(InputAction.CallbackContext context)
@@ -41,6 +41,11 @@ namespace Scripts
                 _hero.UsePotion();
         }
 
+        public void OnNextItem(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                _hero.NextItem();
+        }
     }
 }
 

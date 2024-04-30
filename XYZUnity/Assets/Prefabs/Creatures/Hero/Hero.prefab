@@ -474,6 +474,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 86ff140d-b243-4b4f-afc2-f6dd044a0362
     m_ActionName: Hero/Heal[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6398623812242217906}
+        m_MethodName: OnNextItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 72540c92-e34a-4c8b-b8bb-83cc7168fc36
+    m_ActionName: Hero/NextItem[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -666,6 +681,7 @@ MonoBehaviour:
     _value: 1
   _armed: {fileID: 9100000, guid: e798945fde4e25345a5dfb9274ba421a, type: 2}
   _disarmed: {fileID: 9100000, guid: 6db3813774f65ed40be0d065a1075db5, type: 2}
+  _throwSpawner: {fileID: 2509843143663122456}
   _hitParticles: {fileID: 6398623813438352934}
 --- !u!114 &2086277951
 MonoBehaviour:
@@ -702,7 +718,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9f5628b5cdd154ebf713b5e5be059b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _source: {fileID: 0}
   _sounds:
   - _id: Jump
     _clip: {fileID: 8300000, guid: a632e10f27486604396cb20474422937, type: 3}
@@ -5778,7 +5793,7 @@ GameObject:
   - component: {fileID: 5500247960702370667}
   - component: {fileID: 2509843143663122456}
   m_Layer: 12
-  m_Name: ThrowSwordSpawnPosition
+  m_Name: ThrowSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

@@ -21,7 +21,7 @@ namespace Scripts.UI.Hud
 
         private void OnHealthChanged(int newValue, int oldValue)
         {
-            var maxHealth = DefsFacade.Instance.Player.MaxHealth;
+            var maxHealth = DefsFacade.I.Player.MaxHealth;
             var value = (float) newValue / maxHealth;
             _healthBar.SetProgress(value);
         }

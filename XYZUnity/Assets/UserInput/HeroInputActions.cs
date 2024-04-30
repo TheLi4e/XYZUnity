@@ -57,6 +57,14 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""72540c92-e34a-4c8b-b8bb-83cc7168fc36"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -158,6 +166,17 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3214ef16-cdeb-4633-9184-a824c096368e"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -171,6 +190,7 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
         m_Hero_Attack = m_Hero.FindAction("Attack", throwIfNotFound: true);
         m_Hero_Throw = m_Hero.FindAction("Throw", throwIfNotFound: true);
         m_Hero_Heal = m_Hero.FindAction("Heal", throwIfNotFound: true);
+        m_Hero_NextItem = m_Hero.FindAction("NextItem", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -225,6 +245,7 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Hero_Attack;
     private readonly InputAction m_Hero_Throw;
     private readonly InputAction m_Hero_Heal;
+    private readonly InputAction m_Hero_NextItem;
     public struct HeroActions
     {
         private @HeroInputActions m_Wrapper;
@@ -234,6 +255,7 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
         public InputAction @Attack => m_Wrapper.m_Hero_Attack;
         public InputAction @Throw => m_Wrapper.m_Hero_Throw;
         public InputAction @Heal => m_Wrapper.m_Hero_Heal;
+        public InputAction @NextItem => m_Wrapper.m_Hero_NextItem;
         public InputActionMap Get() { return m_Wrapper.m_Hero; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +280,9 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                 @Heal.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnHeal;
                 @Heal.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnHeal;
                 @Heal.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnHeal;
+                @NextItem.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnNextItem;
+                @NextItem.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnNextItem;
+                @NextItem.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnNextItem;
             }
             m_Wrapper.m_HeroActionsCallbackInterface = instance;
             if (instance != null)
@@ -277,6 +302,9 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                 @Heal.started += instance.OnHeal;
                 @Heal.performed += instance.OnHeal;
                 @Heal.canceled += instance.OnHeal;
+                @NextItem.started += instance.OnNextItem;
+                @NextItem.performed += instance.OnNextItem;
+                @NextItem.canceled += instance.OnNextItem;
             }
         }
     }
@@ -288,5 +316,6 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
+        void OnNextItem(InputAction.CallbackContext context);
     }
 }

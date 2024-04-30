@@ -9,7 +9,7 @@ namespace Scripts.Model.Definitions.Editor
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var defs = DefsFacade.Instance.Items.itemsForEditor;
+            var defs = DefsFacade.I.Items.itemsForEditor;
             var ids = new List<string>();
             foreach (var item in defs)
             {

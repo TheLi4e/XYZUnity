@@ -1,4 +1,5 @@
 ﻿using Scripts.Model.Data;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,7 @@ namespace Scripts.Model
         
         public PlayerData Data => _data;
         private PlayerData _save;
-
+        public QuickInventoryModel QuickInventory { get; private set; }
       
 
         private void Awake()
@@ -24,8 +25,14 @@ namespace Scripts.Model
             else
             {
                 Save();
+                InitModels();
                 DontDestroyOnLoad(gameObject);
             }
+        }
+
+        private void InitModels()
+        {
+           QuickInventory = new QuickInventoryModel(Data);
         }
 
         private void LoadHud()

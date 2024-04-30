@@ -1,6 +1,7 @@
 ﻿using Scripts.Model.Definitions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Scripts.Model.Data
@@ -18,12 +19,12 @@ namespace Scripts.Model.Data
         {
             if (value <= 0) return;
 
-            var itemDef = DefsFacade.Instance.Items.Get(id);
+            var itemDef = DefsFacade.I.Items.Get(id);
             if (itemDef.IsVoid) return;
 
-            var isFull = _inventory.Count >= DefsFacade.Instance.Player.InventorySize;
+            var isFull = _inventory.Count >= DefsFacade.I.Player.InventorySize;
 
-            if (itemDef.IsStackable)
+            if (itemDef.HasTag(ItemTag.Stackable))
             {
                 AddToStack(id, value);
             }
@@ -34,12 +35,26 @@ namespace Scripts.Model.Data
 
             OnChanged?.Invoke(id, Count(id));
         }
+
+        public InventoryItemData[] GetAll(params ItemTag[] tags)
+        {
+            var retValue = new List<InventoryItemData>();
+            foreach ( var item in _inventory )
+            {
+                var itemDef = DefsFacade.I.Items.Get(item.Id);
+                var isAllRequirementsMet = tags.All(x => itemDef.HasTag(x));
+                if (isAllRequirementsMet)
+                    retValue.Add(item);
+            }
+
+            return retValue.ToArray();
+        }
         private void AddNonStack(string id, int value)
         {
 
             for (var i = 0; i < value; i++)
             {
-                var isFull = _inventory.Count >= DefsFacade.Instance.Player.InventorySize;
+                var isFull = _inventory.Count >= DefsFacade.I.Player.InventorySize;
                 if (isFull) return;
 
                 var item = new InventoryItemData(id) { Value = 1 };
@@ -49,10 +64,10 @@ namespace Scripts.Model.Data
 
         private void AddToStack(string id, int value)
         {
-            var itemsLast = DefsFacade.Instance.Player.InventorySize - _inventory.Count;
+            var itemsLast = DefsFacade.I.Player.InventorySize - _inventory.Count;
             value = Mathf.Min(itemsLast, value);
 
-            var isFull = _inventory.Count >= DefsFacade.Instance.Player.InventorySize;
+            var isFull = _inventory.Count >= DefsFacade.I.Player.InventorySize;
             var item = GetItem(id);
             if (item == null)
             {
@@ -64,10 +79,10 @@ namespace Scripts.Model.Data
 
         public void Remove(string id, int value)
         {
-            var itemDef = DefsFacade.Instance.Items.Get(id);
+            var itemDef = DefsFacade.I.Items.Get(id);
             if (itemDef.IsVoid) return;
 
-            if (itemDef.IsStackable)
+            if (itemDef.HasTag(ItemTag.Stackable))
             {
                 RemoveFromStack(id, value);
             }
@@ -123,7 +138,7 @@ namespace Scripts.Model.Data
             return null;
         }
 
-        
+
 
     }
 

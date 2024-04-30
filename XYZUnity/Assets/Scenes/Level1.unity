@@ -10427,7 +10427,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _inventory:
-      _inventory: []
+      _inventory:
+      - Id: PearlProjectile
+        Value: 10
+      - Id: SmallHealthPotion
+        Value: 1
+      - Id: LargeHealthPotion
+        Value: 1
     Hp:
       _value: 5
 --- !u!4 &920979642
@@ -13566,7 +13572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1982545944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15056,10 +15062,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1285501567}
     m_Modifications:
-    - target: {fileID: 1460551546, guid: 6e28f6e5c4cd4d94581be555c05ae4de, type: 3}
-      propertyPath: _source
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6398623812242217905, guid: 6e28f6e5c4cd4d94581be555c05ae4de,
         type: 3}
       propertyPath: m_Name
@@ -15125,6 +15127,11 @@ PrefabInstance:
       propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 229217842}
+    - target: {fileID: 6398623812242217913, guid: 6e28f6e5c4cd4d94581be555c05ae4de,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e798945fde4e25345a5dfb9274ba421a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e28f6e5c4cd4d94581be555c05ae4de, type: 3}
 --- !u!1001 &6919331125182934460

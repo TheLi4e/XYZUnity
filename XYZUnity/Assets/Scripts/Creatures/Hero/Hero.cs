@@ -4,6 +4,7 @@ using Scripts.Model;
 using Scripts.Utils;
 using UnityEditor.Animations;
 using UnityEngine;
+using Scripts.Model.Definitions;
 
 namespace Scripts
 {
@@ -17,6 +18,7 @@ namespace Scripts
         [SerializeField] private Cooldown _throwCooldown;
         [SerializeField] private AnimatorController _armed;
         [SerializeField] private AnimatorController _disarmed;
+        [SerializeField] private SpawnComponent _throwSpawner;
 
         [Space]
         [Header("Particles")]
@@ -32,8 +34,22 @@ namespace Scripts
         private GameSession _session;
         private float _defaultGravityScale;
 
-        private int SwordCount => _session.Data.Inventory.Count("Sword");
+        private const string SwordId = "Sword";
+        private int SwordCount => _session.Data.Inventory.Count(SwordId);
         private int CoinsCount => _session.Data.Inventory.Count("Coin");
+        private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
+
+        private bool CanThrow
+        {
+            get
+            {
+                if (SelectedItemId == SwordId)
+                    return SwordCount > 1;
+                var def = DefsFacade.I.Items.Get(SelectedItemId);
+
+                return def.HasTag(ItemTag.Throwable);
+            }
+        }
 
         protected override void Awake()
         {
@@ -54,7 +70,7 @@ namespace Scripts
 
         private void OnInventoryChanged(string id, int value)
         {
-            if (id == "Sword")
+            if (id == SwordId)
             {
                 UpdateHeroWeapon();
             }
@@ -199,17 +215,38 @@ namespace Scripts
         public void OnDoThrow()
         {
             Sounds.Play("Range");
-            _particles.Spawn("Throw");
-            _session.Data.Inventory.Remove("Sword", 1);
+
+            var throwableId = SelectedItemId;
+            var throwableDef = DefsFacade.I.ThrowableItems.Get(throwableId);
+            _throwSpawner.SetPrefab(throwableDef.Projectile);
+            _throwSpawner.Spawn();
+
+            _session.Data.Inventory.Remove(throwableId, 1);
         }
 
-        public void Throw()
+        public void UseInventory()
         {
-            if (_throwCooldown.IsReady && SwordCount > 1)
-            {
-                Animator.SetTrigger(ThrowKey);
-                _throwCooldown.Reset();
-            }
+            if (IsSelectedItem(ItemTag.Throwable))
+                PerformThrowing();
+
+
+            else if (IsSelectedItem(ItemTag.Potion))
+                UsePotion();
+
+        }
+
+        private bool IsSelectedItem(ItemTag itemTag)
+        {
+            return _session.QuickInventory.SelectedDef.HasTag(itemTag);
+        }
+
+        private void PerformThrowing()
+        {
+            if (!_throwCooldown.IsReady || !CanThrow) return;
+
+            Animator.SetTrigger(ThrowKey);
+            _throwCooldown.Reset();
+
         }
 
         public void AddSword()
@@ -219,13 +256,21 @@ namespace Scripts
 
         public void UsePotion()
         {
-            var potions = _session.Data.Inventory.Count("HealthPotion");
-            if (potions > 0)
-            {
-                _health.ModifyHealth(5);
-                _session.Data.Inventory.Remove("HealthPotion", 1);
+            //var potions = _session.Data.Inventory.Count("HealthPotion");
+            //if (potions > 0)
+            //{
+            //    _health.ModifyHealth(5);
+            //    _session.Data.Inventory.Remove("HealthPotion", 1);
 
-            }
+            //}
+            var potion = DefsFacade.I.Potions.Get(SelectedItemId);
+            _session.Data.Hp.Value += (int)potion.Value;
+            _session.Data.Inventory.Remove(potion.Id, 1);
+        }
+
+        public void NextItem()
+        {
+            _session.QuickInventory.SetNextItem();
         }
     }
 }
