@@ -1,13 +1,19 @@
-﻿using System;
+﻿using Scripts.Model.Definitions.Repository;
+using System;
 using System.Linq;
 using UnityEngine;
 
 namespace Scripts.Model.Definitions
 {
     [CreateAssetMenu(menuName = "Defs/InventoryItems", fileName = " InventoryItems")]
-    public class InventoryItemsDef : ScriptableObject
+    public class InventoryItemsDef : DefRepository<ItemDef>
     {
         [SerializeField] private ItemDef[] _items;
+       
+        private void OnEnable()
+        {
+            _collection = _items;
+        }
 
         public ItemDef Get(string id)
         {
@@ -26,7 +32,7 @@ namespace Scripts.Model.Definitions
     }
 
     [Serializable]
-    public struct ItemDef
+    public struct ItemDef :IHaveId
     {
         [SerializeField] private string _id;
         [SerializeField] private Sprite _icon;
