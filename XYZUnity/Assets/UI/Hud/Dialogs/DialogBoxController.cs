@@ -1,5 +1,9 @@
 ﻿using Scripts.Model.Data;
 using Scripts.Utils;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +26,7 @@ namespace UI.Hud.Dialogs
         private DialogData _data;
         private int _currentSentence;
         private AudioSource _sfxSource;
+        private Coroutine _typingRoutine;
 
         private void Start()
         {
@@ -37,6 +42,29 @@ namespace UI.Hud.Dialogs
             _container.SetActive(true);
             _sfxSource.PlayOneShot(_open);
             _animator.SetBool(IsOpen, true);
+        }
+
+        private void OnStartDialogAnimation()
+        {
+            _typingRoutine = StartCoroutine(TypeDialogText());
+        }
+
+        private IEnumerator TypeDialogText()
+        {
+            _text.text = string.Empty;
+            var sentences = _data.Sentences[_currentSentence];
+            foreach (var item in sentences)
+            {
+                _text.text += item;
+                _sfxSource?.PlayOneShot(_typing);
+                yield return new WaitForSeconds(_textSpeed);
+            }
+            _typingRoutine = null;  
+        }
+
+        private void OnCloseAnimationComplete()
+        {
+
         }
 
         [SerializeField] private DialogData _testData;

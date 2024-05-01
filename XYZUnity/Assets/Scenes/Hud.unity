@@ -272,11 +272,13 @@ MonoBehaviour:
   _container: {fileID: 712441456}
   _animator: {fileID: 51208770}
   _textSpeed: 0.09
-  _typing: {fileID: 0}
-  _open: {fileID: 0}
-  _close: {fileID: 0}
+  _typing: {fileID: 8300000, guid: be2e82d15993a6646bb100f1f72bd243, type: 3}
+  _open: {fileID: 8300000, guid: 9731c7e639c35c844981b30ee4f0fd54, type: 3}
+  _close: {fileID: 8300000, guid: 3ddf8bdc38cde89449a5f5b956334584, type: 3}
   _testData:
-    _sentences: []
+    _sentences:
+    - Hello world!
+    - And happy 1st may!
 --- !u!1 &142381549
 GameObject:
   m_ObjectHideFlags: 0
