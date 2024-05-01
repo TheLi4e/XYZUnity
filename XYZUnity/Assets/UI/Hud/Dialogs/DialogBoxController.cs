@@ -44,6 +44,43 @@ namespace UI.Hud.Dialogs
             _animator.SetBool(IsOpen, true);
         }
 
+        public void OnSkip()
+        {
+            if (_typingRoutine == null) return;
+
+            StopTypeAnimation();
+            _text.text = _data.Sentences[_currentSentence];
+        }
+
+        public void OnContinue()
+        {
+            StopTypeAnimation();
+            _currentSentence++;
+
+            var isDialogComplete = _currentSentence >= _data.Sentences.Length;
+            if (isDialogComplete)
+            {
+                HideDialogBox();
+            }
+            else
+            {
+                OnStartDialogAnimation();
+            }
+        }
+
+        private void HideDialogBox()
+        {
+            _animator.SetBool(IsOpen, false);
+            _sfxSource?.PlayOneShot(_close);
+        }
+
+        private void StopTypeAnimation()
+        {
+            if (_typingRoutine != null)
+                StopCoroutine(_typingRoutine);
+            _typingRoutine = null;
+        }
+
         private void OnStartDialogAnimation()
         {
             _typingRoutine = StartCoroutine(TypeDialogText());
@@ -59,7 +96,7 @@ namespace UI.Hud.Dialogs
                 _sfxSource?.PlayOneShot(_typing);
                 yield return new WaitForSeconds(_textSpeed);
             }
-            _typingRoutine = null;  
+            _typingRoutine = null;
         }
 
         private void OnCloseAnimationComplete()
@@ -67,10 +104,5 @@ namespace UI.Hud.Dialogs
 
         }
 
-        [SerializeField] private DialogData _testData;
-        public void Test()
-        {
-            ShowDialog(_testData);
-        }
     }
 }
