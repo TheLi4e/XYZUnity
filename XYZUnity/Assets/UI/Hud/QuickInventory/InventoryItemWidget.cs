@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace UI.Hud.QuickInventory
 {
-    public class InventoryItemWidget :MonoBehaviour
+    public class InventoryItemWidget : MonoBehaviour
     {
         [SerializeField] private Image _icon;
         [SerializeField] private GameObject _selection;
@@ -20,7 +20,8 @@ namespace UI.Hud.QuickInventory
         private void Start()
         {
             var session = FindObjectOfType<GameSession>();
-            session.QuickInventory.SelectedIndex.SubscribeAndInvoke(OnIndexChanged);
+            var index = session.QuickInventory.SelectedIndex;
+            _trash.Retain(index.SubscribeAndInvoke(OnIndexChanged));
         }
 
         public void SetData(InventoryItemData item, int index)
@@ -36,6 +37,11 @@ namespace UI.Hud.QuickInventory
         private void OnIndexChanged(int newValue, int _)
         {
             _selection.SetActive(_index == newValue);
+        }
+
+        public void OnDestroy()
+        {
+            _trash.Dispose();
         }
     }
 }

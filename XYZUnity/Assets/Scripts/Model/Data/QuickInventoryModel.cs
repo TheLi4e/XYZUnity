@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Scripts.Model.Data
 {
-    public class QuickInventoryModel
+    public class QuickInventoryModel :IDisposable
     {
         private readonly PlayerData _data;
 
@@ -58,5 +58,13 @@ namespace Scripts.Model.Data
         {
             SelectedIndex.Value = (int)Mathf.Repeat(SelectedIndex.Value + 1, Inventory.Length);
         }
+
+        public void Dispose()
+        {
+            _data.Inventory.OnChanged -= OnChangedInventory;
+
+        }
+
+
     }
 }

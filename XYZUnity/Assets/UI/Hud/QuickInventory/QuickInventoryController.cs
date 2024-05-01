@@ -47,5 +47,10 @@ namespace UI.Hud.QuickInventory
                 _createdItems[i].gameObject.SetActive(false);
             }
         }
+
+        private void OnDestroy()
+        {
+            _trash.Dispose();
+        }
     }
 }
