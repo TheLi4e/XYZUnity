@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -11,14 +8,21 @@ namespace Scripts.Model.Definitions.Localization
     [CreateAssetMenu(menuName = "Defs/LocaleDef", fileName = "LocaleDef")]
     public class LocaleDef : ScriptableObject
     {
-        //https://docs.google.com/spreadsheets/d/e/2PACX-1vQEaFlu_PAkH7fo55jcJVXEHfUH8swsUmOOOcELXUOF1TjUG2dymO7ObvP-H05b-muETjiGkfOrpIsY/pub?gid=0&single=true&output=tsv                  en
-        //https://docs.google.com/spreadsheets/d/e/2PACX-1vQEaFlu_PAkH7fo55jcJVXEHfUH8swsUmOOOcELXUOF1TjUG2dymO7ObvP-H05b-muETjiGkfOrpIsY/pub?gid=2069891923&single=true&output=tsv         ru
-        //https://docs.google.com/spreadsheets/d/e/2PACX-1vQEaFlu_PAkH7fo55jcJVXEHfUH8swsUmOOOcELXUOF1TjUG2dymO7ObvP-H05b-muETjiGkfOrpIsY/pub?gid=612296113&single=true&output=tsv          es
-
         [SerializeField] private string _url;
         [SerializeField] private List<LocaleItem> _localeItems;
 
         private UnityWebRequest _request;
+
+       public Dictionary<string, string> GetData()
+        {
+            var dictionary = new Dictionary<string, string>();
+            foreach(var localeItem in _localeItems)
+            {
+                dictionary.Add(localeItem.Key, localeItem.Value);
+            }
+            return dictionary;
+        }
+
 
         [ContextMenu("Update locale")]
         private void UpdateLocale()
@@ -33,8 +37,8 @@ namespace Scripts.Model.Definitions.Localization
         {
             if (operation.isDone)
             {
-                var rows = _request.downloadHandler.text.Split('\n'); 
-                foreach(var row in rows)
+                var rows = _request.downloadHandler.text.Split('\n');
+                foreach (var row in rows)
                 {
                     AddLocaleItem(row);
                 }
@@ -46,9 +50,9 @@ namespace Scripts.Model.Definitions.Localization
             try
             {
                 var parts = row.Split('\t');
-                _localeItems.Add(new LocaleItem { Key = parts[0], Value = parts[1]});
+                _localeItems.Add(new LocaleItem { Key = parts[0], Value = parts[1] });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.LogError($"Can't parse row: {row}.\n {ex}");
             }
@@ -60,6 +64,5 @@ namespace Scripts.Model.Definitions.Localization
             public string Key;
             public string Value;
         }
-
     }
 }
