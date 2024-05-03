@@ -15,7 +15,6 @@ namespace Scripts.UI.Widgets
             _prefab = prefab;
             _container = container;
         }
-
         public void SetData(IList<TDataType> data)
         {
             // create required items

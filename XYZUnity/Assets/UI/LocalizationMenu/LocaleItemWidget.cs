@@ -50,8 +50,6 @@ namespace Assets.UI.LocalizationMenu
 
     } 
     
-
-
     public class LocaleInfo
     {
         public string LocaleId;

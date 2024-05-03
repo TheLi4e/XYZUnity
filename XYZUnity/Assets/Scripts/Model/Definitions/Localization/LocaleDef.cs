@@ -23,7 +23,6 @@ namespace Scripts.Model.Definitions.Localization
             return dictionary;
         }
 
-
         [ContextMenu("Update locale")]
         private void UpdateLocale()
         {

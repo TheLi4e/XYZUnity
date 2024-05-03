@@ -1,5 +1,4 @@
 ﻿using Scripts.Model.Definitions.Localization;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +11,7 @@ namespace UI.Localization
         [SerializeField] private bool _capitalize;
 
         private Text _text;
+
         private void Awake()
         {
             _text = GetComponent<Text>();
