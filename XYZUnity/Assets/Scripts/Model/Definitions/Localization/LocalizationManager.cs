@@ -32,6 +32,7 @@ namespace Scripts.Model.Definitions.Localization
         {
             var def = Resources.Load<LocaleDef>($"Locales/{localeToLoad}");
             _localization = def.GetData();
+            _localeKey.Value = localeToLoad;
             OnLocaleChanged?.Invoke();
         }
 

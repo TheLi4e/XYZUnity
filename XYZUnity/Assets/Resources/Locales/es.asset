@@ -23,4 +23,8 @@ MonoBehaviour:
   - Key: button_exit
     Value: "salir del juego\r"
   - Key: selected_language
-    Value: 'Idioma seleccionado: {0}'
+    Value: "Idioma seleccionado: {0}\r"
+  - Key: button_back
+    Value: "atr\xE1s\r"
+  - Key: button_locales
+    Value: idioma

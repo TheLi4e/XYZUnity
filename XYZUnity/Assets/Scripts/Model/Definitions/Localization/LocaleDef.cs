@@ -13,10 +13,10 @@ namespace Scripts.Model.Definitions.Localization
 
         private UnityWebRequest _request;
 
-       public Dictionary<string, string> GetData()
+        public Dictionary<string, string> GetData()
         {
             var dictionary = new Dictionary<string, string>();
-            foreach(var localeItem in _localeItems)
+            foreach (var localeItem in _localeItems)
             {
                 dictionary.Add(localeItem.Key, localeItem.Value);
             }
@@ -38,6 +38,7 @@ namespace Scripts.Model.Definitions.Localization
             if (operation.isDone)
             {
                 var rows = _request.downloadHandler.text.Split('\n');
+                _localeItems.Clear();
                 foreach (var row in rows)
                 {
                     AddLocaleItem(row);
