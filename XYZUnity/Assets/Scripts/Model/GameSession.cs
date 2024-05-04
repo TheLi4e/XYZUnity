@@ -1,6 +1,7 @@
 ﻿using Scripts.Model.Data;
 using Scripts.Utils.Disposables;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,12 +10,13 @@ namespace Scripts.Model
     internal class GameSession : MonoBehaviour
     {
         [SerializeField] private PlayerData _data;
-        
+
         public PlayerData Data => _data;
         private PlayerData _save;
         private readonly CompositeDisposable _trash = new CompositeDisposable();
         public QuickInventoryModel QuickInventory { get; private set; }
-      
+
+        private readonly List<string> _checkpoints = new List<string>();
 
         private void Awake()
         {
@@ -34,7 +36,7 @@ namespace Scripts.Model
 
         private void InitModels()
         {
-           QuickInventory = new QuickInventoryModel(Data);
+            QuickInventory = new QuickInventoryModel(Data);
             _trash.Retain(QuickInventory);
         }
 
@@ -68,6 +70,17 @@ namespace Scripts.Model
         private void OnDestroy()
         {
             _trash.Dispose();
+        }
+
+        public bool isChecked(string id)
+        {
+            return _checkpoints.Contains(id);
+        }
+
+        public void SetChecked(string id)
+        {
+            if (!_checkpoints.Contains(id)) 
+                _checkpoints.Add(id);
         }
     }
 }
