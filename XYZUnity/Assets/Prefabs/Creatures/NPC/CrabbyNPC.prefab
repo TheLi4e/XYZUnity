@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 9068790070079771072}
   - component: {fileID: 9068790070079771073}
   - component: {fileID: 9068790070079771074}
-  - component: {fileID: 9068790070079771075}
   - component: {fileID: 9068790070079771132}
   - component: {fileID: 9068790070079771078}
   - component: {fileID: 9068790070079771079}
+  - component: {fileID: 9068790070079771075}
   m_Layer: 9
   m_Name: CrabbyNPC
   m_TagString: Interactables
@@ -117,22 +117,6 @@ MonoBehaviour:
     _onComplete:
       m_PersistentCalls:
         m_Calls: []
---- !u!114 &9068790070079771075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9068790070079771133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 845cd8100696551439ad56dac5fa9471, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mode: 1
-  _bound:
-    _sentences: []
-  _external: {fileID: 0}
 --- !u!114 &9068790070079771132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +137,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9068790070079771075}
+        m_MethodName: SetKey
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: crabbyNPC_dialog_success
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9068790070079771075}
         m_MethodName: Show
         m_Mode: 2
         m_Arguments:
@@ -165,9 +160,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9068790070079771078}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onFail:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 9068790070079771075}
+        m_MethodName: SetKey
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: crabbyNPC_dialog_fail
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 9068790070079771075}
         m_MethodName: Show
         m_Mode: 2
@@ -223,3 +240,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9068790070079771075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068790070079771133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845cd8100696551439ad56dac5fa9471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1
+  _bound:
+    _sentences: []
+  _external: {fileID: 11400000, guid: 0f7ad5418925a234b82d27dad7da3004, type: 2}
+  _key: 

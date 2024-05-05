@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 25207844}
   - component: {fileID: 25207843}
   - component: {fileID: 25207845}
+  - component: {fileID: 25207846}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -254,6 +255,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &25207846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25207841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b40bca21a7be54c9c4b2715aebe13e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: dialog_continue_button
+  _capitalize: 0
 --- !u!1 &51208768
 GameObject:
   m_ObjectHideFlags: 0
