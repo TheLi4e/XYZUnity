@@ -10,9 +10,11 @@ namespace Scripts.Components.LevelManagement
         [SerializeField] private string _id;
         [SerializeField] private UnityEvent _setChecked;
         [SerializeField] private UnityEvent _setUnchecked;
+        [SerializeField] private SpawnComponent _heroSpawner;
 
         private GameSession _session;
-        private SpawnComponent _heroSpawner;
+
+        public string Id => _id;
 
         private void Start()
         {
@@ -27,8 +29,9 @@ namespace Scripts.Components.LevelManagement
         public void Check()
         {
             _session.SetChecked(_id);
+            _setChecked?.Invoke();
         }
-        
+
         public void SpawnHero()
         {
             _heroSpawner.Spawn();
