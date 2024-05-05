@@ -37,4 +37,8 @@ MonoBehaviour:
   - Key: crabbyNPC_dialog_fail
     Value: "Cons\xEDgueme una Gema Verde...&Y te mostrar\xE9 El Milagro...\r"
   - Key: crabbyNPC_dialog_success
-    Value: "\xA1Y ahora El Milagro!&Tengo una Gema...&\xA1Y t\xFA no!&\xA1Ajajajajaja!"
+    Value: "\xA1Y ahora El Milagro!&Tengo una Gema...&\xA1Y t\xFA no!&\xA1Ajajajajaja!\r"
+  - Key: button_restart
+    Value: "reanudar\r"
+  - Key: ingame_menu_title
+    Value: pausa

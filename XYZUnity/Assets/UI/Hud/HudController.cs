@@ -2,6 +2,7 @@
 using Scripts.Model;
 using UI.Widgets;
 using UnityEngine;
+using Scripts.Utils;
 
 namespace Scripts.UI.Hud
 {
@@ -24,6 +25,11 @@ namespace Scripts.UI.Hud
             var maxHealth = DefsFacade.I.Player.MaxHealth;
             var value = (float) newValue / maxHealth;
             _healthBar.SetProgress(value);
+        }
+
+        public void OnSettings()
+        {
+            WindowUtils.CreateWindow("UI/InGameMenuWindow");
         }
 
         private void OnDestroy()

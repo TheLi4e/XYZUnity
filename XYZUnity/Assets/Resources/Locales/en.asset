@@ -37,4 +37,8 @@ MonoBehaviour:
   - Key: crabbyNPC_dialog_fail
     Value: "Get me a Green Gem...&And i will show you The Miracle...\r"
   - Key: crabbyNPC_dialog_success
-    Value: And now The Miracle!&I have a Gem...&And you are not!&Ahahahahaha!
+    Value: "And now The Miracle!&I have a Gem...&And you are not!&Ahahahahaha!\r"
+  - Key: button_restart
+    Value: "restart\r"
+  - Key: ingame_menu_title
+    Value: pause

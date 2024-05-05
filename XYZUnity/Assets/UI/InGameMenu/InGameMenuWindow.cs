@@ -23,6 +23,11 @@ namespace UI.InGameMenu
             WindowUtils.CreateWindow("UI/SettingsWindow");
         }
 
+        public void OnLanguages()
+        {
+            WindowUtils.CreateWindow("UI/LocalizationWindow");
+        }
+
         public void OnExit()
         {
             SceneManager.LoadScene("MainMenu");
