@@ -5361,7 +5361,6 @@ Transform:
   m_LocalPosition: {x: 1.0306406, y: -3.138159, z: -16.386917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1286043094}
   - {fileID: 68461947}
   - {fileID: 944620299}
   - {fileID: 1210613246}
@@ -5374,6 +5373,7 @@ Transform:
   - {fileID: 1219203038}
   - {fileID: 1257432527}
   - {fileID: 174051689}
+  - {fileID: 1501555211}
   - {fileID: 1216751271}
   - {fileID: 1896536379}
   - {fileID: 1590465851}
@@ -11674,12 +11674,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1286043094 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6139355368092131683, guid: b7e9b0c34409d1648b9dfc2cba0763a0,
-    type: 3}
-  m_PrefabInstance: {fileID: 6139355366856360931}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1289127819 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 866718921977871376, guid: ebd26ac3369755048af21862d4e68e22,
@@ -12445,7 +12439,7 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1501555203}
+      - m_Target: {fileID: 0}
         m_MethodName: Show
         m_Mode: 1
         m_Arguments:
@@ -12456,24 +12450,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1501555203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!224 &1501555211 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2617589622850677303, guid: b7e9b0c34409d1648b9dfc2cba0763a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6139355366856360931}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1501555200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 845cd8100696551439ad56dac5fa9471, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mode: 0
-  _bound:
-    _sentences:
-    - Door is closed...
-    - You need to open it...
-  _external: {fileID: 0}
 --- !u!1 &1508642435
 GameObject:
   m_ObjectHideFlags: 0
@@ -15197,6 +15179,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 318188340}
     m_Modifications:
+    - target: {fileID: 1914916386, guid: d45944de34ff5014e80b2917aa4ab908, type: 3}
+      propertyPath: _key
+      value: wooden_door_dialog
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914916386, guid: d45944de34ff5014e80b2917aa4ab908, type: 3}
+      propertyPath: _mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914916386, guid: d45944de34ff5014e80b2917aa4ab908, type: 3}
+      propertyPath: _external
+      value: 
+      objectReference: {fileID: 11400000, guid: 93d7990d0e259574699cc6d647d7a6d1,
+        type: 2}
     - target: {fileID: 4670522610243124006, guid: d45944de34ff5014e80b2917aa4ab908,
         type: 3}
       propertyPath: m_RootOrder
@@ -15404,6 +15399,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 318188340}
     m_Modifications:
+    - target: {fileID: 2617589622850677303, guid: b7e9b0c34409d1648b9dfc2cba0763a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2617589622850677303, guid: b7e9b0c34409d1648b9dfc2cba0763a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 43.31308
+      objectReference: {fileID: 0}
+    - target: {fileID: 2617589622850677303, guid: b7e9b0c34409d1648b9dfc2cba0763a0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 36.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 2617589622850677303, guid: b7e9b0c34409d1648b9dfc2cba0763a0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3568971063122756224, guid: b7e9b0c34409d1648b9dfc2cba0763a0,
         type: 3}
       propertyPath: m_Enabled
