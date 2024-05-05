@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2531011880201351235}
   - component: {fileID: 7554890311415764794}
   - component: {fileID: 3176836663049693748}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1628059971784256732}
   - component: {fileID: 1628059971784256733}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: FootStepPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1628059971885060835}
   - component: {fileID: 1628059971885060832}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: DeadCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 1628059972066009460}
   - component: {fileID: 1628059972066009463}
   - component: {fileID: 1628059972066009462}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: AttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 1628059972322645632}
   - component: {fileID: 1628059972322645635}
   - component: {fileID: 1628059972322645634}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 1628059972665009657}
   - component: {fileID: 1628059972665009663}
   - component: {fileID: 1628059972665009662}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 1628059972713808470}
   - component: {fileID: 1628059972713808465}
   - component: {fileID: 104228519}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Crabby
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -813,7 +813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1628059972861785051}
   - component: {fileID: 1628059972861785048}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: JumpStepsPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 2296369913517540224}
   - component: {fileID: 800881985626247159}
   - component: {fileID: 6463339783956593279}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 700799434741980316}
   - component: {fileID: 2380748280225439225}
   - component: {fileID: 3630610682176539649}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: HpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1137,6 +1137,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoplerRespawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 365003745570856144, guid: 261555a4f54119b42ba4c04ff719688d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 365003745570856173, guid: 261555a4f54119b42ba4c04ff719688d,
         type: 3}
