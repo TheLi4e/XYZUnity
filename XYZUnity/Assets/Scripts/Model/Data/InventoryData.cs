@@ -52,11 +52,11 @@ namespace Scripts.Model.Data
         private void AddNonStack(string id, int value)
         {
 
+            var itemLasts = DefsFacade.I.Player.InventorySize - _inventory.Count;
+            value = Mathf.Min(itemLasts, value);
+
             for (var i = 0; i < value; i++)
             {
-                var isFull = _inventory.Count >= DefsFacade.I.Player.InventorySize;
-                if (isFull) return;
-
                 var item = new InventoryItemData(id) { Value = 1 };
                 _inventory.Add(item);
             }
@@ -64,16 +64,16 @@ namespace Scripts.Model.Data
 
         private void AddToStack(string id, int value)
         {
-            var itemsLast = DefsFacade.I.Player.InventorySize - _inventory.Count;
-            value = Mathf.Min(itemsLast, value);
-
             var isFull = _inventory.Count >= DefsFacade.I.Player.InventorySize;
             var item = GetItem(id);
             if (item == null)
             {
+                if (isFull) return;
+
                 item = new InventoryItemData(id);
                 _inventory.Add(item);
             }
+
             item.Value += value;
         }
 
