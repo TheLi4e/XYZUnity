@@ -27,4 +27,14 @@ MonoBehaviour:
   - Key: button_back
     Value: "back\r"
   - Key: button_locales
-    Value: languages
+    Value: "languages\r"
+  - Key: dialog_continue_button
+    Value: "Continue...\r"
+  - Key: wooden_door_dialog
+    Value: "You need a key...&Did you miss it in cave??\r"
+  - Key: cave_door_dialog
+    Value: "Cave is closed...&You need to open it...\r"
+  - Key: crabbyNPC_dialog_fail
+    Value: "Get me a Green Gem...&And i will show you The Miracle...\r"
+  - Key: crabbyNPC_dialog_success
+    Value: And now The Miracle!&I have a Gem...&And you are not!&Ahahahahaha!

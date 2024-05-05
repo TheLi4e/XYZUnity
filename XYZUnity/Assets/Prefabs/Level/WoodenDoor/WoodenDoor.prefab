@@ -317,5 +317,5 @@ MonoBehaviour:
   _bound:
     _sentences:
     - You need a key...
-    - Try to search in cave...
+    - Did you miss it in cave??
   _external: {fileID: 0}

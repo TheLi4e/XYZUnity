@@ -27,4 +27,14 @@ MonoBehaviour:
   - Key: button_back
     Value: "atr\xE1s\r"
   - Key: button_locales
-    Value: idioma
+    Value: "idioma\r"
+  - Key: dialog_continue_button
+    Value: "Continuar...\r"
+  - Key: wooden_door_dialog
+    Value: "Necesitas una llave... \xBFY la perdiste en la cueva?\r"
+  - Key: cave_door_dialog
+    Value: "La cueva est\xE1 cerrada...&Necesitas abrirla...\r"
+  - Key: crabbyNPC_dialog_fail
+    Value: "Cons\xEDgueme una Gema Verde...&Y te mostrar\xE9 El Milagro...\r"
+  - Key: crabbyNPC_dialog_success
+    Value: "\xA1Y ahora El Milagro!&Tengo una Gema...&\xA1Y t\xFA no!&\xA1Ajajajajaja!"

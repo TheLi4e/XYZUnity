@@ -1,9 +1,6 @@
 ﻿using Scripts.Model.Data;
 using Scripts.Utils;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -103,6 +100,5 @@ namespace UI.Hud.Dialogs
         {
 
         }
-
     }
 }
