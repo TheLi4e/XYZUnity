@@ -21,6 +21,9 @@ namespace Scripts.Model
 
         private readonly List<string> _checkpoints = new List<string>();
 
+        private List<string> _removedItems = new List<string>();
+
+
         private void Awake()
         {
             var existsSession = GetExistsSession();
@@ -112,7 +115,18 @@ namespace Scripts.Model
                 Save();
                 _checkpoints.Add(id);
             }
-               
+
+        }
+
+        public bool RestoreState(string instanceId)
+        {
+            return _removedItems.Contains(instanceId);
+        }
+
+        public void StoreState(string instanceId)
+        {
+            if (!_removedItems.Contains(instanceId))
+                _removedItems.Add(instanceId);
         }
     }
 }
