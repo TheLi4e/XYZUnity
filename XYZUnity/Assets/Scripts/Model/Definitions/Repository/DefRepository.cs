@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.Rendering;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Scripts.Model.Definitions.Repository
 {
@@ -20,5 +20,8 @@ namespace Scripts.Model.Definitions.Repository
 
             return default;
         }
+        public TDefType[] All => new List<TDefType>(_collection).ToArray();
     }
 }
+
+

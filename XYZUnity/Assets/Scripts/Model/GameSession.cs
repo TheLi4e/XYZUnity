@@ -1,7 +1,6 @@
 ﻿using Scripts.Components.LevelManagement;
 using Scripts.Model.Data;
 using Scripts.Utils.Disposables;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -18,6 +17,7 @@ namespace Scripts.Model
         private PlayerData _save;
         private readonly CompositeDisposable _trash = new CompositeDisposable();
         public QuickInventoryModel QuickInventory { get; private set; }
+        public PerksModel PerksModel { get; private set; }
 
         private readonly List<string> _checkpoints = new List<string>();
 
@@ -65,8 +65,11 @@ namespace Scripts.Model
 
         private void InitModels()
         {
-            QuickInventory = new QuickInventoryModel(Data);
+            QuickInventory = new QuickInventoryModel(_data);
             _trash.Retain(QuickInventory);
+
+            PerksModel = new PerksModel(_data);
+            _trash.Retain(PerksModel);
         }
 
         private void LoadHud()
@@ -115,7 +118,6 @@ namespace Scripts.Model
                 Save();
                 _checkpoints.Add(id);
             }
-
         }
 
         public bool RestoreState(string instanceId)
