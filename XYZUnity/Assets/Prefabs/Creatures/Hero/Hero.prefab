@@ -682,6 +682,10 @@ MonoBehaviour:
   _armed: {fileID: 9100000, guid: e798945fde4e25345a5dfb9274ba421a, type: 2}
   _disarmed: {fileID: 9100000, guid: 6db3813774f65ed40be0d065a1075db5, type: 2}
   _throwSpawner: {fileID: 2509843143663122456}
+  _superThrowCooldown:
+    _value: 1
+  _superThrowParticles: 3
+  _superThrowDelay: 0.2
   _hitParticles: {fileID: 6398623813438352934}
 --- !u!114 &2086277951
 MonoBehaviour:

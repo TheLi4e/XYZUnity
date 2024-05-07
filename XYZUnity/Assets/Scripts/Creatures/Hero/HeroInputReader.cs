@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace Scripts
 {
@@ -31,8 +28,15 @@ namespace Scripts
 
         public void OnThrow(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.started)
+            {
+                _hero.StartThrowing();
+            }
+
+            if (context.canceled)
+            {
                 _hero.UseInventory();
+            }
         }
 
         public void OnUsePotion(InputAction.CallbackContext context)

@@ -14,7 +14,7 @@ namespace Scripts.Model.Definitions
         [SerializeField] private PlayerDef _player;
 
         public InventoryItemsDef Items => _items;
-        public ThrowableItemsDef ThrowableItems => _throwableitems;
+        public ThrowableItemsDef Throwable => _throwableitems;
         public PotionsRepository Potions => _potions;
         public PerkRepository Perks => _perks;
         public PlayerDef Player => _player;
