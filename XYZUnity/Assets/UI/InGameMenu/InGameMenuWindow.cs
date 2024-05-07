@@ -1,5 +1,6 @@
 ﻿using Scripts.Model;
 using Scripts.UI;
+using Scripts.UI.Windows.PerksWindow;
 using Scripts.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;

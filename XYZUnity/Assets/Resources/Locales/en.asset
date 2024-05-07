@@ -41,4 +41,12 @@ MonoBehaviour:
   - Key: button_restart
     Value: "restart\r"
   - Key: ingame_menu_title
-    Value: pause
+    Value: "pause\r"
+  - Key: perk_doublejump
+    Value: "Double jump. Allows you to double jump.\r"
+  - Key: perk_superthrow
+    Value: "Volley of swords. Allows you to throw 3 swords in a row.\r"
+  - Key: button_use
+    Value: "use\r"
+  - Key: button_buy
+    Value: buy

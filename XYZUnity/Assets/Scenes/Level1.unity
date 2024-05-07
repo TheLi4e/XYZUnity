@@ -265,6 +265,76 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4670522611421608475}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &156357020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9068790070079771133, guid: 8ed9a7c0ad917ff47820207b8da39411,
+    type: 3}
+  m_PrefabInstance: {fileID: 365058947}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &156357021 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+    type: 3}
+  m_PrefabInstance: {fileID: 365058947}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &156357022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156357020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52bb62748e75ff8419a8c509f1f9016d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/ManagePerksWindow
+--- !u!114 &156357023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156357020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6dd5f87e60d2841a07e021aedb2465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    DialogText: I can teach you a new perk!
+    Options:
+    - Text: Ok!
+      OnSelect:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 156357022}
+            m_MethodName: Show
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - Text: Not now
+      OnSelect:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_MethodName: 
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: 
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
 --- !u!4 &174051689 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3265392344709765901, guid: 77350695bcb5d024297eb3f263c7bb5b,
@@ -5476,6 +5546,87 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &365058947
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1285501567}
+    m_Modifications:
+    - target: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 27.835728
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771072, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771079, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 156357022}
+    - target: {fileID: 9068790070079771079, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Show
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771133, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: m_Name
+      value: CrabbyNPC (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9068790070079771132, guid: 8ed9a7c0ad917ff47820207b8da39411, type: 3}
+    - {fileID: 9068790070079771075, guid: 8ed9a7c0ad917ff47820207b8da39411, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 8ed9a7c0ad917ff47820207b8da39411, type: 3}
 --- !u!1 &373419996
 GameObject:
   m_ObjectHideFlags: 0
@@ -11675,6 +11826,7 @@ Transform:
   m_Children:
   - {fileID: 1834066975}
   - {fileID: 1919641763}
+  - {fileID: 156357021}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
