@@ -31,13 +31,17 @@ namespace Scripts.Model.Data.Properties
             get => _value;
             set
             {
-                var isSame = _value.Equals(value);
+                var isSame = _value?.Equals(value) ?? false;
                 if (isSame) return;
                 var oldValue = _value;
-
                 _value = value;
-                OnChanged?.Invoke(_value, oldValue);
+                InvokeChangedEvent(_value, oldValue);
             }
+        }
+
+        protected void InvokeChangedEvent(TPropertyType newValue, TPropertyType oldValue)
+        {
+            OnChanged?.Invoke(newValue, oldValue);
         }
     }
 }

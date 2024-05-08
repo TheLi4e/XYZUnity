@@ -41,4 +41,16 @@ MonoBehaviour:
   - Key: button_restart
     Value: "reanudar\r"
   - Key: ingame_menu_title
-    Value: pausa
+    Value: "pausa\r"
+  - Key: perk_doublejump
+    Value: "Doble salto. Te permite hacer doble salto.\r"
+  - Key: perk_superthrow
+    Value: "Descarga de espadas. Te permite lanzar 3 espadas seguidas.\r"
+  - Key: button_use
+    Value: "usar\r"
+  - Key: button_buy
+    Value: "comprar\r"
+  - Key: price_label
+    Value: "precio:\r"
+  - Key: perks
+    Value: "\xA1Puedo ense\xF1arte nuevas ventajas!"

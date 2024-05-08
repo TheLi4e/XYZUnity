@@ -1,4 +1,5 @@
-﻿using Scripts.Model.Definitions.Repository;
+﻿using Scripts.Model.Definitions.Repositories;
+using Scripts.Model.Definitions.Repository;
 using UnityEngine;
 
 namespace Scripts.Model.Definitions
@@ -9,12 +10,13 @@ namespace Scripts.Model.Definitions
         [SerializeField] private InventoryItemsDef _items;
         [SerializeField] private ThrowableItemsDef _throwableitems;
         [SerializeField] private PotionsRepository _potions;
+        [SerializeField] private PerkRepository _perks;
         [SerializeField] private PlayerDef _player;
 
-
         public InventoryItemsDef Items => _items;
-        public ThrowableItemsDef ThrowableItems => _throwableitems;
+        public ThrowableItemsDef Throwable => _throwableitems;
         public PotionsRepository Potions => _potions;
+        public PerkRepository Perks => _perks;
         public PlayerDef Player => _player;
 
         private static DefsFacade _instance;
@@ -24,7 +26,5 @@ namespace Scripts.Model.Definitions
         {
             return _instance = Resources.Load<DefsFacade>("DefsFacade");
         }
-
-
     }
 }

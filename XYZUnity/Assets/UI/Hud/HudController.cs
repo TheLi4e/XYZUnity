@@ -3,27 +3,46 @@ using Scripts.Model;
 using UI.Widgets;
 using UnityEngine;
 using Scripts.Utils;
+using UI.Hud;
+using System;
+using Scripts.Utils.Disposables;
 
 namespace Scripts.UI.Hud
 {
     public class HudController : MonoBehaviour
     {
         [SerializeField] private ProgressBarWidget _healthBar;
+        [SerializeField] private CurrentPerkWidget _currentPerk;
 
         private GameSession _session;
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
 
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-            _session.Data.Hp.OnChanged += OnHealthChanged;
+            _trash.Retain(_session.Data.Hp.SubscribeAndInvoke(OnHealthChanged));
+            _trash.Retain(_session.PerksModel.Subscribe(OnPerkChanged));
 
-            OnHealthChanged(_session.Data.Hp.Value, 0);
+            OnPerkChanged();
+        }
+
+        private void OnPerkChanged()
+        {
+            var usedPerkId = _session.PerksModel.Used;
+            var hasPerk = !string.IsNullOrEmpty(usedPerkId);
+            if (hasPerk)
+            {
+                var perkDef = DefsFacade.I.Perks.Get(usedPerkId);
+                _currentPerk.Set(perkDef);
+            }
+
+            _currentPerk.gameObject.SetActive(hasPerk);
         }
 
         private void OnHealthChanged(int newValue, int oldValue)
         {
             var maxHealth = DefsFacade.I.Player.MaxHealth;
-            var value = (float) newValue / maxHealth;
+            var value = (float)newValue / maxHealth;
             _healthBar.SetProgress(value);
         }
 
@@ -34,7 +53,7 @@ namespace Scripts.UI.Hud
 
         private void OnDestroy()
         {
-            _session.Data.Hp.OnChanged -= OnHealthChanged;
+            _trash.Dispose();
         }
     }
 }

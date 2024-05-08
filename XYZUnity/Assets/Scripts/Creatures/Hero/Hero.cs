@@ -5,6 +5,9 @@ using Scripts.Utils;
 using UnityEditor.Animations;
 using UnityEngine;
 using Scripts.Model.Definitions;
+using System;
+using System.Collections;
+using System.IO.IsolatedStorage;
 
 namespace Scripts
 {
@@ -20,6 +23,12 @@ namespace Scripts
         [SerializeField] private AnimatorController _disarmed;
         [SerializeField] private SpawnComponent _throwSpawner;
 
+        [Header("Super Throw")]
+        [SerializeField] private Cooldown _superThrowCooldown;
+        [SerializeField] private int _superThrowParticles;
+        [SerializeField] private float _superThrowDelay;
+
+
         [Space]
         [Header("Particles")]
         [SerializeField] private ParticleSystem _hitParticles;
@@ -29,6 +38,8 @@ namespace Scripts
 
         private bool _allowDoubleJump;
         private bool _isOnWall;
+        private bool _superThrow;
+
         private HealthComponent _health;
 
         private GameSession _session;
@@ -128,8 +139,9 @@ namespace Scripts
 
         protected override float CalculateJumpVelocity(float yVelocity)
         {
-            if (!IsGrounded && _allowDoubleJump && !_isOnWall)
+            if (!IsGrounded && _allowDoubleJump && !_isOnWall && _session.PerksModel.IsDoubleJumpSupported)
             {
+                _session.PerksModel.Cooldown.Reset();
                 _allowDoubleJump = false;
                 DoJumpVfx();
                 return _jumpSpeed;
@@ -190,7 +202,6 @@ namespace Scripts
             {
                 this.transform.parent = collision.transform;
             }
-
         }
 
         private void OnCollisionExit2D(Collision2D collision)
@@ -214,10 +225,37 @@ namespace Scripts
 
         public void OnDoThrow()
         {
+            if (_superThrow && _session.PerksModel.IsSuperThrowSupported)
+            {
+                var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
+                var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
+
+                var numThrows = Mathf.Min(_superThrowParticles, SwordCount - 1);
+                _session.PerksModel.Cooldown.Reset();
+                StartCoroutine(DoSuperThrow(numThrows));
+            }
+            else
+            {
+                ThrowAndRemoveFromInventory();
+            }
+            _superThrow = false;
+        }
+
+        private IEnumerator DoSuperThrow(int numThrows)
+        {
+            for (int i = 0; i < numThrows; i++)
+            {
+                ThrowAndRemoveFromInventory();
+                yield return new WaitForSeconds(_superThrowDelay);
+            }
+        }
+
+        private void ThrowAndRemoveFromInventory()
+        {
             Sounds.Play("Range");
 
-            var throwableId = SelectedItemId;
-            var throwableDef = DefsFacade.I.ThrowableItems.Get(throwableId);
+            var throwableId = _session.QuickInventory.SelectedItem.Id;
+            var throwableDef = DefsFacade.I.Throwable.Get(throwableId);
             _throwSpawner.SetPrefab(throwableDef.Projectile);
             _throwSpawner.Spawn();
 
@@ -240,9 +278,10 @@ namespace Scripts
             return _session.QuickInventory.SelectedDef.HasTag(itemTag);
         }
 
-        private void PerformThrowing()
+        public void PerformThrowing()
         {
-            if (!_throwCooldown.IsReady || !CanThrow) return;
+            if (!_throwCooldown.IsReady || SwordCount <= 1) return;
+            if (_superThrowCooldown.IsReady) _superThrow = true;
 
             Animator.SetTrigger(ThrowKey);
             _throwCooldown.Reset();
@@ -256,13 +295,6 @@ namespace Scripts
 
         public void UsePotion()
         {
-            //var potions = _session.Data.Inventory.Count("HealthPotion");
-            //if (potions > 0)
-            //{
-            //    _health.ModifyHealth(5);
-            //    _session.Data.Inventory.Remove("HealthPotion", 1);
-
-            //}
             var potion = DefsFacade.I.Potions.Get(SelectedItemId);
             _session.Data.Hp.Value += (int)potion.Value;
             _session.Data.Inventory.Remove(potion.Id, 1);
@@ -271,6 +303,12 @@ namespace Scripts
         public void NextItem()
         {
             _session.QuickInventory.SetNextItem();
+        }
+
+        public void StartThrowing()
+        {
+            _superThrowCooldown.Reset();
+
         }
     }
 }
