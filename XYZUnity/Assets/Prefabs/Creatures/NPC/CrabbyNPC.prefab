@@ -205,7 +205,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9068790070079771133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -255,5 +255,5 @@ MonoBehaviour:
   _mode: 1
   _bound:
     _sentences: []
-  _external: {fileID: 11400000, guid: 0f7ad5418925a234b82d27dad7da3004, type: 2}
-  _key: 
+  _external: {fileID: 11400000, guid: d7a0936d509d6a84599a8468779716ee, type: 2}
+  _key: crabbyNPC_dialog_success
