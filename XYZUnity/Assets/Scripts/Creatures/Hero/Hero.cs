@@ -141,6 +141,7 @@ namespace Scripts
         {
             if (!IsGrounded && _allowDoubleJump && !_isOnWall && _session.PerksModel.IsDoubleJumpSupported)
             {
+                _session.PerksModel.Cooldown.Reset();
                 _allowDoubleJump = false;
                 DoJumpVfx();
                 return _jumpSpeed;
@@ -201,7 +202,6 @@ namespace Scripts
             {
                 this.transform.parent = collision.transform;
             }
-
         }
 
         private void OnCollisionExit2D(Collision2D collision)
@@ -229,7 +229,9 @@ namespace Scripts
             {
                 var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
                 var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
+
                 var numThrows = Mathf.Min(_superThrowParticles, SwordCount - 1);
+                _session.PerksModel.Cooldown.Reset();
                 StartCoroutine(DoSuperThrow(numThrows));
             }
             else

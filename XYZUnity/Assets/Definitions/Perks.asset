@@ -19,9 +19,11 @@ MonoBehaviour:
     _price:
       _itemId: Coin
       _count: 10
+    _cooldown: 2
   - _id: super-throw
     _icon: {fileID: 21300000, guid: 957b88c8a01d6ba449994db9f958863e, type: 3}
     _info: perk_superthrow
     _price:
       _itemId: GreenGem
       _count: 1
+    _cooldown: 5

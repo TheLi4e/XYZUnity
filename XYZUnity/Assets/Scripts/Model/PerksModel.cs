@@ -2,6 +2,7 @@
 using Scripts.Model.Definitions;
 using Scripts.Utils.Disposables;
 using Scripts.Model.Data.Properties;
+using Scripts.Utils;
 
 namespace Scripts.Model.Data
 {
@@ -9,6 +10,8 @@ namespace Scripts.Model.Data
     {
         private readonly PlayerData _data;
         public readonly StringProperty InterfaceSelection = new StringProperty();
+
+        public readonly Cooldown Cooldown = new Cooldown();
 
         private readonly CompositeDisposable _trash = new CompositeDisposable();
         public event Action OnChanged;
@@ -29,8 +32,8 @@ namespace Scripts.Model.Data
         }
 
         public string Used => _data.Perks.Used.Value;
-        public bool IsSuperThrowSupported => _data.Perks.Used.Value == "super-throw";
-        public bool IsDoubleJumpSupported => _data.Perks.Used.Value == "double-jump";
+        public bool IsSuperThrowSupported => _data.Perks.Used.Value == "super-throw" && Cooldown.IsReady;
+        public bool IsDoubleJumpSupported => _data.Perks.Used.Value == "double-jump" && Cooldown.IsReady;
 
         public void Unlock(string id)
         {
@@ -46,8 +49,10 @@ namespace Scripts.Model.Data
             }
         }
 
-        public void UsePerk(string selected)
+        public void SelectPerk(string selected)
         {
+            var perkDef = DefsFacade.I.Perks.Get(selected);
+            Cooldown.Value = perkDef.Cooldown;
             _data.Perks.Used.Value = selected;
         }
 
