@@ -49,4 +49,8 @@ MonoBehaviour:
   - Key: button_use
     Value: "use\r"
   - Key: button_buy
-    Value: buy
+    Value: "buy\r"
+  - Key: price_label
+    Value: "price:\r"
+  - Key: perks
+    Value: I can teach you new perks!
