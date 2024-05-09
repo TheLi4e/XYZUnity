@@ -1,4 +1,5 @@
 ﻿using Scripts.Model.Data;
+using Scripts.Model.Data.Properties;
 using Scripts.Model.Definitions;
 using Scripts.Utils.Disposables;
 using System;
@@ -11,9 +12,14 @@ namespace Scripts.Model
         private readonly PlayerData _data;
         public event Action OnChanged;
 
+        public ObservableProperty<StatId> InterfaceSelectedStat = new ObservableProperty<StatId>();
+
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
+
         public StatsModel(PlayerData data)
         {
             _data = data;
+            _trash.Retain(InterfaceSelectedStat.Subscribe((x, y) => OnChanged?.Invoke()));
         }
 
         public IDisposable Subscribe(Action call)
@@ -25,7 +31,7 @@ namespace Scripts.Model
         public void LevelUp(StatId id)
         {
             var def = DefsFacade.I.Player.GetStat(id);
-            var nextLevel = GetLevel(id) + 1;
+            var nextLevel = GetCurrentLevel(id) + 1;
             if (def.Levels.Length >= nextLevel) return;
 
             var price = def.Levels[nextLevel].Price;
@@ -38,18 +44,24 @@ namespace Scripts.Model
 
         }
 
-        public float GetValue(StatId id)
+        public float GetValue(StatId id, int level = -1)
         {
-            var def = DefsFacade.I.Player.GetStat(id);
-            var level = def.Levels[GetLevel(id)];
-            return level.Value;
+            return GetLevelDef(id, level).Value;
         }
 
-        public int GetLevel(StatId id) => _data.Levels.GetLevel(id);
+        public StatLevelDef GetLevelDef(StatId id, int level = -1)
+        {
+            if (level == -1) level = GetCurrentLevel(id);
+
+            var def = DefsFacade.I.Player.GetStat(id);
+            return def.Levels[GetCurrentLevel(id)];
+        }
+
+        public int GetCurrentLevel(StatId id) => _data.Levels.GetLevel(id);
 
         public void Dispose()
         {
-
+            _trash.Dispose();
         }
     }
 }

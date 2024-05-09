@@ -2315,11 +2315,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerStatsWindow
       objectReference: {fileID: 0}
-    - target: {fileID: 6591362415890252993, guid: b019aaa875f955446834d5063d5fadec,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6591362415890252998, guid: b019aaa875f955446834d5063d5fadec,
         type: 3}
       propertyPath: m_Pivot.x
