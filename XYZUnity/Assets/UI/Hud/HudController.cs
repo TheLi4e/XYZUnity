@@ -55,5 +55,10 @@ namespace Scripts.UI.Hud
         {
             _trash.Dispose();
         }
+
+        public void OnDebug()
+        {
+            WindowUtils.CreateWindow("UI/PlayerStatsWindow");
+        }
     }
 }
