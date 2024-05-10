@@ -5,9 +5,7 @@ using Scripts.Utils;
 using UnityEditor.Animations;
 using UnityEngine;
 using Scripts.Model.Definitions;
-using System;
 using System.Collections;
-using System.IO.IsolatedStorage;
 
 namespace Scripts
 {
@@ -39,6 +37,8 @@ namespace Scripts
         private bool _allowDoubleJump;
         private bool _isOnWall;
         private bool _superThrow;
+        private Cooldown _speedUpCooldown = new Cooldown();
+        private float _additionalSpeed;
 
         private HealthComponent _health;
 
@@ -74,17 +74,28 @@ namespace Scripts
             _session = FindObjectOfType<GameSession>();
             _health = GetComponent<HealthComponent>();
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
-
+            _session.StatsModel.OnUpgraded += OnHeroUpgraded;
+            ;
             _health.SetHealth(_session.Data.Hp.Value);
             UpdateHeroWeapon();
+        }
+
+        private void OnHeroUpgraded(StatId statId)
+        {
+            switch (statId)
+            {
+                case StatId.Hp:
+                    var hp = (int)_session.StatsModel.GetValue(statId);
+                    _session.Data.Hp.Value = hp;
+                    _health.SetHealth(hp);
+                    break;
+            }
         }
 
         private void OnInventoryChanged(string id, int value)
         {
             if (id == SwordId)
-            {
                 UpdateHeroWeapon();
-            }
         }
 
         public void OnHealthChanged(int currentHealth)
@@ -230,7 +241,7 @@ namespace Scripts
                 var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
                 var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
 
-                var numThrows = Mathf.Min(_superThrowParticles, SwordCount - 1);
+                var numThrows = Mathf.Min(_superThrowParticles, possibleCount);
                 _session.PerksModel.Cooldown.Reset();
                 StartCoroutine(DoSuperThrow(numThrows));
             }
@@ -257,9 +268,27 @@ namespace Scripts
             var throwableId = _session.QuickInventory.SelectedItem.Id;
             var throwableDef = DefsFacade.I.Throwable.Get(throwableId);
             _throwSpawner.SetPrefab(throwableDef.Projectile);
-            _throwSpawner.Spawn();
+            var instance = _throwSpawner.SpawnInstance();
+            ApplyRangeDamageStat(instance);
 
             _session.Data.Inventory.Remove(throwableId, 1);
+        }
+
+        private void ApplyRangeDamageStat(GameObject projectile)
+        {
+            var hpModify = projectile.GetComponent<ModifyHealthComponent>();
+            var damagevalue = (int)_session.StatsModel.GetValue(StatId.RangeDamage);
+            damagevalue = ModifyDamageByCrit(damagevalue);
+            hpModify.SetDelta(-damagevalue);
+        }
+
+        private int ModifyDamageByCrit(int damage)
+        {
+            var critChance = _session.StatsModel.GetValue(StatId.CriticalDamage);
+            if (Random.value * 100 <= critChance)
+                return damage * 2;
+
+            return damage;
         }
 
         public void UseInventory()
@@ -267,10 +296,8 @@ namespace Scripts
             if (IsSelectedItem(ItemTag.Throwable))
                 PerformThrowing();
 
-
             else if (IsSelectedItem(ItemTag.Potion))
                 UsePotion();
-
         }
 
         private bool IsSelectedItem(ItemTag itemTag)
@@ -280,12 +307,12 @@ namespace Scripts
 
         public void PerformThrowing()
         {
-            if (!_throwCooldown.IsReady || SwordCount <= 1) return;
+            if (!_throwCooldown.IsReady || !CanThrow) return;
+
             if (_superThrowCooldown.IsReady) _superThrow = true;
 
             Animator.SetTrigger(ThrowKey);
             _throwCooldown.Reset();
-
         }
 
         public void AddSword()
@@ -296,8 +323,27 @@ namespace Scripts
         public void UsePotion()
         {
             var potion = DefsFacade.I.Potions.Get(SelectedItemId);
-            _session.Data.Hp.Value += (int)potion.Value;
+            switch (potion.Effect)
+            {
+                case Model.Definitions.Repository.Effect.AddHp:
+                    _session.Data.Hp.Value += (int)potion.Value;
+                    break;
+                case Model.Definitions.Repository.Effect.SpeedUp:
+                    _speedUpCooldown.Value = _speedUpCooldown.RemainingTime + potion.Time;
+                    _additionalSpeed = Mathf.Max(potion.Value, _additionalSpeed);
+                    _speedUpCooldown.Reset();
+                    break;
+            }
+
             _session.Data.Inventory.Remove(potion.Id, 1);
+        }
+
+        protected override float CalculateSpeed()
+        {
+            if (_speedUpCooldown.IsReady)
+                _additionalSpeed = 0f;
+            var defaultSpeed = _session.StatsModel.GetValue(StatId.Speed);
+            return defaultSpeed + _additionalSpeed;
         }
 
         public void NextItem()
@@ -308,7 +354,6 @@ namespace Scripts
         public void StartThrowing()
         {
             _superThrowCooldown.Reset();
-
         }
     }
 }

@@ -35,3 +35,6 @@ MonoBehaviour:
   - _id: GreenGem
     _icon: {fileID: 21300000, guid: f263b9eb718ced64993f3148a2456765, type: 3}
     _tags: 00000000
+  - _id: SpeedUpPotion
+    _icon: {fileID: 21300000, guid: 7047619f8062da0408d9b7bdfa8738e2, type: 3}
+    _tags: 030000000100000000000000
