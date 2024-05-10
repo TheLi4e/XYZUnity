@@ -61,4 +61,6 @@ MonoBehaviour:
   - Key: Range Damage
     Value: "Da\xF1o de alcance\r"
   - Key: level-up
-    Value: Mejora
+    Value: "Mejora\r"
+  - Key: Critical Damage
+    Value: "Da\xF1o cr\xEDtico"

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scripts.Utils;
+using System;
 using UnityEngine;
 
 namespace Scripts.Components
@@ -13,8 +14,17 @@ namespace Scripts.Components
   
         public void Spawn()
         {
-            var instaniate = Instantiate(_prefab, _target.position, Quaternion.identity);
-            instaniate.transform.localScale = _target.lossyScale;
+            SpawnInstance();
+        }
+
+        public GameObject SpawnInstance()
+        {
+            var instance = SpawnUtils.Spawn(_prefab, _target.position);
+            var scale = _target.lossyScale;
+
+            instance.transform.localScale = scale;
+            instance.SetActive(true);
+            return instance;
         }
 
         public void SetPrefab(GameObject prefab)

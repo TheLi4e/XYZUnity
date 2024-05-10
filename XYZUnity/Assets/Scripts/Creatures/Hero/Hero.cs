@@ -5,9 +5,7 @@ using Scripts.Utils;
 using UnityEditor.Animations;
 using UnityEngine;
 using Scripts.Model.Definitions;
-using System;
 using System.Collections;
-using System.IO.IsolatedStorage;
 
 namespace Scripts
 {
@@ -76,15 +74,15 @@ namespace Scripts
             _session = FindObjectOfType<GameSession>();
             _health = GetComponent<HealthComponent>();
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
-            _session.StatsModel.OnUpgraded += OnHEroUpgraded;
-;
+            _session.StatsModel.OnUpgraded += OnHeroUpgraded;
+            ;
             _health.SetHealth(_session.Data.Hp.Value);
             UpdateHeroWeapon();
         }
 
-        private void OnHEroUpgraded(StatId statId)
+        private void OnHeroUpgraded(StatId statId)
         {
-            switch(statId)
+            switch (statId)
             {
                 case StatId.Hp:
                     var hp = (int)_session.StatsModel.GetValue(statId);
@@ -270,9 +268,27 @@ namespace Scripts
             var throwableId = _session.QuickInventory.SelectedItem.Id;
             var throwableDef = DefsFacade.I.Throwable.Get(throwableId);
             _throwSpawner.SetPrefab(throwableDef.Projectile);
-            _throwSpawner.Spawn();
+            var instance = _throwSpawner.SpawnInstance();
+            ApplyRangeDamageStat(instance);
 
             _session.Data.Inventory.Remove(throwableId, 1);
+        }
+
+        private void ApplyRangeDamageStat(GameObject projectile)
+        {
+            var hpModify = projectile.GetComponent<ModifyHealthComponent>();
+            var damagevalue = (int)_session.StatsModel.GetValue(StatId.RangeDamage);
+            damagevalue = ModifyDamageByCrit(damagevalue);
+            hpModify.SetDelta(-damagevalue);
+        }
+
+        private int ModifyDamageByCrit(int damage)
+        {
+            var critChance = _session.StatsModel.GetValue(StatId.CriticalDamage);
+            if (Random.value * 100 <= critChance)
+                return damage * 2;
+
+            return damage;
         }
 
         public void UseInventory()
@@ -291,12 +307,12 @@ namespace Scripts
 
         public void PerformThrowing()
         {
-            if (!_throwCooldown.IsReady || SwordCount <= 1) return;
+            if (!_throwCooldown.IsReady || !CanThrow) return;
+
             if (_superThrowCooldown.IsReady) _superThrow = true;
 
             Animator.SetTrigger(ThrowKey);
             _throwCooldown.Reset();
-
         }
 
         public void AddSword()
@@ -324,10 +340,10 @@ namespace Scripts
 
         protected override float CalculateSpeed()
         {
-            if ( _speedUpCooldown.IsReady)
+            if (_speedUpCooldown.IsReady)
                 _additionalSpeed = 0f;
             var defaultSpeed = _session.StatsModel.GetValue(StatId.Speed);
-            return  defaultSpeed + _additionalSpeed;
+            return defaultSpeed + _additionalSpeed;
         }
 
         public void NextItem()
@@ -338,7 +354,6 @@ namespace Scripts
         public void StartThrowing()
         {
             _superThrowCooldown.Reset();
-
         }
     }
 }

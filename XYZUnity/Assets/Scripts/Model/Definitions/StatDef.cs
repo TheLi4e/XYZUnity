@@ -34,6 +34,7 @@ namespace Scripts.Model.Definitions
     {
         Hp,
         Speed,
-        RangeDamage
+        RangeDamage,
+        CriticalDamage
     }
 }
