@@ -10505,13 +10505,15 @@ MonoBehaviour:
     _inventory:
       _inventory:
       - Id: Sword
-        Value: 10
+        Value: 0
     Hp:
       _value: 5
     Perks:
       _used:
         _value: 
       _unlocked: []
+    Levels:
+      _progress: []
   _defaultCheckPoint: level1-checkpoint1
 --- !u!4 &920979642
 Transform:
@@ -11750,7 +11752,7 @@ Transform:
   m_Children:
   - {fileID: 1834066975}
   - {fileID: 1919641763}
-  - {fileID: 9068790070260238975}
+  - {fileID: 1476587689}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12496,6 +12498,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1855747141220338348, guid: 0e28de812e3fc544281ed4a5cb22375f,
     type: 3}
   m_PrefabInstance: {fileID: 1855747141156362632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1476587689 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8737211794327449937, guid: a18a5f23ddee8d247a948dce4da2329d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7979866377342488287}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1501555200 stripped
 GameObject:
@@ -14205,6 +14213,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1c1960cab3409847a6b548e06b4be73, type: 3}
+--- !u!1 &2032074211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9068790070079771133, guid: 8ed9a7c0ad917ff47820207b8da39411,
+    type: 3}
+  m_PrefabInstance: {fileID: 9068790070921312611}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2066860221
 GameObject:
   m_ObjectHideFlags: 0
@@ -16087,6 +16101,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrabbyNPCPerk
       objectReference: {fileID: 0}
+    - target: {fileID: 6694545862262493859, guid: a18a5f23ddee8d247a948dce4da2329d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8737211794327449937, guid: a18a5f23ddee8d247a948dce4da2329d,
         type: 3}
       propertyPath: m_RootOrder
@@ -16213,12 +16232,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7dd763994e193f46a98438d8ef26fcc, type: 3}
---- !u!4 &9068790070260238975 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8737211794327449937, guid: a18a5f23ddee8d247a948dce4da2329d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7979866377342488287}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9068790070921312611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16280,6 +16293,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771132, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: _onSuccess.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771132, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: _onSuccess.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068790070079771132, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: _onSuccess.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 2032074211}
+    - target: {fileID: 9068790070079771132, guid: 8ed9a7c0ad917ff47820207b8da39411,
+        type: 3}
+      propertyPath: _onSuccess.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9068790070079771133, guid: 8ed9a7c0ad917ff47820207b8da39411,
         type: 3}

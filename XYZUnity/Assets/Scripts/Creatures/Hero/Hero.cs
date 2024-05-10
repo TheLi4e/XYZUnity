@@ -39,6 +39,8 @@ namespace Scripts
         private bool _allowDoubleJump;
         private bool _isOnWall;
         private bool _superThrow;
+        private Cooldown _speedUpCooldown = new Cooldown();
+        private float _additionalSpeed;
 
         private HealthComponent _health;
 
@@ -74,17 +76,28 @@ namespace Scripts
             _session = FindObjectOfType<GameSession>();
             _health = GetComponent<HealthComponent>();
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
-
+            _session.StatsModel.OnUpgraded += OnHEroUpgraded;
+;
             _health.SetHealth(_session.Data.Hp.Value);
             UpdateHeroWeapon();
+        }
+
+        private void OnHEroUpgraded(StatId statId)
+        {
+            switch(statId)
+            {
+                case StatId.Hp:
+                    var hp = (int)_session.StatsModel.GetValue(statId);
+                    _session.Data.Hp.Value = hp;
+                    _health.SetHealth(hp);
+                    break;
+            }
         }
 
         private void OnInventoryChanged(string id, int value)
         {
             if (id == SwordId)
-            {
                 UpdateHeroWeapon();
-            }
         }
 
         public void OnHealthChanged(int currentHealth)
@@ -230,7 +243,7 @@ namespace Scripts
                 var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
                 var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
 
-                var numThrows = Mathf.Min(_superThrowParticles, SwordCount - 1);
+                var numThrows = Mathf.Min(_superThrowParticles, possibleCount);
                 _session.PerksModel.Cooldown.Reset();
                 StartCoroutine(DoSuperThrow(numThrows));
             }
@@ -267,10 +280,8 @@ namespace Scripts
             if (IsSelectedItem(ItemTag.Throwable))
                 PerformThrowing();
 
-
             else if (IsSelectedItem(ItemTag.Potion))
                 UsePotion();
-
         }
 
         private bool IsSelectedItem(ItemTag itemTag)
@@ -296,8 +307,27 @@ namespace Scripts
         public void UsePotion()
         {
             var potion = DefsFacade.I.Potions.Get(SelectedItemId);
-            _session.Data.Hp.Value += (int)potion.Value;
+            switch (potion.Effect)
+            {
+                case Model.Definitions.Repository.Effect.AddHp:
+                    _session.Data.Hp.Value += (int)potion.Value;
+                    break;
+                case Model.Definitions.Repository.Effect.SpeedUp:
+                    _speedUpCooldown.Value = _speedUpCooldown.RemainingTime + potion.Time;
+                    _additionalSpeed = Mathf.Max(potion.Value, _additionalSpeed);
+                    _speedUpCooldown.Reset();
+                    break;
+            }
+
             _session.Data.Inventory.Remove(potion.Id, 1);
+        }
+
+        protected override float CalculateSpeed()
+        {
+            if ( _speedUpCooldown.IsReady)
+                _additionalSpeed = 0f;
+            var defaultSpeed = _session.StatsModel.GetValue(StatId.Speed);
+            return  defaultSpeed + _additionalSpeed;
         }
 
         public void NextItem()

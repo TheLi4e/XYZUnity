@@ -11,6 +11,7 @@ namespace Scripts.Model
     {
         private readonly PlayerData _data;
         public event Action OnChanged;
+        public event Action<StatId> OnUpgraded;
 
         public ObservableProperty<StatId> InterfaceSelectedStat = new ObservableProperty<StatId>();
 
@@ -32,7 +33,7 @@ namespace Scripts.Model
         {
             var def = DefsFacade.I.Player.GetStat(id);
             var nextLevel = GetCurrentLevel(id) + 1;
-            if (def.Levels.Length >= nextLevel) return;
+            if (def.Levels.Length <= nextLevel) return;
 
             var price = def.Levels[nextLevel].Price;
             if (!_data.Inventory.IsEnough(price)) return;
@@ -40,8 +41,8 @@ namespace Scripts.Model
             _data.Inventory.Remove(price.ItemId, price.Count);
             _data.Levels.LevelUp(id);
 
+            OnUpgraded?.Invoke(id); 
             OnChanged?.Invoke();
-
         }
 
         public float GetValue(StatId id, int level = -1)
@@ -54,7 +55,10 @@ namespace Scripts.Model
             if (level == -1) level = GetCurrentLevel(id);
 
             var def = DefsFacade.I.Player.GetStat(id);
-            return def.Levels[GetCurrentLevel(id)];
+            if (def.Levels.Length > level)
+                return def.Levels[level];
+
+            return default;
         }
 
         public int GetCurrentLevel(StatId id) => _data.Levels.GetLevel(id);

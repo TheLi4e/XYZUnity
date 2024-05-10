@@ -51,7 +51,7 @@ namespace Scripts
 
         private void FixedUpdate()
         {
-            var xVelocity = Direction.x * _speed;
+            var xVelocity = CalculateXVelocity();
             var yVelocity = CalculateYVelocity();
             Rigidbody.velocity = new Vector2(xVelocity, yVelocity);
 
@@ -60,6 +60,16 @@ namespace Scripts
             Animator.SetBool(IsRunningKey, Direction.x != 0);
 
             UpdateSpriteDirection(Direction);
+        }
+
+        protected virtual float CalculateXVelocity()
+        {
+            return Direction.x * CalculateSpeed();
+        }
+
+        protected virtual float CalculateSpeed()
+        {
+            return _speed;
         }
 
         protected virtual float CalculateYVelocity()
@@ -87,14 +97,11 @@ namespace Scripts
                 yVelocity *= 0.5f;
             }
 
-
             return yVelocity;
         }
 
         protected virtual float CalculateJumpVelocity(float yVelocity)
         {
-
-
             if (IsGrounded)
             {
                 yVelocity = _jumpSpeed;
@@ -128,7 +135,6 @@ namespace Scripts
             _isJumping = false;
             Animator.SetTrigger(Hit);
             Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, _damageVelocity);
-
         }
 
         public virtual void Attack()
@@ -136,7 +142,6 @@ namespace Scripts
             Animator.SetTrigger(AttackKey); 
             if(Sounds!=null)
                 Sounds.Play("Melee");
-
         }
 
         private void OnDoAttack()

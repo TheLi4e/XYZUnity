@@ -57,7 +57,7 @@ MonoBehaviour:
     _levels:
     - _value: 1
       _price:
-        _itemId: 
+        _itemId: Coin
         _count: 0
     - _value: 2
       _price:

@@ -1,5 +1,6 @@
 ﻿using Scripts.Components.LevelManagement;
 using Scripts.Model.Data;
+using Scripts.Model.Definitions;
 using Scripts.Utils.Disposables;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,6 +75,8 @@ namespace Scripts.Model
 
             StatsModel = new StatsModel(_data);
             _trash.Retain(StatsModel);
+
+            _data.Hp.Value = (int) StatsModel.GetValue(StatId.Hp);
         }
 
         private void LoadHud()

@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 namespace UI.PlayerStatsWindow
 {
-    public class PlayerStatsWindow :AnimatedWindow
+    public class PlayerStatsWindow : AnimatedWindow
     {
         [SerializeField] private Transform _statsContainer;
         [SerializeField] private StatWidget _prefab;
@@ -50,8 +50,12 @@ namespace UI.PlayerStatsWindow
             _dataGroup.SetData(stats);
 
             var selected = _session.StatsModel.InterfaceSelectedStat.Value;
-            var def = _session.StatsModel.GetLevelDef(selected);
+            var nextLevel = _session.StatsModel.GetCurrentLevel(selected) + 1;
+            var def = _session.StatsModel.GetLevelDef(selected, nextLevel);
             _price.SetData(def.Price);
+
+            _price.gameObject.SetActive(def.Price.Count != 0);
+            _upgradeButton.gameObject.SetActive(def.Price.Count != 0);
         }
 
         private void OnDestroy()

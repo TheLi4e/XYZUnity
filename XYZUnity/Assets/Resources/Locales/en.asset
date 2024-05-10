@@ -53,4 +53,12 @@ MonoBehaviour:
   - Key: price_label
     Value: "price:\r"
   - Key: perks
-    Value: I can teach you new perks!
+    Value: "I can teach you new perks!\r"
+  - Key: Health
+    Value: "Health \r"
+  - Key: Speed
+    Value: "Speed\r"
+  - Key: Range Damage
+    Value: "Range Damage\r"
+  - Key: level-up
+    Value: Upgrade
