@@ -32,7 +32,7 @@ namespace Scripts.Model.Data
         public QuickInventoryModel(PlayerData data)
         {
             _data = data;
-            Inventory = _data.Inventory.GetAll(ItemTag.Usable);
+            Inventory = _data.Inventory.GetAll(ItemTag.QuickUse);
             _data.Inventory.OnChanged += OnChangedInventory;
         }
 

@@ -19,22 +19,22 @@ MonoBehaviour:
     _tags: 00000000
   - _id: Sword
     _icon: {fileID: 21300000, guid: b49671a9819f54945a7618134a264c95, type: 3}
-    _tags: 000000000100000002000000
+    _tags: 00000000010000000200000004000000
   - _id: Key
     _icon: {fileID: 21300000, guid: e415f63abd04cbc47a0020d7c80bbfcb, type: 3}
     _tags: 00000000
   - _id: PearlProjectile
     _icon: {fileID: 21300000, guid: 7abfee94eaf8c3e47a9bcd8e47fa44ff, type: 3}
-    _tags: 000000000100000002000000
+    _tags: 00000000010000000200000004000000
   - _id: SmallHealthPotion
     _icon: {fileID: 21300000, guid: aea765135f79ae944be0da51ccbcfd68, type: 3}
-    _tags: 0100000003000000
+    _tags: 010000000300000004000000
   - _id: LargeHealthPotion
     _icon: {fileID: 21300000, guid: 2ec0471f020cf274eb9f965449cef895, type: 3}
-    _tags: 0100000003000000
+    _tags: 010000000300000004000000
   - _id: GreenGem
     _icon: {fileID: 21300000, guid: f263b9eb718ced64993f3148a2456765, type: 3}
     _tags: 00000000
   - _id: SpeedUpPotion
     _icon: {fileID: 21300000, guid: 7047619f8062da0408d9b7bdfa8738e2, type: 3}
-    _tags: 030000000100000000000000
+    _tags: 03000000010000000000000004000000
