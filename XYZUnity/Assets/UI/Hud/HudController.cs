@@ -56,9 +56,13 @@ namespace Scripts.UI.Hud
             _trash.Dispose();
         }
 
-        public void OnDebug()
+        public void OnPlayerStats()
         {
             WindowUtils.CreateWindow("UI/PlayerStatsWindow");
+        }
+        public void OnInventory()
+        {
+            WindowUtils.CreateWindow("UI/Inventory");
         }
     }
 }

@@ -32,7 +32,6 @@ namespace UI.Hud.QuickInventory
             var def = DefsFacade.I.Items.Get(item.Id);
             _icon.sprite = def.Icon;
             _value.text = def.HasTag(ItemTag.Stackable) ? item.Value.ToString() : string.Empty;
-
         }
 
         private void OnIndexChanged(int newValue, int _)

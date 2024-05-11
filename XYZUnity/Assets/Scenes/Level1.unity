@@ -16180,6 +16180,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7979866377228181312, guid: a18a5f23ddee8d247a948dce4da2329d,
+        type: 3}
+      propertyPath: _data.DialogText
+      value: perks
+      objectReference: {fileID: 0}
     - target: {fileID: 8737211794327449937, guid: a18a5f23ddee8d247a948dce4da2329d,
         type: 3}
       propertyPath: m_RootOrder

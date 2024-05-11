@@ -3,6 +3,7 @@ using System;
 using UnityEngine.Events;
 using UnityEngine;
 using UnityEngine.UI;
+using Scripts.Model.Definitions.Localization;
 
 namespace UI.Hud.Dialogs
 {
@@ -29,7 +30,7 @@ namespace UI.Hud.Dialogs
         public void Show(OptionDialogData data)
         {
             _content.SetActive(true);
-            _contentText.text = data.DialogText;
+            _contentText.text = LocalizationManager.I.Localize(data.DialogText);
 
             _dataGroup.SetData(data.Options);
         }

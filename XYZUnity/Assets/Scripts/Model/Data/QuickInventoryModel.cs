@@ -29,7 +29,6 @@ namespace Scripts.Model.Data
 
         public ItemDef SelectedDef => DefsFacade.I.Items.Get(SelectedItem?.Id);
 
-
         public QuickInventoryModel(PlayerData data)
         {
             _data = data;
@@ -62,9 +61,6 @@ namespace Scripts.Model.Data
         public void Dispose()
         {
             _data.Inventory.OnChanged -= OnChangedInventory;
-
         }
-
-
     }
 }
