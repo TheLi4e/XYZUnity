@@ -476,9 +476,9 @@ MonoBehaviour:
     m_ActionName: Hero/Heal[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6398623812242217906}
-        m_MethodName: OnNextItem
-        m_Mode: 0
+      - m_Target: {fileID: 2086277944}
+        m_MethodName: QuickInvNextItem
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -489,6 +489,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 72540c92-e34a-4c8b-b8bb-83cc7168fc36
     m_ActionName: Hero/NextItem[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2086277944}
+        m_MethodName: InvNextItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 573dad94-4bfb-43b1-adb4-fce8ef976dc3
+    m_ActionName: Hero/InvNextItem[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero

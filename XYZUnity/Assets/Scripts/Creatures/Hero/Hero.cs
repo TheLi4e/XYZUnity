@@ -346,9 +346,13 @@ namespace Scripts
             return defaultSpeed + _additionalSpeed;
         }
 
-        public void NextItem()
+        public void QuickInvNextItem()
         {
             _session.QuickInventory.SetNextItem();
+        }
+        public void InvNextItem()
+        {
+            _session.Inventory.SetNextItem();
         }
 
         public void StartThrowing()

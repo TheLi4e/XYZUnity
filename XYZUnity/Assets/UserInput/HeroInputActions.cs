@@ -59,9 +59,17 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""NextItem"",
+                    ""name"": ""QuickNextItem"",
                     ""type"": ""Button"",
                     ""id"": ""72540c92-e34a-4c8b-b8bb-83cc7168fc36"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""InvNextItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""573dad94-4bfb-43b1-adb4-fce8ef976dc3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -174,7 +182,18 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NextItem"",
+                    ""action"": ""QuickNextItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16d53693-35e7-46fb-a521-1b28a84b1b3d"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InvNextItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -190,7 +209,8 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
         m_Hero_Attack = m_Hero.FindAction("Attack", throwIfNotFound: true);
         m_Hero_Throw = m_Hero.FindAction("Throw", throwIfNotFound: true);
         m_Hero_Heal = m_Hero.FindAction("Heal", throwIfNotFound: true);
-        m_Hero_NextItem = m_Hero.FindAction("NextItem", throwIfNotFound: true);
+        m_Hero_QuickNextItem = m_Hero.FindAction("QuickNextItem", throwIfNotFound: true);
+        m_Hero_InvNextItem = m_Hero.FindAction("InvNextItem", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -245,7 +265,8 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Hero_Attack;
     private readonly InputAction m_Hero_Throw;
     private readonly InputAction m_Hero_Heal;
-    private readonly InputAction m_Hero_NextItem;
+    private readonly InputAction m_Hero_QuickNextItem;
+    private readonly InputAction m_Hero_InvNextItem;
     public struct HeroActions
     {
         private @HeroInputActions m_Wrapper;
@@ -255,7 +276,8 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
         public InputAction @Attack => m_Wrapper.m_Hero_Attack;
         public InputAction @Throw => m_Wrapper.m_Hero_Throw;
         public InputAction @Heal => m_Wrapper.m_Hero_Heal;
-        public InputAction @NextItem => m_Wrapper.m_Hero_NextItem;
+        public InputAction @QuickNextItem => m_Wrapper.m_Hero_QuickNextItem;
+        public InputAction @InvNextItem => m_Wrapper.m_Hero_InvNextItem;
         public InputActionMap Get() { return m_Wrapper.m_Hero; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -280,9 +302,12 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                 @Heal.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnHeal;
                 @Heal.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnHeal;
                 @Heal.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnHeal;
-                @NextItem.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnNextItem;
-                @NextItem.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnNextItem;
-                @NextItem.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnNextItem;
+                @QuickNextItem.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnQuickNextItem;
+                @QuickNextItem.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnQuickNextItem;
+                @QuickNextItem.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnQuickNextItem;
+                @InvNextItem.started -= m_Wrapper.m_HeroActionsCallbackInterface.OnInvNextItem;
+                @InvNextItem.performed -= m_Wrapper.m_HeroActionsCallbackInterface.OnInvNextItem;
+                @InvNextItem.canceled -= m_Wrapper.m_HeroActionsCallbackInterface.OnInvNextItem;
             }
             m_Wrapper.m_HeroActionsCallbackInterface = instance;
             if (instance != null)
@@ -302,9 +327,12 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
                 @Heal.started += instance.OnHeal;
                 @Heal.performed += instance.OnHeal;
                 @Heal.canceled += instance.OnHeal;
-                @NextItem.started += instance.OnNextItem;
-                @NextItem.performed += instance.OnNextItem;
-                @NextItem.canceled += instance.OnNextItem;
+                @QuickNextItem.started += instance.OnQuickNextItem;
+                @QuickNextItem.performed += instance.OnQuickNextItem;
+                @QuickNextItem.canceled += instance.OnQuickNextItem;
+                @InvNextItem.started += instance.OnInvNextItem;
+                @InvNextItem.performed += instance.OnInvNextItem;
+                @InvNextItem.canceled += instance.OnInvNextItem;
             }
         }
     }
@@ -316,6 +344,7 @@ public class @HeroInputActions : IInputActionCollection, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
-        void OnNextItem(InputAction.CallbackContext context);
+        void OnQuickNextItem(InputAction.CallbackContext context);
+        void OnInvNextItem(InputAction.CallbackContext context);
     }
 }

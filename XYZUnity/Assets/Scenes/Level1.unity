@@ -10506,6 +10506,18 @@ MonoBehaviour:
       _inventory:
       - Id: Sword
         Value: 20
+      - Id: Coin
+        Value: 20
+      - Id: Key
+        Value: 2
+      - Id: PearlProjectile
+        Value: 20
+      - Id: SmallHealthPotion
+        Value: 1
+      - Id: LargeHealthPotion
+        Value: 2
+      - Id: GreenGem
+        Value: 20
     Hp:
       _value: 5
     Perks:

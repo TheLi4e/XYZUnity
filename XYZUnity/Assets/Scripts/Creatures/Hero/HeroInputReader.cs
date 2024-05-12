@@ -45,10 +45,16 @@ namespace Scripts
                 _hero.UsePotion();
         }
 
-        public void OnNextItem(InputAction.CallbackContext context)
+        public void OnNextQuickItem(InputAction.CallbackContext context)
         {
             if (context.performed)
-                _hero.NextItem();
+                _hero.QuickInvNextItem();
+        }
+
+        public void OnNextInvItem(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                _hero.InvNextItem();
         }
     }
 }

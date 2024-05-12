@@ -33,10 +33,10 @@ namespace Scripts.Model.Data
         {
             _data = data;
             Inventory = _data.Inventory.GetAll(ItemTag.QuickUse);
-            _data.Inventory.OnChanged += OnChangedInventory;
+            _data.Inventory.OnChanged += OnChangedQuickInventory;
         }
 
-        private void OnChangedInventory(string id, int value)
+        private void OnChangedQuickInventory(string id, int value)
         {
             var indexFound = Array.FindIndex(Inventory, x => x.Id == id);
             if (indexFound != -1)
@@ -60,7 +60,7 @@ namespace Scripts.Model.Data
 
         public void Dispose()
         {
-            _data.Inventory.OnChanged -= OnChangedInventory;
+            _data.Inventory.OnChanged -= OnChangedQuickInventory;
         }
     }
 }

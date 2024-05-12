@@ -13,7 +13,6 @@ namespace UI.Hud.QuickInventory
         [SerializeField] private InventoryItemWidget _prefab;
 
         private readonly CompositeDisposable _trash = new CompositeDisposable();
-        private List<InventoryItemWidget> _createdItems = new List<InventoryItemWidget>();
 
         private GameSession _session;
 

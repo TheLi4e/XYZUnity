@@ -6,6 +6,7 @@
         Usable,
         Throwable,
         Potion,
-        QuickUse
+        QuickUse,
+        Inventory
     }
 }

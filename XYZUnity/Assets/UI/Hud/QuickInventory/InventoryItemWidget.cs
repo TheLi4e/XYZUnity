@@ -21,8 +21,8 @@ namespace UI.Hud.QuickInventory
         private void Start()
         {
             var session = FindObjectOfType<GameSession>();
-            var index = session.QuickInventory.SelectedIndex;
-            _trash.Retain(index.SubscribeAndInvoke(OnIndexChanged));
+            var quickInventoryIndex = session.QuickInventory.SelectedIndex;
+            _trash.Retain(quickInventoryIndex.SubscribeAndInvoke(OnIndexChanged));
         }
 
         public void SetData(InventoryItemData item, int index)
