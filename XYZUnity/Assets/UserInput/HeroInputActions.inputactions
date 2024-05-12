@@ -46,9 +46,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "NextItem",
+                    "name": "QuickNextItem",
                     "type": "Button",
                     "id": "72540c92-e34a-4c8b-b8bb-83cc7168fc36",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "InvNextItem",
+                    "type": "Button",
+                    "id": "573dad94-4bfb-43b1-adb4-fce8ef976dc3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeapPerk",
+                    "type": "Button",
+                    "id": "25497250-b5af-4de5-8a4e-9cb88e24349f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -161,7 +177,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NextItem",
+                    "action": "QuickNextItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "16d53693-35e7-46fb-a521-1b28a84b1b3d",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InvNextItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6579a80-0671-438f-be8c-c303a99b7c34",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeapPerk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

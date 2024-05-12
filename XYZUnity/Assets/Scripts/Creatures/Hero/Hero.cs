@@ -39,6 +39,7 @@ namespace Scripts
         private bool _superThrow;
         private Cooldown _speedUpCooldown = new Cooldown();
         private float _additionalSpeed;
+        private float _leapSpeed;
 
         private HealthComponent _health;
 
@@ -341,19 +342,35 @@ namespace Scripts
         protected override float CalculateSpeed()
         {
             if (_speedUpCooldown.IsReady)
+            {
                 _additionalSpeed = 0f;
+            }
+
             var defaultSpeed = _session.StatsModel.GetValue(StatId.Speed);
-            return defaultSpeed + _additionalSpeed;
+            return defaultSpeed + _additionalSpeed + _leapSpeed;
         }
 
-        public void NextItem()
+        public void QuickInvNextItem()
         {
             _session.QuickInventory.SetNextItem();
+        }
+        public void InvNextItem()
+        {
+            _session.Inventory.SetNextItem();
         }
 
         public void StartThrowing()
         {
             _superThrowCooldown.Reset();
+        }
+
+        public void UseLeap()
+        {
+            if (!_session.PerksModel.IsLeapSupported) return;
+            _leapSpeed = _session.StatsModel.GetValue(StatId.Speed) * 1.2f;
+            _speedUpCooldown.Value = _speedUpCooldown.RemainingTime + _session.PerksModel.Cooldown.Value / 2;
+            _speedUpCooldown.Reset();
+            _session.PerksModel.Cooldown.Reset();
         }
     }
 }

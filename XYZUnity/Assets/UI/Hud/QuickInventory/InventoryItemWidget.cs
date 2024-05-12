@@ -21,8 +21,8 @@ namespace UI.Hud.QuickInventory
         private void Start()
         {
             var session = FindObjectOfType<GameSession>();
-            var index = session.QuickInventory.SelectedIndex;
-            _trash.Retain(index.SubscribeAndInvoke(OnIndexChanged));
+            var quickInventoryIndex = session.QuickInventory.SelectedIndex;
+            _trash.Retain(quickInventoryIndex.SubscribeAndInvoke(OnIndexChanged));
         }
 
         public void SetData(InventoryItemData item, int index)
@@ -32,7 +32,6 @@ namespace UI.Hud.QuickInventory
             var def = DefsFacade.I.Items.Get(item.Id);
             _icon.sprite = def.Icon;
             _value.text = def.HasTag(ItemTag.Stackable) ? item.Value.ToString() : string.Empty;
-
         }
 
         private void OnIndexChanged(int newValue, int _)

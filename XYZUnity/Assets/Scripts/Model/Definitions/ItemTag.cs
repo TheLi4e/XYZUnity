@@ -5,6 +5,8 @@
         Stackable,
         Usable,
         Throwable,
-        Potion
+        Potion,
+        QuickUse,
+        Inventory
     }
 }

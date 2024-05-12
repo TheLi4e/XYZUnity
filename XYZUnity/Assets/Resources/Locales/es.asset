@@ -63,4 +63,15 @@ MonoBehaviour:
   - Key: level-up
     Value: "Mejora\r"
   - Key: Critical Damage
-    Value: "Da\xF1o cr\xEDtico"
+    Value: "Da\xF1o cr\xEDtico\r"
+  - Key: perk_leap
+    Value: "Salto adelante. Acelera el personaje durante 5 segundos\r"
+  - Key: wooden_door_dialog_lvl2
+    Value: "Necesitas una llave y 50 monedas... \xA1Intenta derrotar al Cangrejo
+      en un nivel superior!\r"
+  - Key: wooden_door_dialog_lvl2_back
+    Value: "\xBFQuieres volver?\r"
+  - Key: yes
+    Value: "S\xED\r"
+  - Key: no
+    Value: No

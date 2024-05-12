@@ -18,6 +18,7 @@ namespace Scripts.Model
         private PlayerData _save;
         private readonly CompositeDisposable _trash = new CompositeDisposable();
         public QuickInventoryModel QuickInventory { get; private set; }
+        public InventoryModel Inventory { get; private set; }
         public PerksModel PerksModel { get; private set; }
         public StatsModel StatsModel { get; private set; }
 
@@ -69,6 +70,9 @@ namespace Scripts.Model
         {
             QuickInventory = new QuickInventoryModel(_data);
             _trash.Retain(QuickInventory);
+
+            Inventory = new InventoryModel(_data);
+            _trash.Retain(Inventory);
 
             PerksModel = new PerksModel(_data);
             _trash.Retain(PerksModel);

@@ -34,6 +34,7 @@ namespace Scripts.Model.Data
         public string Used => _data.Perks.Used.Value;
         public bool IsSuperThrowSupported => _data.Perks.Used.Value == "super-throw" && Cooldown.IsReady;
         public bool IsDoubleJumpSupported => _data.Perks.Used.Value == "double-jump" && Cooldown.IsReady;
+        public bool IsLeapSupported => _data.Perks.Used.Value == "leap" && Cooldown.IsReady;
 
         public void Unlock(string id)
         {
