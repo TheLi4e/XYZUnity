@@ -7,8 +7,8 @@
 5. Quick inventary for usable items. You can choose one of three quick access items.
 6. Different mobs for your challenges.
 7. Localization into three languages: Russian, English and Spanish.
-8. And more...
+8. And more...###
 
 
-###Update:
+##Update:
 Added new perk - Leap and HUD for BigInventory
