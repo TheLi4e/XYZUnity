@@ -63,4 +63,6 @@ MonoBehaviour:
   - Key: level-up
     Value: "Mejora\r"
   - Key: Critical Damage
-    Value: "Da\xF1o cr\xEDtico"
+    Value: "Da\xF1o cr\xEDtico\r"
+  - Key: perk_leap
+    Value: salto adelante. acelera el personaje durante 5 segundos
