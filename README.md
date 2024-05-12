@@ -10,5 +10,5 @@
 8. And more...
 
 
-##Update:
-### Added new perk - Leap and HUD for BigInventory
+Update:
+Added new perk - Leap and HUD for BigInventory
