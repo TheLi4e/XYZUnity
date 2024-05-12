@@ -65,4 +65,12 @@ MonoBehaviour:
   - Key: Critical Damage
     Value: "Critical Damage\r"
   - Key: perk_leap
-    Value: Leap forward. Speeds up the character for 5 seconds
+    Value: "Leap forward. Speeds up the character for 5 seconds\r"
+  - Key: wooden_door_dialog_lvl2
+    Value: "You need a key and 50 coins...&Try to defeat the Crab at a higher level!\r"
+  - Key: wooden_door_dialog_lvl2_back
+    Value: "Do you want to go back?\r"
+  - Key: yes
+    Value: "Yes\r"
+  - Key: no
+    Value: No

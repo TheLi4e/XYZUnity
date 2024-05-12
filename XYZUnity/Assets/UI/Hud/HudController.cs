@@ -4,7 +4,6 @@ using UI.Widgets;
 using UnityEngine;
 using Scripts.Utils;
 using UI.Hud;
-using System;
 using Scripts.Utils.Disposables;
 
 namespace Scripts.UI.Hud

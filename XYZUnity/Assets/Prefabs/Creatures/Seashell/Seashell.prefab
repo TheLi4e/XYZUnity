@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 768613445}
   - component: {fileID: 768613447}
   - component: {fileID: 768613446}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 920744321}
   - component: {fileID: 920744320}
   - component: {fileID: 6359472388784897869}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920744318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 768613445}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 1412628216}
   - component: {fileID: 1412628215}
   - component: {fileID: 1476976959985467316}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: HpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _progressBarWidget: {fileID: 6359472388784897869}
-  _hp: {fileID: 0}
+  _hp: {fileID: 2634674859204142190}
 --- !u!1 &4977819503563963208
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 4977819503563963212}
   - component: {fileID: 4977819503563963211}
   - component: {fileID: 4977819503563963210}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4977819503760620096}
   - component: {fileID: 4977819503760620097}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: PearlThrowPosition
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 4977819503783484743}
   - component: {fileID: 4977819503783484742}
   - component: {fileID: 4977819503783484741}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: AttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 3502243351581592077}
   - component: {fileID: 545178705}
   - component: {fileID: 194821138202173843}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Seashell
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ PolygonCollider2D:
       - {x: 0.30090714, y: -0.58725405}
       - {x: 0.51091385, y: -0.47157526}
       - {x: 0.5392227, y: -0.3656144}
-      - {x: 0.5488167, y: -0.23789406}
+      - {x: 0.55900955, y: -0.23789406}
       - {x: 0.43286133, y: -0.034882545}
       - {x: 0.18661499, y: 0.07952738}
 --- !u!95 &1329203469605480680
@@ -731,17 +731,6 @@ MonoBehaviour:
           m_StringArgument: hit
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4977819503951393691}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -797,6 +786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 4977819503951393691}
+  _restoreState: {fileID: 0}
 --- !u!114 &545178705
 MonoBehaviour:
   m_ObjectHideFlags: 0

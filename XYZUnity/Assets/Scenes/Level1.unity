@@ -10515,9 +10515,11 @@ MonoBehaviour:
       - Id: SmallHealthPotion
         Value: 1
       - Id: LargeHealthPotion
-        Value: 2
+        Value: 1
       - Id: GreenGem
         Value: 20
+      - Id: SpeedUpPotion
+        Value: 1
     Hp:
       _value: 5
     Perks:
@@ -16197,6 +16199,16 @@ PrefabInstance:
       propertyPath: _data.DialogText
       value: perks
       objectReference: {fileID: 0}
+    - target: {fileID: 7979866377228181312, guid: a18a5f23ddee8d247a948dce4da2329d,
+        type: 3}
+      propertyPath: _data.Options.Array.data[0].Text
+      value: yes
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979866377228181312, guid: a18a5f23ddee8d247a948dce4da2329d,
+        type: 3}
+      propertyPath: _data.Options.Array.data[1].Text
+      value: no
+      objectReference: {fileID: 0}
     - target: {fileID: 8737211794327449937, guid: a18a5f23ddee8d247a948dce4da2329d,
         type: 3}
       propertyPath: m_RootOrder
@@ -16210,17 +16222,17 @@ PrefabInstance:
     - target: {fileID: 8737211794327449937, guid: a18a5f23ddee8d247a948dce4da2329d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.29
+      value: 27.44
       objectReference: {fileID: 0}
     - target: {fileID: 8737211794327449937, guid: a18a5f23ddee8d247a948dce4da2329d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.46
+      value: 9.44
       objectReference: {fileID: 0}
     - target: {fileID: 8737211794327449937, guid: a18a5f23ddee8d247a948dce4da2329d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.95
+      value: 28.06
       objectReference: {fileID: 0}
     - target: {fileID: 8737211794327449937, guid: a18a5f23ddee8d247a948dce4da2329d,
         type: 3}

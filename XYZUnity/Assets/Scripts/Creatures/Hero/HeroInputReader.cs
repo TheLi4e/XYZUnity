@@ -56,6 +56,12 @@ namespace Scripts
             if (context.performed)
                 _hero.InvNextItem();
         }
+
+        public void OnUseLeapPerk(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                _hero.UseLeap();
+        }
     }
 }
 
