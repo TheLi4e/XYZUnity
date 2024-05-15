@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 3590360792760601248, guid: 49e48fc4f3b8b734d84516d2bf5b70e8,
         type: 3}
       propertyPath: m_Name
-      value: Totem (1)
+      value: Totem (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3590360792760601251, guid: 49e48fc4f3b8b734d84516d2bf5b70e8,
         type: 3}
